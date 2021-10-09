@@ -180,7 +180,7 @@ namespace UI
             base.OnGotFocus(e);
             try
             {
-                Event_OnGotFocus(this, new EventArgs());
+                Event_OnGotFocus(this, EventArgs.Empty);
             }
             catch
             {
@@ -236,7 +236,7 @@ namespace UI
             base.OnLostFocus(e);
             try
             {
-                Event_OnLostFocus(this, new EventArgs());
+                Event_OnLostFocus(this, EventArgs.Empty);
             }
             catch
             {
@@ -2013,7 +2013,7 @@ namespace UI
         {
             try
             {
-                Event_OnUndoRedoStackChanged(this, new EventArgs());
+                Event_OnUndoRedoStackChanged(this, EventArgs.Empty);
             }
             catch
             {

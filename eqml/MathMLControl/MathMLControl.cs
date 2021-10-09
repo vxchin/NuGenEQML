@@ -573,7 +573,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnUndoRedoStackChanged(this, new EventArgs());
+                this.Event_OnUndoRedoStackChanged(this, EventArgs.Empty);
             }
             catch
             {
@@ -617,7 +617,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnGotFocus(this, new EventArgs());
+                this.Event_OnGotFocus(this, EventArgs.Empty);
             }
             catch
             {
@@ -628,7 +628,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnLostFocus(this, new EventArgs());
+                this.Event_OnLostFocus(this, EventArgs.Empty);
             }
             catch
             {

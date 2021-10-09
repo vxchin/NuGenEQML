@@ -15,7 +15,7 @@ namespace Facade
             try
             {
                 this.stack.Push(UndoRedoBuffer);
-                this.callback(this, new EventArgs());
+                this.callback(this, EventArgs.Empty);
             }
             catch
             {
@@ -28,7 +28,7 @@ namespace Facade
             try
             {
                 info = stack.Pop();
-                this.callback(this, new EventArgs());
+                this.callback(this, EventArgs.Empty);
             }
             catch
             {
@@ -41,7 +41,7 @@ namespace Facade
             try
             {
                 this.stack.Clear();
-                this.callback(this, new EventArgs());
+                this.callback(this, EventArgs.Empty);
             }
             catch
             {

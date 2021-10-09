@@ -120,7 +120,7 @@ namespace Facade
         {
             try
             {
-                this.UndoRedo (this, new EventArgs ());
+                this.UndoRedo (this, EventArgs.Empty);
             }
             catch
             {
@@ -131,7 +131,7 @@ namespace Facade
         {
             try
             {
-                this.UndoRedo (this, new EventArgs ());
+                this.UndoRedo (this, EventArgs.Empty);
             }
             catch
             {
