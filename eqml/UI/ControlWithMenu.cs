@@ -26,7 +26,7 @@ namespace UI
         {
             try
             {
-                this.Event_MouseDown(this, new MouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta));
+                this.Event_MouseDown?.Invoke(this, new MouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta));
             }
             catch
             {
