@@ -2851,7 +2851,7 @@ namespace Attrs
                         }
                     }
                 }
-                node.attrs.Reset();
+                node.attrs?.Reset();
             }
             catch
             {

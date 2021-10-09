@@ -1,6 +1,5 @@
 namespace Fonts
 {
-    using System;
     using System.Xml;
 
     public class Symbol
@@ -14,7 +13,8 @@ namespace Fonts
 
             try
             {
-                node.Attributes.GetNamedItem("name");
+                if (node?.Attributes is null) return;
+                // node.Attributes.GetNamedItem("name");
                 XmlNode uniNode = node.Attributes.GetNamedItem("unicode");
                 XmlNode charPos = node.Attributes.GetNamedItem("charPos");
                 XmlNode desc = node.Attributes.GetNamedItem("desc");

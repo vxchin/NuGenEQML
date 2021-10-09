@@ -573,7 +573,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnUndoRedoStackChanged(this, EventArgs.Empty);
+                this.Event_OnUndoRedoStackChanged?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
@@ -584,7 +584,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_MouseDown(this, new MouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta));
+                this.Event_MouseDown?.Invoke(this, new MouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta));
             }
             catch
             {
@@ -606,7 +606,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnValidationError(this, new ValidationErrorEventArgs(e.Message, e.Line, e.Pos));
+                this.Event_OnValidationError?.Invoke(this, new ValidationErrorEventArgs(e.Message, e.Line, e.Pos));
             }
             catch
             {
@@ -617,7 +617,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnGotFocus(this, EventArgs.Empty);
+                this.Event_OnGotFocus?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
@@ -628,7 +628,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnLostFocus(this, EventArgs.Empty);
+                this.Event_OnLostFocus?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
@@ -639,7 +639,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnSelectionChanged(this, new OnMathMLSelectionChanged(e.HasSelection));
+                this.Event_OnSelectionChanged?.Invoke(this, new OnMathMLSelectionChanged(e.HasSelection));
             }
             catch
             {
