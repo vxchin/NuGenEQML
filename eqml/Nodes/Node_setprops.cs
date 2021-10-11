@@ -1,21 +1,14 @@
 namespace Nodes
 {
-    using Attrs;
-    using Rendering;
-    using Boxes;
-    using Nodes;
-    
-    using Fonts;
-    using Facade;
     using System;
-    using System.Collections;
     using System.Drawing;
     using System.Globalization;
-    using System.Xml;
+    using Attrs;
+    using Boxes;
 
     public partial class Node
     {
-                public void SetStyle(StyleAttributes styleAttributes)
+        public void SetStyle(StyleAttributes styleAttributes)
         {
             if (style_ == null)
             {
@@ -123,7 +116,7 @@ namespace Nodes
             {
                 style_.hasSize = true;
                 style_.scale = scaling;
-                string size = (scaling*100).ToString();
+                string size = (scaling * 100).ToString();
                 size = size.Replace(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator, ".");
                 size = size + "%";
                 style_.size = size;
@@ -142,7 +135,7 @@ namespace Nodes
             }
         }
 
-               public int FontStyle
+        public int FontStyle
         {
             get
             {
@@ -244,7 +237,7 @@ namespace Nodes
                 {
                     if ((type_ != null) && (type_.type == ElementType.Ms))
                     {
-                        start += ((Box_Ms) box).leftQuoteWidth;
+                        start += ((Box_Ms)box).leftQuoteWidth;
                     }
                 }
                 catch
@@ -483,7 +476,5 @@ namespace Nodes
                 literalCaret = length;
             }
         }
-
-
     }
 }

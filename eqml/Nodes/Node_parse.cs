@@ -1,27 +1,13 @@
 namespace Nodes
 {
-    using Attrs;
-    using Rendering;
-    using Boxes;
-    using Nodes;
-    
-    using Fonts;
-    using Facade;
     using System;
-    using System.Collections;
-    using System.Drawing;
-    using System.Globalization;
     using System.Xml;
+    using Attrs;
+    using Fonts;
 
     public partial class Node
     {
-        public Node Parse(XmlNode XMLNode, Types mTypes, EntityManager mEntities,
-                        bool bAll, StyleAttributes styleAttributes)
-        {
-            return Parse(XMLNode, mTypes, mEntities, bAll, styleAttributes, false);
-        }
-
-        public Node Parse(XmlNode XMLNode, Types mTypes, EntityManager mEntities, bool recurse, StyleAttributes styleAttributes, bool bParentShift)
+        public Node Parse(XmlNode XMLNode, Types mTypes, EntityManager mEntities, bool recurse, StyleAttributes styleAttributes, bool bParentShift = false)
         {
             bool hasSelect = false;
             bool hasSelectRight = false;
@@ -31,10 +17,8 @@ namespace Nodes
                 xmlTagName = XMLNode.LocalName;
                 namespaceURI = XMLNode.NamespaceURI;
             }
-            
-            int numAttrs = 0;
-            
-            if ((recurse && (XMLNode.Attributes != null)) && !bParentShift)
+
+            if (recurse && XMLNode.Attributes != null && !bParentShift)
             {
                 StyleAttributes attributes = ParseMStyle(XMLNode, style_);
                 if (attributes != null)
@@ -45,8 +29,8 @@ namespace Nodes
                     }
                     attributes.CopyTo(style_);
                 }
-            
-                numAttrs = XMLNode.Attributes.Count;
+
+                var numAttrs = XMLNode.Attributes.Count;
                 if (numAttrs > 0)
                 {
                     if (attrs == null)
@@ -56,7 +40,7 @@ namespace Nodes
 
                     for (int i = 0; i < numAttrs; i++)
                     {
-                        
+
                         if (XMLNode.Attributes[i].Name == "nugenCursor")
                         {
                             result = this;
@@ -85,14 +69,14 @@ namespace Nodes
                 }
             }
 
-            if ((XMLNode.NodeType == XmlNodeType.Element) && !bParentShift)
+            if (XMLNode.NodeType == XmlNodeType.Element && !bParentShift)
             {
                 if (type_ == null)
                 {
                     type_ = mTypes[xmlTagName];
                 }
-                if ((hasSelect && (type_.type == ElementType.Mi)) &&
-                    (literalText != null))
+                if (hasSelect && type_.type == ElementType.Mi &&
+                    literalText != null)
                 {
                     InternalMark = literalText.Length;
                 }
@@ -103,223 +87,191 @@ namespace Nodes
                 XmlNodeList list = XMLNode.ChildNodes;
                 for (int i = 0; i < list.Count; i++)
                 {
-                    if (list[i].NodeType == XmlNodeType.Text)
+                    switch (list[i].NodeType)
                     {
-                        if ((type_.type == ElementType.Mtext) || (type_.type == ElementType.Ms))
+                        case XmlNodeType.Text:
                         {
-                            literalText += list[i].Value;
-                            continue;
-                        }
-                        
-                        if (type_.type == ElementType.Mn)
-                        {
-                            literalText += list[i].Value.Trim();
-                            continue;
-                        }
-                        
-                        if (type_.type == ElementType.Mi)
-                        {
-                            literalText += list[i].Value.Trim();
-                            continue;
-                        }
-
-                        if (type_.type != ElementType.Mo)
-                        {
-                            continue;
-                        }
-
-                        string entityChar = list[i].Value.Trim();
-                        bool isGlyph = false;
-                        try
-                        {
-                            Glyph glyph;
-
-                            if (! (((((entityChar != "(") && (entityChar != ")")) && ((entityChar != "[") && (entityChar != "]"))) &&
-                                    (((entityChar != "{") && (entityChar != "}")) && ((entityChar != "|") && (entityChar != "||")))) &&
-                                   (((entityChar != "+") && (entityChar != "-")) && ((entityChar != "=") && (entityChar != "/")))))
+                            switch (type_.type)
                             {
-                                string entityName = "";
-
-
-                                switch (entityChar)
-                                {
-                                    case "(":
-                                    {
-                                        entityName = "lpar";
-                                        break;
-                                    }
-                                    case ")":
-                                    {
-                                        entityName = "rpar";
-                                        break;
-                                    }
-                                    case "[":
-                                    {
-                                        entityName = "lbrack";
-                                        break;
-                                    }
-                                    case "]":
-                                    {
-                                        entityName = "rbrack";
-                                        break;
-                                    }
-                                    case "{":
-                                    {
-                                        entityName = "lbrace";
-                                        break;
-                                    }
-                                    case "}":
-                                    {
-                                        entityName = "rbrace";
-                                        break;
-                                    }
-                                    case "|":
-                                    {
-                                        entityName = "verbar";
-                                        break;
-                                    }
-                                    case "||":
-                                    {
-                                        entityName = "Verbar";
-                                        break;
-                                    }
-                                    case "+":
-                                    {
-                                        entityName = "plus";
-                                        break;
-                                    }
-                                    case "-":
-                                    {
-                                        entityName = "minus";
-                                        break;
-                                    }
-                                    case "=":
-                                    {
-                                        entityName = "equals";
-                                        break;
-                                    }
-                                    case "/":
-                                    {
-                                        entityName = "sol";
-                                        break;
-                                    }
-                                }
-
-                                glyph = mEntities.ByName(entityName);
-                                if (glyph != null)
-                                {
-                                    Node glyphNode = new Node();
-                                    glyphNode.type_ = mTypes["entity"];
-                                    glyphNode.literalText = "" + glyph.CharValue;
-                                    glyphNode.fontFamily = glyph.FontFamily;
-                                    glyphNode.glyph = glyph;
-                                    glyphNode.xmlTagName = glyph.Name;
-                                    AdoptChild(glyphNode);
-                                    
-                                    isGlyph = true;
-                                }
+                                case ElementType.Mtext:
+                                case ElementType.Ms:
+                                    literalText += list[i].Value;
+                                    continue;
+                                case ElementType.Mn:
+                                    literalText += list[i].Value.Trim();
+                                    continue;
+                                case ElementType.Mi:
+                                    literalText += list[i].Value.Trim();
+                                    continue;
                             }
-                        }
-                        catch
-                        {
-                        }
 
-                        if (!isGlyph)
-                        {
-                            literalText += entityChar;
-                        }
-                        continue;
-                    }
-
-                    if (list[i].NodeType == XmlNodeType.SignificantWhitespace)
-                    {
-                        continue;
-                    }
-
-                    if (list[i].NodeType == XmlNodeType.Whitespace)
-                    {
-                        if ((type_.type == ElementType.Mtext) || (type_.type == ElementType.Ms))
-                        {
-                            literalText += " ";
-                        }
-                        continue;
-                    }
-
-                    if (list[i].NodeType == XmlNodeType.Element)
-                    {
-                        if ((list[i].NamespaceURI == "http://www.w3.org/1998/Math/MathML") && (list[i].LocalName == "mstyle"))
-                        {
-                            Node mstyl = ParseMstyle(list[i], mTypes, mEntities, recurse, styleAttributes);
-                            if (mstyl != null)
+                            if (type_.type != ElementType.Mo)
                             {
-                                result = mstyl;
+                                continue;
                             }
-                        }
-                        else
-                        {
-                            Node n = new Node(XMLNode.Name, styleAttributes);
-                            n.type_ = mTypes[list[i].LocalName];
 
-                            if (AdoptChild(n))
-                            {
-                                Node sn = n.Parse(list[i], mTypes,  mEntities, recurse, styleAttributes, false);
-                                if (sn != null)
-                                {
-                                    result = sn;
-                                }
-                            }
-                        }
-
-                        continue;
-                    }
-                
-                    if (list[i].NodeType == XmlNodeType.EntityReference)
-                    {
-                        Node n = new Node();
-                        n.type_ = mTypes["entity"];
-                        if ((type_.type == ElementType.Mtext) ||
-                            (type_.type == ElementType.Ms))
-                        {
-                            Glyph glyph = mEntities.ByName(list[i].LocalName);
-                            if (glyph != null)
-                            {
-                                char c = Convert.ToChar(Convert.ToUInt32(glyph.Code, 0x10));
-                                if (char.IsWhiteSpace(c) || char.IsControl(c))
-                                {
-                                    literalText = literalText + " ";
-                                }
-                                else
-                                {
-                                    literalText = literalText + c;
-                                }
-                            }
-                        }
-                        else
-                        {
+                            string entityChar = list[i].Value.Trim();
+                            bool isGlyph = false;
                             try
+                            {
+                                Glyph glyph;
+
+                                if (!(entityChar != "(" && entityChar != ")" && entityChar != "[" && entityChar != "]" && entityChar != "{" && entityChar != "}" && entityChar != "|" && entityChar != "||" && entityChar != "+" && entityChar != "-" && entityChar != "=" && entityChar != "/"))
+                                {
+                                    string entityName = "";
+
+
+                                    switch (entityChar)
+                                    {
+                                        case "(":
+                                            entityName = "lpar";
+                                            break;
+                                        case ")":
+                                            entityName = "rpar";
+                                            break;
+                                        case "[":
+                                            entityName = "lbrack";
+                                            break;
+                                        case "]":
+                                            entityName = "rbrack";
+                                            break;
+                                        case "{":
+                                            entityName = "lbrace";
+                                            break;
+                                        case "}":
+                                            entityName = "rbrace";
+                                            break;
+                                        case "|":
+                                            entityName = "verbar";
+                                            break;
+                                        case "||":
+                                            entityName = "Verbar";
+                                            break;
+                                        case "+":
+                                            entityName = "plus";
+                                            break;
+                                        case "-":
+                                            entityName = "minus";
+                                            break;
+                                        case "=":
+                                            entityName = "equals";
+                                            break;
+                                        case "/":
+                                            entityName = "sol";
+                                            break;
+                                    }
+
+                                    glyph = mEntities.ByName(entityName);
+                                    if (glyph != null)
+                                    {
+                                        Node glyphNode = new Node();
+                                        glyphNode.type_ = mTypes["entity"];
+                                        glyphNode.literalText = "" + glyph.CharValue;
+                                        glyphNode.fontFamily = glyph.FontFamily;
+                                        glyphNode.glyph = glyph;
+                                        glyphNode.xmlTagName = glyph.Name;
+                                        AdoptChild(glyphNode);
+
+                                        isGlyph = true;
+                                    }
+                                }
+                            }
+                            catch
+                            {
+                            }
+
+                            if (!isGlyph)
+                            {
+                                literalText += entityChar;
+                            }
+                            continue;
+                        }
+                        case XmlNodeType.SignificantWhitespace:
+                            continue;
+                        case XmlNodeType.Whitespace:
+                        {
+                            if (type_.type == ElementType.Mtext || type_.type == ElementType.Ms)
+                            {
+                                literalText += " ";
+                            }
+                            continue;
+                        }
+                        case XmlNodeType.Element:
+                        {
+                            if (list[i].NamespaceURI == "http://www.w3.org/1998/Math/MathML" && list[i].LocalName == "mstyle")
+                            {
+                                Node mstyl = ParseMstyle(list[i], mTypes, mEntities, recurse, styleAttributes);
+                                if (mstyl != null)
+                                {
+                                    result = mstyl;
+                                }
+                            }
+                            else
+                            {
+                                Node n = new Node(XMLNode.Name, styleAttributes);
+                                n.type_ = mTypes[list[i].LocalName];
+
+                                if (AdoptChild(n))
+                                {
+                                    Node sn = n.Parse(list[i], mTypes, mEntities, recurse, styleAttributes, false);
+                                    if (sn != null)
+                                    {
+                                        result = sn;
+                                    }
+                                }
+                            }
+
+                            continue;
+                        }
+                        case XmlNodeType.EntityReference:
+                        {
+                            Node n = new Node();
+                            n.type_ = mTypes["entity"];
+                            if (type_.type == ElementType.Mtext ||
+                                type_.type == ElementType.Ms)
                             {
                                 Glyph glyph = mEntities.ByName(list[i].LocalName);
                                 if (glyph != null)
                                 {
-                                    n.literalText = "";
-                                    n.literalText = n.literalText + glyph.CharValue;
-                                    n.fontFamily = glyph.FontFamily;
-                                    n.glyph = glyph;
-                                    n.xmlTagName = list[i].LocalName;
+                                    char c = Convert.ToChar(Convert.ToUInt32(glyph.Code, 0x10));
+                                    if (char.IsWhiteSpace(c) || char.IsControl(c))
+                                    {
+                                        literalText = literalText + " ";
+                                    }
+                                    else
+                                    {
+                                        literalText = literalText + c;
+                                    }
                                 }
-                                else
+                            }
+                            else
+                            {
+                                try
+                                {
+                                    Glyph glyph = mEntities.ByName(list[i].LocalName);
+                                    if (glyph != null)
+                                    {
+                                        n.literalText = "";
+                                        n.literalText = n.literalText + glyph.CharValue;
+                                        n.fontFamily = glyph.FontFamily;
+                                        n.glyph = glyph;
+                                        n.xmlTagName = list[i].LocalName;
+                                    }
+                                    else
+                                    {
+                                        n.literalText = "?";
+                                        n.xmlTagName = list[i].LocalName;
+                                    }
+                                    AdoptChild(n);
+                                }
+                                catch
                                 {
                                     n.literalText = "?";
                                     n.xmlTagName = list[i].LocalName;
+                                    AdoptChild(n);
                                 }
-                                AdoptChild(n);
                             }
-                            catch
-                            {
-                                n.literalText = "?";
-                                n.xmlTagName = list[i].LocalName;
-                                AdoptChild(n);
-                            }
+                            break;
                         }
                     }
                 }
@@ -330,7 +282,7 @@ namespace Nodes
         public Node ParseMstyle(XmlNode XMLNode, Types mTypes, EntityManager mEntities, bool bAll, StyleAttributes styleAttributes)
         {
             StyleAttributes s = null;
-            if ((XMLNode.Attributes == null) || (XMLNode.Attributes.Count <= 0))
+            if (XMLNode.Attributes == null || XMLNode.Attributes.Count <= 0)
             {
                 return Parse(XMLNode, mTypes, mEntities, bAll, styleAttributes, true);
             }
@@ -341,9 +293,8 @@ namespace Nodes
             {
                 node.attrs.Add(new Attribute(XMLNode.Attributes[i].Name, XMLNode.Attributes[i].Value, ""));
             }
-            StyleAttributes fromNode = new StyleAttributes();
             s = new StyleAttributes();
-            fromNode = AttributeBuilder.StyleAttrsFromNode(node, true);
+            var fromNode = AttributeBuilder.StyleAttrsFromNode(node, true);
             if (fromNode != null)
             {
                 if (styleAttributes != null)
@@ -360,8 +311,7 @@ namespace Nodes
             }
             else
             {
-                if (styleAttributes != null)
-                    styleAttributes.CopyTo(s);
+                styleAttributes?.CopyTo(s);
             }
             s.canOverride = true;
             XMLNode.Attributes.RemoveAll();
@@ -376,13 +326,12 @@ namespace Nodes
             bool hasMathsize = false;
             bool hasVariant = false;
             StyleAttributes r = null;
-            
+
             int count = 0;
 
-            if (((xmlNode != null) &&
-                 (((xmlNode.Name == "mi") || (xmlNode.Name == "mo")) ||
-                  (((xmlNode.Name == "mn") || (xmlNode.Name == "ms")) || (xmlNode.Name == "mtext")))) &&
-                (xmlNode.Attributes != null))
+            if (xmlNode != null &&
+                (xmlNode.Name == "mi" || xmlNode.Name == "mo" || xmlNode.Name == "mn" || xmlNode.Name == "ms" || xmlNode.Name == "mtext") &&
+                xmlNode.Attributes != null)
             {
                 try
                 {
@@ -391,9 +340,8 @@ namespace Nodes
                     for (int i = 0; i < count; i++)
                     {
                         string name = xmlNode.Attributes[i].Name.Trim().ToLower();
-                        
-                        if (((name == "mathvariant") || (name == "mathcolor")) ||
-                            ((name == "mathbackground") || (name == "mathsize")))
+
+                        if (name == "mathvariant" || name == "mathcolor" || name == "mathbackground" || name == "mathsize")
                         {
                             hasStyleAttrs = true;
                         }
@@ -435,7 +383,7 @@ namespace Nodes
                     if (nodeStyleAttrs != null)
                     {
                         nodeStyleAttrs.canOverride = true;
-                        
+
                         r = new StyleAttributes();
                         if (baseStyle != null)
                         {
@@ -503,64 +451,64 @@ namespace Nodes
                 {
                     result.displayStyle = own.displayStyle;
                 }
-                
+
                 if (own.scriptLevel != ScriptLevel.NONE)
                 {
                     result.scriptLevel = own.scriptLevel;
                 }
-                
+
                 if (own.hasColor)
                 {
                     result.color = own.color;
                     result.hasColor = true;
                 }
-                
+
                 if (own.hasBackground)
                 {
                     result.background = own.background;
                     result.hasBackground = true;
                 }
-                
+
                 if (own.hasSize)
                 {
                     result.scale = own.scale;
                     result.size = own.size;
                     result.hasSize = true;
                 }
-                
+
                 if (own.IsStyled)
                 {
                     result.isBold = own.isBold;
                     result.isItalic = own.isItalic;
                 }
-                
+
                 result.isUnderline = false;
-                
+
                 if (own.isNormal)
                 {
                     result.isNormal = true;
                 }
-                
+
                 if (own.isScript)
                 {
                     result.isScript = true;
                 }
-                
+
                 if (own.isSans)
                 {
                     result.isSans = true;
                 }
-                
+
                 if (own.isFractur)
                 {
                     result.isFractur = true;
                 }
-                
+
                 if (own.isDoubleStruck)
                 {
                     result.isDoubleStruck = true;
                 }
-                
+
                 if (own.isMonospace)
                 {
                     result.isMonospace = true;

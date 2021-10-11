@@ -1,10 +1,9 @@
 namespace Attrs
 {
-    using Nodes;
-    
     using System;
     using System.Drawing;
     using System.Globalization;
+    using Nodes;
 
     public class AttributeBuilder
     {
@@ -93,7 +92,7 @@ namespace Attrs
                             tableCellAttributes.rowSpan = Convert.ToInt32(s.Trim());
                         }
                     }
-                    else if ((n.name == "columnspan") && (s.Length > 0))
+                    else if (n.name == "columnspan" && s.Length > 0)
                     {
                         if (tableCellAttributes == null)
                         {
@@ -112,7 +111,7 @@ namespace Attrs
 
         public static void ApplyAttrs(Node node, TableCellAttributes tableCellAttributes)
         {
-            if (((node != null) && (node.type_ != null)) && ((node.type_.type == ElementType.Mtd) && (tableCellAttributes != null)))
+            if (node != null && node.type_ != null && node.type_.type == ElementType.Mtd && tableCellAttributes != null)
             {
                 if (tableCellAttributes.rowAlign == RowAlign.TOP)
                 {
@@ -154,7 +153,7 @@ namespace Attrs
                     }
                     node.attrs.Add("rowalign", "axis");
                 }
-                else if ((tableCellAttributes.rowAlign == RowAlign.UNKNOWN) && (node.attrs != null))
+                else if (tableCellAttributes.rowAlign == RowAlign.UNKNOWN && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("rowalign");
                     if (attribute != null)
@@ -186,7 +185,7 @@ namespace Attrs
                     }
                     node.attrs.Add("columnalign", "right");
                 }
-                else if ((tableCellAttributes.columnAlign == HAlign.UNKNOWN) && (node.attrs != null))
+                else if (tableCellAttributes.columnAlign == HAlign.UNKNOWN && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("columnalign");
                     if (attribute != null)
@@ -299,7 +298,7 @@ namespace Attrs
 
         public static void ApplyAttrs(Node node, FencedAttributes fencedAttributes)
         {
-            if (((node != null) && (node.type_ != null)) && ((node.type_.type == ElementType.Mfenced) && (fencedAttributes != null)))
+            if (node != null && node.type_ != null && node.type_.type == ElementType.Mfenced && fencedAttributes != null)
             {
                 if (fencedAttributes.separators.Length > 0)
                 {
@@ -332,7 +331,7 @@ namespace Attrs
                 }
                 if (fencedAttributes.open.Length > 0)
                 {
-                    if ((((fencedAttributes.open == "{") || (fencedAttributes.open == "[")) || ((fencedAttributes.open == "|") || (fencedAttributes.open == "<"))) || ((fencedAttributes.open[0] == '\u2329') || (fencedAttributes.open[0] == '<')))
+                    if (fencedAttributes.open == "{" || fencedAttributes.open == "[" || fencedAttributes.open == "|" || fencedAttributes.open == "<" || fencedAttributes.open[0] == '\u2329' || fencedAttributes.open[0] == '<')
                     {
                         if (node.attrs == null)
                         {
@@ -348,7 +347,7 @@ namespace Attrs
                         }
                         node.attrs.Add("open", "");
                     }
-                    else if ((fencedAttributes.open == "(") && (node.attrs != null))
+                    else if (fencedAttributes.open == "(" && node.attrs != null)
                     {
                         Nodes.Attribute attribute = node.attrs.Get("open");
                         if (attribute != null)
@@ -359,7 +358,7 @@ namespace Attrs
                 }
                 if (fencedAttributes.close.Length > 0)
                 {
-                    if ((((fencedAttributes.close == "}") || (fencedAttributes.close == "]")) || ((fencedAttributes.close == "|") || (fencedAttributes.close == ">"))) || ((fencedAttributes.close[0] == '\u232a') || (fencedAttributes.close[0] == '>')))
+                    if (fencedAttributes.close == "}" || fencedAttributes.close == "]" || fencedAttributes.close == "|" || fencedAttributes.close == ">" || fencedAttributes.close[0] == '\u232a' || fencedAttributes.close[0] == '>')
                     {
                         if (node.attrs == null)
                         {
@@ -375,7 +374,7 @@ namespace Attrs
                         }
                         node.attrs.Add("close", "");
                     }
-                    else if ((fencedAttributes.close == ")") && (node.attrs != null))
+                    else if (fencedAttributes.close == ")" && node.attrs != null)
                     {
                         Nodes.Attribute attribute = node.attrs.Get("close");
                         if (attribute != null)
@@ -495,7 +494,7 @@ namespace Attrs
                             }
                         }
                     }
-                    else if ((attribute.name == "bevelled") && (s.Length > 0))
+                    else if (attribute.name == "bevelled" && s.Length > 0)
                     {
                         if (fractionAttributes == null)
                         {
@@ -649,7 +648,7 @@ namespace Attrs
                             }
                         }
                     }
-                    else if ((attribute.name == "bevelled") && (s.Length > 0))
+                    else if (attribute.name == "bevelled" && s.Length > 0)
                     {
                         if (attributes == null)
                         {
@@ -675,7 +674,7 @@ namespace Attrs
 
         public static void ApplyAttrs(Node node, FractionAttributes fractionAttributes)
         {
-            if (((node != null) && (node.type_ != null)) && ((node.type_.type == ElementType.Mfrac) && (fractionAttributes != null)))
+            if (node != null && node.type_ != null && node.type_.type == ElementType.Mfrac && fractionAttributes != null)
             {
                 if (fractionAttributes.isBevelled)
                 {
@@ -813,7 +812,7 @@ namespace Attrs
                             attributes.actionString = s;
                         }
                     }
-                    else if ((attribute.name == "selection") && (s.Length > 0))
+                    else if (attribute.name == "selection" && s.Length > 0)
                     {
                         if (attributes == null)
                         {
@@ -849,7 +848,7 @@ namespace Attrs
                 for (attribute = node.attrs.Next(); attribute != null; attribute = node.attrs.Next())
                 {
                     string s = attribute.val.Trim();
-                    if (bMStyle && (attribute.name == "displaystyle"))
+                    if (bMStyle && attribute.name == "displaystyle")
                     {
                         if (s.ToUpper() == "TRUE")
                         {
@@ -868,19 +867,19 @@ namespace Attrs
                             attributes.displayStyle = DisplayStyle.FALSE;
                         }
                     }
-                    else if (bMStyle && (attribute.name == "scriptlevel"))
+                    else if (bMStyle && attribute.name == "scriptlevel")
                     {
                         s = s.Trim();
                         string levelStr = "";
                         int level = 0;
                         bool plus = false;
                         bool minus = false;
-                        if ((s.Length > 0) && (s[0] == '+'))
+                        if (s.Length > 0 && s[0] == '+')
                         {
                             plus = true;
                             levelStr = s.Substring(1, s.Length - 1);
                         }
-                        else if ((s.Length > 0) && (s[0] == '-'))
+                        else if (s.Length > 0 && s[0] == '-')
                         {
                             minus = true;
                             levelStr = s.Substring(1, s.Length - 1);
@@ -905,7 +904,7 @@ namespace Attrs
                         {
                             level = 0;
                         }
-                        if (plus && (level == 1))
+                        if (plus && level == 1)
                         {
                             if (attributes == null)
                             {
@@ -913,7 +912,7 @@ namespace Attrs
                             }
                             attributes.scriptLevel = ScriptLevel.PLUS_ONE;
                         }
-                        else if (plus && (level == 2))
+                        else if (plus && level == 2)
                         {
                             if (attributes == null)
                             {
@@ -921,7 +920,7 @@ namespace Attrs
                             }
                             attributes.scriptLevel = ScriptLevel.PLUS_TWO;
                         }
-                        else if (minus && (level == 1))
+                        else if (minus && level == 1)
                         {
                             if (attributes == null)
                             {
@@ -929,7 +928,7 @@ namespace Attrs
                             }
                             attributes.scriptLevel = ScriptLevel.MINUS_TWO;
                         }
-                        else if (minus && (level == 2))
+                        else if (minus && level == 2)
                         {
                             if (attributes == null)
                             {
@@ -937,7 +936,7 @@ namespace Attrs
                             }
                             attributes.scriptLevel = ScriptLevel.MINUS_TWO;
                         }
-                        else if ((!plus && !minus) && (level == 0))
+                        else if (!plus && !minus && level == 0)
                         {
                             if (attributes == null)
                             {
@@ -945,7 +944,7 @@ namespace Attrs
                             }
                             attributes.scriptLevel = ScriptLevel.ZERO;
                         }
-                        else if ((!plus && !minus) && (level == 1))
+                        else if (!plus && !minus && level == 1)
                         {
                             if (attributes == null)
                             {
@@ -953,7 +952,7 @@ namespace Attrs
                             }
                             attributes.scriptLevel = ScriptLevel.ONE;
                         }
-                        else if ((!plus && !minus) && (level == 2))
+                        else if (!plus && !minus && level == 2)
                         {
                             if (attributes == null)
                             {
@@ -1161,7 +1160,7 @@ namespace Attrs
                         }
                         attributes.hasBackground = true;
                     }
-                    if ((attribute.name == "mathsize") && (s.Length > 0))
+                    if (attribute.name == "mathsize" && s.Length > 0)
                     {
                         if (attributes == null)
                         {
@@ -1183,11 +1182,11 @@ namespace Attrs
         {
             string fontSize;
             string mathSize;
-            if ((node == null) || (styleAttributes == null))
+            if (node == null || styleAttributes == null)
             {
                 return;
             }
-            
+
             if (node.style_ == null)
             {
                 string font = styleAttributes.FontToString();
@@ -1213,7 +1212,7 @@ namespace Attrs
                         node.attrs.Add("mathvariant", font);
                     }
                 }
-                
+
                 if (styleAttributes.displayStyle == DisplayStyle.AUTOMATIC)
                 {
                     if (node.attrs != null)
@@ -1235,15 +1234,15 @@ namespace Attrs
                     switch (styleAttributes.displayStyle)
                     {
                         case DisplayStyle.TRUE:
-                        {
-                            node.attrs.Add("displaystyle", "true");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("displaystyle", "true");
+                                break;
+                            }
                         case DisplayStyle.FALSE:
-                        {
-                            node.attrs.Add("displaystyle", "false");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("displaystyle", "false");
+                                break;
+                            }
                     }
                 }
             }
@@ -1253,7 +1252,7 @@ namespace Attrs
                 string styleFont = "";
                 fontToString = styleAttributes.FontToString();
                 styleFont = node.style_.FontToString();
-                if ((fontToString.Length > 0) && (fontToString != styleFont))
+                if (fontToString.Length > 0 && fontToString != styleFont)
                 {
                     if (node.attrs == null)
                     {
@@ -1269,22 +1268,23 @@ namespace Attrs
                         node.attrs.Remove(attribute);
                     }
                 }
-                
+
                 bool topLevel = false;
                 bool hasDisplayStyle = false;
-                if (((parentNode != null) && (parentNode.type_ != null)) && (parentNode.type_.type == ElementType.Math))
+                if (parentNode != null && parentNode.type_ != null && parentNode.type_.type == ElementType.Math)
                 {
                     topLevel = true;
                 }
                 DisplayStyle displayStyle = styleAttributes.displayStyle;
                 DisplayStyle styleDisplayStyle = node.style_.displayStyle;
-                if ((topLevel && (parentNode != null)) &&
-                    (((displayStyle == DisplayStyle.TRUE) && parentNode.displayStyle) ||
-                     ((displayStyle == DisplayStyle.FALSE) && !parentNode.displayStyle)))
+                if (topLevel && parentNode != null &&
+                    (displayStyle == DisplayStyle.TRUE && parentNode.displayStyle ||
+                     displayStyle == DisplayStyle.FALSE && !parentNode.displayStyle))
                 {
                     hasDisplayStyle = true;
                 }
-                if (((displayStyle != styleDisplayStyle) && (displayStyle != DisplayStyle.AUTOMATIC)) && !hasDisplayStyle)
+                if (displayStyle != styleDisplayStyle && displayStyle != DisplayStyle.AUTOMATIC &&
+                    !hasDisplayStyle)
                 {
                     if (node.attrs == null)
                     {
@@ -1293,15 +1293,15 @@ namespace Attrs
                     switch (displayStyle)
                     {
                         case DisplayStyle.TRUE:
-                        {
-                            node.attrs.Add("displaystyle", "true");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("displaystyle", "true");
+                                break;
+                            }
                         case DisplayStyle.FALSE:
-                        {
-                            node.attrs.Add("displaystyle", "false");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("displaystyle", "false");
+                                break;
+                            }
                     }
                 }
                 else if (node.attrs != null)
@@ -1312,18 +1312,18 @@ namespace Attrs
                         node.attrs.Remove(attribute);
                     }
                 }
-                
+
                 hasDisplayStyle = false;
                 ScriptLevel scriptLevel = styleAttributes.scriptLevel;
                 ScriptLevel styleScriptLevel = node.style_.scriptLevel;
-                if ((topLevel && (parentNode != null)) &&
-                    ((((scriptLevel == ScriptLevel.ZERO) && (parentNode.scriptLevel_ == 0)) ||
-                      ((scriptLevel == ScriptLevel.ONE) && (parentNode.scriptLevel_ == 1))) ||
-                     ((scriptLevel == ScriptLevel.TWO) && (parentNode.scriptLevel_ == 2))))
+                if (topLevel && parentNode != null &&
+                    (scriptLevel == ScriptLevel.ZERO && parentNode.scriptLevel_ == 0 ||
+                     scriptLevel == ScriptLevel.ONE && parentNode.scriptLevel_ == 1 ||
+                     scriptLevel == ScriptLevel.TWO && parentNode.scriptLevel_ == 2))
                 {
                     hasDisplayStyle = true;
                 }
-                if (((scriptLevel != styleScriptLevel) && (scriptLevel != ScriptLevel.NONE)) && !hasDisplayStyle)
+                if (scriptLevel != styleScriptLevel && scriptLevel != ScriptLevel.NONE && !hasDisplayStyle)
                 {
                     if (node.attrs == null)
                     {
@@ -1332,40 +1332,40 @@ namespace Attrs
                     switch (scriptLevel)
                     {
                         case ScriptLevel.ZERO:
-                        {
-                            node.attrs.Add("scriptlevel", "0");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("scriptlevel", "0");
+                                break;
+                            }
                         case ScriptLevel.ONE:
-                        {
-                            node.attrs.Add("scriptlevel", "1");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("scriptlevel", "1");
+                                break;
+                            }
                         case ScriptLevel.TWO:
-                        {
-                            node.attrs.Add("scriptlevel", "2");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("scriptlevel", "2");
+                                break;
+                            }
                         case ScriptLevel.PLUS_ONE:
-                        {
-                            node.attrs.Add("scriptlevel", "+1");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("scriptlevel", "+1");
+                                break;
+                            }
                         case ScriptLevel.PLUS_TWO:
-                        {
-                            node.attrs.Add("scriptlevel", "+2");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("scriptlevel", "+2");
+                                break;
+                            }
                         case ScriptLevel.MINUS_ONE:
-                        {
-                            node.attrs.Add("scriptlevel", "-1");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("scriptlevel", "-1");
+                                break;
+                            }
                         case ScriptLevel.MINUS_TWO:
-                        {
-                            node.attrs.Add("scriptlevel", "-2");
-                            break;
-                        }
+                            {
+                                node.attrs.Add("scriptlevel", "-2");
+                                break;
+                            }
                     }
                 }
                 else if (node.attrs != null)
@@ -1376,7 +1376,7 @@ namespace Attrs
                         node.attrs.Remove(attribute);
                     }
                 }
-                
+
                 fontSize = "";
                 string ownFontSize = "";
                 fontSize = styleAttributes.FontSize();
@@ -1436,7 +1436,7 @@ namespace Attrs
                 }
                 return;
             }
-        
+
             if (styleAttributes.scriptLevel == ScriptLevel.NONE)
             {
                 if (node.attrs != null)
@@ -1457,43 +1457,43 @@ namespace Attrs
                 switch (styleAttributes.scriptLevel)
                 {
                     case ScriptLevel.ZERO:
-                    {
-                        node.attrs.Add("scriptlevel", "0");
-                        break;
-                    }
+                        {
+                            node.attrs.Add("scriptlevel", "0");
+                            break;
+                        }
                     case ScriptLevel.ONE:
-                    {
-                        node.attrs.Add("scriptlevel", "1");
-                        break;
-                    }
+                        {
+                            node.attrs.Add("scriptlevel", "1");
+                            break;
+                        }
                     case ScriptLevel.TWO:
-                    {
-                        node.attrs.Add("scriptlevel", "2");
-                        break;
-                    }
+                        {
+                            node.attrs.Add("scriptlevel", "2");
+                            break;
+                        }
                     case ScriptLevel.PLUS_ONE:
-                    {
-                        node.attrs.Add("scriptlevel", "+1");
-                        break;
-                    }
+                        {
+                            node.attrs.Add("scriptlevel", "+1");
+                            break;
+                        }
                     case ScriptLevel.PLUS_TWO:
-                    {
-                        node.attrs.Add("scriptlevel", "+2");
-                        break;
-                    }
+                        {
+                            node.attrs.Add("scriptlevel", "+2");
+                            break;
+                        }
                     case ScriptLevel.MINUS_ONE:
-                    {
-                        node.attrs.Add("scriptlevel", "-1");
-                        break;
-                    }
+                        {
+                            node.attrs.Add("scriptlevel", "-1");
+                            break;
+                        }
                     case ScriptLevel.MINUS_TWO:
-                    {
-                        node.attrs.Add("scriptlevel", "-2");
-                        break;
-                    }
+                        {
+                            node.attrs.Add("scriptlevel", "-2");
+                            break;
+                        }
                 }
             }
-        
+
             mathSize = "";
             mathSize = styleAttributes.FontSize();
             if (mathSize == "normal")
@@ -1581,9 +1581,9 @@ namespace Attrs
                             node.fontFamily = attrval;
                         }
                     }
-                    else if ((attribute.name == "index") && (attrval.Length > 0))
+                    else if (attribute.name == "index" && attrval.Length > 0)
                     {
-                        node.literalText = "" + ((char) ((ushort) Convert.ToInt32(attrval)));
+                        node.literalText = "" + (char)(ushort)Convert.ToInt32(attrval);
                     }
                 }
                 node.attrs.Reset();
@@ -1666,9 +1666,9 @@ namespace Attrs
                 length = s.Length;
                 if (length < 2)
                 {
-                    return (int) Math.Round(val, 0);
+                    return (int)Math.Round(val, 0);
                 }
-                
+
                 suffix = "";
                 suffix = suffix + s[length - 2];
                 suffix = suffix + s[length - 1];
@@ -1724,8 +1724,8 @@ namespace Attrs
                         gotThickness = true;
                     }
                 }
-            
-                if (! gotThickness)
+
+                if (!gotThickness)
                 {
                     if ((thickStr = suffix) != null)
                     {
@@ -1787,7 +1787,6 @@ namespace Attrs
                                 hasPx = true;
                             }
                         }
-                        
                     }
                     else
                     {
@@ -1803,7 +1802,7 @@ namespace Attrs
                         }
                     }
                 }
-            
+
                 sAmount = sAmount.Trim();
                 if (sAmount.Length > 0)
                 {
@@ -1811,7 +1810,7 @@ namespace Attrs
                     {
                         sAmount = "0" + sAmount;
                     }
-                    else if (((sAmount.Length > 1) && (sAmount[0] == '-')) && (sAmount[1] == '.'))
+                    else if (sAmount.Length > 1 && sAmount[0] == '-' && sAmount[1] == '.')
                     {
                         sAmount = "-0" + sAmount.Substring(1, sAmount.Length - 2);
                     }
@@ -1835,7 +1834,7 @@ namespace Attrs
                 }
                 else if (hasPercents)
                 {
-                    val = (dDefault * amount) * 0.01;
+                    val = dDefault * amount * 0.01;
                 }
                 else if (hasPx)
                 {
@@ -1843,7 +1842,7 @@ namespace Attrs
                 }
                 else if (hasUnits)
                 {
-                    val = (amount * scale) * (((double) DPI) / 25.4);
+                    val = amount * scale * ((double)DPI / 25.4);
                 }
                 else if (hasEms)
                 {
@@ -1851,18 +1850,18 @@ namespace Attrs
                 }
                 else if (hasEx)
                 {
-                    val = (amount * emHeight) * 0.5;
+                    val = amount * emHeight * 0.5;
                 }
                 else if (isInfinity)
                 {
                     val = 100000;
                 }
 
-                return (int) Math.Round(val, 0);
+                return (int)Math.Round(val, 0);
             }
             catch
             {
-                return (int) Math.Round(dDefault, 0);
+                return (int)Math.Round(dDefault, 0);
             }
         }
 
@@ -1873,23 +1872,23 @@ namespace Attrs
                 if (node.attrs != null)
                 {
                     string s = node.attrs.GetValue(attrName);
-                    if ((s != null) && (s.Length > 0))
+                    if (s != null && s.Length > 0)
                     {
                         return AttributeBuilder.FontWidth(emHeight, DPI, s, dDefault);
                     }
-                    return (int) dDefault;
+                    return (int)dDefault;
                 }
-                return (int) dDefault;
+                return (int)dDefault;
             }
             catch
             {
-                return (int) dDefault;
+                return (int)dDefault;
             }
         }
 
         public static void ApplyAttrs(Node node, ActionAttributes actionAttributes)
         {
-            if (((node != null) && (node.type_ != null)) && ((node.type_.type == ElementType.Maction) && (actionAttributes != null)))
+            if (node != null && node.type_ != null && node.type_.type == ElementType.Maction && actionAttributes != null)
             {
                 if (node.attrs == null)
                 {
@@ -1911,7 +1910,8 @@ namespace Attrs
                 {
                     node.attrs.Add("actiontype", "tooltip");
                 }
-                else if ((actionAttributes.actionType == ActionType.Unknown) && (actionAttributes.actionString.Length > 0))
+                else if (actionAttributes.actionType == ActionType.Unknown &&
+                         actionAttributes.actionString.Length > 0)
                 {
                     node.attrs.Add("actiontype", actionAttributes.actionString);
                 }
@@ -1925,387 +1925,286 @@ namespace Attrs
 
         public static TableAttributes mtableAttributes(Node node)
         {
-            Nodes.Attribute attribute = null;
             TableAttributes tableAttributes = null;
             try
             {
-                if (node.attrs == null)
-                {
-                    return tableAttributes;
-                }
+                if (node.attrs is null) return null;
                 node.attrs.Reset();
+                Nodes.Attribute attribute;
                 for (attribute = node.attrs.Next(); attribute != null; attribute = node.attrs.Next())
                 {
                     string s = attribute.val.Trim();
-                    if (attribute.name == "align")
+                    if (s.Length <= 0) continue;
+                    if (tableAttributes == null) tableAttributes = new TableAttributes();
+                    switch (attribute.name)
                     {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
+                        case "align":
+                            switch (s.ToUpper())
                             {
-                                tableAttributes = new TableAttributes();
+                                case "TOP":
+                                    tableAttributes.align = TableAlign.TOP;
+                                    break;
+                                case "BOTTOM":
+                                    tableAttributes.align = TableAlign.BOTTOM;
+                                    break;
+                                case "CENTER":
+                                    tableAttributes.align = TableAlign.CENTER;
+                                    break;
+                                case "BASELINE":
+                                    tableAttributes.align = TableAlign.BASELINE;
+                                    break;
+                                case "AXIS":
+                                    tableAttributes.align = TableAlign.AXIS;
+                                    break;
+                                default:
+                                    tableAttributes.align = TableAlign.AXIS;
+                                    break;
                             }
-                            if (s.ToUpper() == "TOP")
+                            break;
+                        case "side":
+                            switch (s.ToUpper())
                             {
-                                tableAttributes.align = TableAlign.TOP;
+                                case "LEFT":
+                                    tableAttributes.side = Side.LEFT;
+                                    break;
+                                case "RIGHT":
+                                    tableAttributes.side = Side.RIGHT;
+                                    break;
+                                case "LEFTOVERLAP":
+                                    tableAttributes.side = Side.LEFTOVERLAP;
+                                    break;
+                                case "RIGHTOVERLAP":
+                                    tableAttributes.side = Side.RIGHTOVERLAP;
+                                    break;
                             }
-                            else if (s.ToUpper() == "BOTTOM")
-                            {
-                                tableAttributes.align = TableAlign.BOTTOM;
-                            }
-                            else if (s.ToUpper() == "CENTER")
-                            {
-                                tableAttributes.align = TableAlign.CENTER;
-                            }
-                            else if (s.ToUpper() == "BASELINE")
-                            {
-                                tableAttributes.align = TableAlign.BASELINE;
-                            }
-                            else if (s.ToUpper() == "AXIS")
-                            {
-                                tableAttributes.align = TableAlign.AXIS;
-                            }
-                            else
-                            {
-                                tableAttributes.align = TableAlign.AXIS;
-                            }
-                        }
-                    }
-                    else if (attribute.name == "side")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
-                            if (s.ToUpper() == "LEFT")
-                            {
-                                tableAttributes.side = Side.LEFT;
-                            }
-                            else if (s.ToUpper() == "RIGHT")
-                            {
-                                tableAttributes.side = Side.RIGHT;
-                            }
-                            else if (s.ToUpper() == "LEFTOVERLAP")
-                            {
-                                tableAttributes.side = Side.LEFTOVERLAP;
-                            }
-                            else if (s.ToUpper() == "RIGHTOVERLAP")
-                            {
-                                tableAttributes.side = Side.RIGHTOVERLAP;
-                            }
-                        }
-                    }
-                    else if (attribute.name == "minlabelspacing")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
+                            break;
+                        case "minlabelspacing":
                             tableAttributes.minlabelspacing = s.Trim();
-                        }
-                    }
-                    else if (attribute.name == "rowalign")
-                    {
-                        if (s.Length > 0)
-                        {
-                            s = s.Trim();
-                            string[] strings = s.Split(new char[] { ' ' }, 100);
-                            if (tableAttributes == null)
+                            break;
+                        case "rowalign":
                             {
-                                tableAttributes = new TableAttributes();
-                            }
-                            int numAligns = 0;
-                            for (int i = 0; i < strings.Length; i++)
-                            {
-                                if (((strings[i].ToUpper() == "TOP") || (strings[i].ToUpper() == "BOTTOM")) || (((strings[i].ToUpper() == "CENTER") || (strings[i].ToUpper() == "BASELINE")) || (strings[i].ToUpper() == "AXIS")))
-                                {
-                                    numAligns++;
-                                }
-                            }
-                            tableAttributes.rowAligns = new RowAlign[numAligns];
-                            if (numAligns > 0)
-                            {
+                                s = s.Trim();
+                                string[] strings = s.Split(new[] { ' ' }, 100);
+                                int numAligns = 0;
                                 for (int i = 0; i < strings.Length; i++)
                                 {
-                                    if (strings[i].ToUpper() == "TOP")
+                                    if (strings[i].ToUpper() == "TOP" || strings[i].ToUpper() == "BOTTOM" || strings[i].ToUpper() == "CENTER" || strings[i].ToUpper() == "BASELINE" || strings[i].ToUpper() == "AXIS")
                                     {
-                                        tableAttributes.rowAligns[i] = RowAlign.TOP;
-                                    }
-                                    else if (strings[i].ToUpper() == "BOTTOM")
-                                    {
-                                        tableAttributes.rowAligns[i] = RowAlign.BOTTOM;
-                                    }
-                                    else if (strings[i].ToUpper() == "CENTER")
-                                    {
-                                        tableAttributes.rowAligns[i] = RowAlign.CENTER;
-                                    }
-                                    else if (strings[i].ToUpper() == "BASELINE")
-                                    {
-                                        tableAttributes.rowAligns[i] = RowAlign.BASELINE;
-                                    }
-                                    else if (strings[i].ToUpper() == "AXIS")
-                                    {
-                                        tableAttributes.rowAligns[i] = RowAlign.AXIS;
+                                        numAligns++;
                                     }
                                 }
-                            }
-                            else
-                            {
-                                tableAttributes.rowAligns = new RowAlign[] { RowAlign.BASELINE };
-                            }
-                        }
-                    }
-                    else if (attribute.name == "columnalign")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
-                            s = s.Trim();
-                            string[] strings = s.Split(new char[] { ' ' }, 100);
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
-                            int numAligns = 0;
-                            for (int i = 0; i < strings.Length; i++)
-                            {
-                                if (((strings[i].ToUpper() == "LEFT") || (strings[i].ToUpper() == "CENTER")) || (strings[i].ToUpper() == "RIGHT"))
+                                tableAttributes.rowAligns = new RowAlign[numAligns];
+                                if (numAligns > 0)
                                 {
-                                    numAligns++;
+                                    for (int i = 0; i < strings.Length; i++)
+                                    {
+                                        switch (strings[i].ToUpper())
+                                        {
+                                            case "TOP":
+                                                tableAttributes.rowAligns[i] = RowAlign.TOP;
+                                                break;
+                                            case "BOTTOM":
+                                                tableAttributes.rowAligns[i] = RowAlign.BOTTOM;
+                                                break;
+                                            case "CENTER":
+                                                tableAttributes.rowAligns[i] = RowAlign.CENTER;
+                                                break;
+                                            case "BASELINE":
+                                                tableAttributes.rowAligns[i] = RowAlign.BASELINE;
+                                                break;
+                                            case "AXIS":
+                                                tableAttributes.rowAligns[i] = RowAlign.AXIS;
+                                                break;
+                                        }
+                                    }
                                 }
+                                else
+                                {
+                                    tableAttributes.rowAligns = new[] { RowAlign.BASELINE };
+                                }
+                                break;
                             }
-                            tableAttributes.colAligns = new HAlign[numAligns];
-                            if (numAligns > 0)
+                        case "columnalign":
                             {
+                                string[] strings = s.Split(new[] { ' ' }, 100);
+                                int numAligns = 0;
                                 for (int i = 0; i < strings.Length; i++)
                                 {
-                                    if (strings[i].ToUpper() == "LEFT")
+                                    if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
+                                        strings[i].ToUpper() == "RIGHT")
                                     {
-                                        tableAttributes.colAligns[i] = HAlign.LEFT;
-                                    }
-                                    else if (strings[i].ToUpper() == "CENTER")
-                                    {
-                                        tableAttributes.colAligns[i] = HAlign.CENTER;
-                                    }
-                                    else if (strings[i].ToUpper() == "RIGHT")
-                                    {
-                                        tableAttributes.colAligns[i] = HAlign.RIGHT;
+                                        numAligns++;
                                     }
                                 }
+                                tableAttributes.colAligns = new HAlign[numAligns];
+                                if (numAligns > 0)
+                                {
+                                    for (int i = 0; i < strings.Length; i++)
+                                    {
+                                        switch (strings[i].ToUpper())
+                                        {
+                                            case "LEFT":
+                                                tableAttributes.colAligns[i] = HAlign.LEFT;
+                                                break;
+                                            case "CENTER":
+                                                tableAttributes.colAligns[i] = HAlign.CENTER;
+                                                break;
+                                            case "RIGHT":
+                                                tableAttributes.colAligns[i] = HAlign.RIGHT;
+                                                break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    tableAttributes.colAligns = new[] { HAlign.CENTER };
+                                }
                             }
-                            else
+                            break;
+                        case "frame":
+                            switch (s.ToUpper())
                             {
-                                tableAttributes.colAligns = new HAlign[] { HAlign.CENTER };
+                                case "SOLID":
+                                    tableAttributes.frame = TableLineStyle.SOLID;
+                                    break;
+                                case "DASHED":
+                                    tableAttributes.frame = TableLineStyle.DASHED;
+                                    break;
+                                default:
+                                    tableAttributes.frame = TableLineStyle.NONE;
+                                    break;
                             }
-                        }
-                    }
-                    else if (attribute.name == "frame")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
-                            if (s.ToUpper() == "SOLID")
-                            {
-                                tableAttributes.frame = TableLineStyle.SOLID;
-                            }
-                            else if (s.ToUpper() == "DASHED")
-                            {
-                                tableAttributes.frame = TableLineStyle.DASHED;
-                            }
-                            else
-                            {
-                                tableAttributes.frame = TableLineStyle.NONE;
-                            }
-                        }
-                    }
-                    else if (attribute.name == "framespacing")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
+                            break;
+                        case "framespacing":
                             tableAttributes.framespacing = s;
-                        }
-                    }
-                    else if (attribute.name == "rowspacing")
-                    {
-                        if (s.Length > 0)
-                        {
-                            s = s.Trim();
-                            string[] strings = s.Split(new char[] { ' ' }, 100);
-                            if (strings.Length > 0)
+                            break;
+                        case "rowspacing":
                             {
-                                if (tableAttributes == null)
+                                s = s.Trim();
+                                string[] strings = s.Split(new[] { ' ' }, 100);
+                                if (strings.Length > 0)
                                 {
-                                    tableAttributes = new TableAttributes();
-                                }
-                                tableAttributes.rowSpacing = new string[strings.Length];
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    tableAttributes.rowSpacing[i] = strings[i];
-                                }
-                            }
-                        }
-                    }
-                    else if (attribute.name == "columnspacing")
-                    {
-                        if (s.Length > 0)
-                        {
-                            s = s.Trim();
-                            string[] strings = s.Split(new char[] { ' ' }, 100);
-                            if (strings.Length > 0)
-                            {
-                                if (tableAttributes == null)
-                                {
-                                    tableAttributes = new TableAttributes();
-                                }
-                                tableAttributes.colSpacing = new string[strings.Length];
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    tableAttributes.colSpacing[i] = strings[i];
-                                }
-                            }
-                        }
-                    }
-                    else if (attribute.name == "rowlines")
-                    {
-                        if (s.Length > 0)
-                        {
-                            s = s.Trim();
-                            string[] strings = s.Split(new char[] { ' ' }, 100);
-                            int numLines = 0;
-                            if (strings.Length > 0)
-                            {
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    if (((strings[i].ToUpper() == "NONE") || (strings[i].ToUpper() == "SOLID")) || (strings[i].ToUpper() == "DASHED"))
+                                    tableAttributes.rowSpacing = new string[strings.Length];
+                                    for (int i = 0; i < strings.Length; i++)
                                     {
-                                        numLines++;
+                                        tableAttributes.rowSpacing[i] = strings[i];
                                     }
                                 }
                             }
-                            if (numLines > 0)
+                            break;
+                        case "columnspacing":
                             {
-                                if (tableAttributes == null)
+                                s = s.Trim();
+                                string[] strings = s.Split(new char[] { ' ' }, 100);
+                                if (strings.Length > 0)
                                 {
-                                    tableAttributes = new TableAttributes();
-                                }
-                                tableAttributes.rowLines = new TableLineStyle[numLines];
-                                int lineIndex = 0;
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    if (((strings[i].ToUpper() == "NONE") || (strings[i].ToUpper() == "SOLID")) || (strings[i].ToUpper() == "DASHED"))
+                                    tableAttributes.colSpacing = new string[strings.Length];
+                                    for (int i = 0; i < strings.Length; i++)
                                     {
-                                        if (strings[i].ToUpper() == "SOLID")
+                                        tableAttributes.colSpacing[i] = strings[i];
+                                    }
+                                }
+                            }
+                            break;
+                        case "rowlines":
+                            {
+                                s = s.Trim();
+                                string[] strings = s.Split(new char[] { ' ' }, 100);
+                                int numLines = 0;
+                                if (strings.Length > 0)
+                                {
+                                    for (int i = 0; i < strings.Length; i++)
+                                    {
+                                        if (strings[i].ToUpper() == "NONE" || strings[i].ToUpper() == "SOLID" ||
+                                            strings[i].ToUpper() == "DASHED")
                                         {
-                                            tableAttributes.rowLines[lineIndex] = TableLineStyle.SOLID;
-                                            lineIndex++;
+                                            numLines++;
                                         }
-                                        else if (strings[i].ToUpper() == "DASHED")
+                                    }
+                                }
+                                if (numLines > 0)
+                                {
+                                    if (tableAttributes == null)
+                                    {
+                                        tableAttributes = new TableAttributes();
+                                    }
+                                    tableAttributes.rowLines = new TableLineStyle[numLines];
+                                    int lineIndex = 0;
+                                    for (int i = 0; i < strings.Length; i++)
+                                    {
+                                        switch (strings[i].ToUpper())
                                         {
-                                            tableAttributes.rowLines[lineIndex] = TableLineStyle.DASHED;
-                                            lineIndex++;
-                                        }
-                                        else if (strings[i].ToUpper() == "NONE")
-                                        {
-                                            tableAttributes.rowLines[lineIndex] = TableLineStyle.NONE;
-                                            lineIndex++;
+                                            case "SOLID":
+                                                tableAttributes.rowLines[lineIndex] = TableLineStyle.SOLID;
+                                                lineIndex++;
+                                                break;
+                                            case "DASHED":
+                                                tableAttributes.rowLines[lineIndex] = TableLineStyle.DASHED;
+                                                lineIndex++;
+                                                break;
+                                            case "NONE":
+                                                tableAttributes.rowLines[lineIndex] = TableLineStyle.NONE;
+                                                lineIndex++;
+                                                break;
                                         }
                                     }
                                 }
                             }
-                        }
-                    }
-                    else if (attribute.name == "columnlines")
-                    {
-                        if (s.Length > 0)
-                        {
-                            s = s.Trim();
-                            string[] strings = s.Split(new char[] { ' ' }, 100);
-                            int numLines = 0;
-                            if (strings.Length > 0)
+                            break;
+                        case "columnlines":
                             {
-                                for (int i = 0; i < strings.Length; i++)
+                                s = s.Trim();
+                                string[] strings = s.Split(new[] { ' ' }, 100);
+                                int numLines = 0;
+                                if (strings.Length > 0)
                                 {
-                                    if (((strings[i].ToUpper() == "NONE") || (strings[i].ToUpper() == "SOLID")) || (strings[i].ToUpper() == "DASHED"))
+                                    for (int i = 0; i < strings.Length; i++)
                                     {
-                                        numLines++;
+                                        if (strings[i].ToUpper() == "NONE" || strings[i].ToUpper() == "SOLID" ||
+                                            strings[i].ToUpper() == "DASHED")
+                                        {
+                                            numLines++;
+                                        }
                                     }
                                 }
-                            }
-                            if (numLines > 0)
-                            {
-                                if (tableAttributes == null)
+                                if (numLines > 0)
                                 {
-                                    tableAttributes = new TableAttributes();
-                                }
-                                tableAttributes.colLines = new TableLineStyle[numLines];
-                                int lineIndex = 0;
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    if (((strings[i].ToUpper() == "NONE") || (strings[i].ToUpper() == "SOLID")) || (strings[i].ToUpper() == "DASHED"))
+                                    if (tableAttributes == null)
                                     {
-                                        if (strings[i].ToUpper() == "SOLID")
+                                        tableAttributes = new TableAttributes();
+                                    }
+                                    tableAttributes.colLines = new TableLineStyle[numLines];
+                                    int lineIndex = 0;
+                                    for (int i = 0; i < strings.Length; i++)
+                                    {
+                                        switch (strings[i].ToUpper())
                                         {
-                                            tableAttributes.colLines[lineIndex] = TableLineStyle.SOLID;
-                                            lineIndex++;
-                                        }
-                                        else if (strings[i].ToUpper() == "DASHED")
-                                        {
-                                            tableAttributes.colLines[lineIndex] = TableLineStyle.DASHED;
-                                            lineIndex++;
-                                        }
-                                        else if (strings[i].ToUpper() == "NONE")
-                                        {
-                                            tableAttributes.colLines[lineIndex] = TableLineStyle.NONE;
-                                            lineIndex++;
+                                            case "SOLID":
+                                                tableAttributes.colLines[lineIndex] = TableLineStyle.SOLID;
+                                                lineIndex++;
+                                                break;
+                                            case "DASHED":
+                                                tableAttributes.colLines[lineIndex] = TableLineStyle.DASHED;
+                                                lineIndex++;
+                                                break;
+                                            case "NONE":
+                                                tableAttributes.colLines[lineIndex] = TableLineStyle.NONE;
+                                                lineIndex++;
+                                                break;
                                         }
                                     }
                                 }
                             }
-                        }
-                    }
-                    else if (attribute.name == "equalrows")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
+                            break;
+                        case "equalrows":
                             tableAttributes.equalRows = Convert.ToBoolean(s);
-                        }
-                    }
-                    else if (attribute.name == "equalcolumns")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableAttributes == null)
-                            {
-                                tableAttributes = new TableAttributes();
-                            }
+                            break;
+                        case "equalcolumns":
                             tableAttributes.equalColumns = Convert.ToBoolean(s);
-                        }
-                    }
-                    else if ((attribute.name == "displaystyle") && (s.Length > 0))
-                    {
-                        if (tableAttributes == null)
-                        {
-                            tableAttributes = new TableAttributes();
-                        }
-                        tableAttributes.displaystyle = Convert.ToBoolean(s);
+                            break;
+                        case "displaystyle":
+                            tableAttributes.displaystyle = Convert.ToBoolean(s);
+                            break;
                     }
                 }
                 node.attrs.Reset();
@@ -2318,7 +2217,7 @@ namespace Attrs
 
         public static void ApplyAttrs(Node node, TableAttributes tableAttributes)
         {
-            if (((node != null) && (node.type_ != null)) && ((node.type_.type == ElementType.Mtable) && (tableAttributes != null)))
+            if (node != null && node.type_ != null && node.type_.type == ElementType.Mtable && tableAttributes != null)
             {
                 if (tableAttributes.align == TableAlign.TOP)
                 {
@@ -2352,7 +2251,7 @@ namespace Attrs
                     }
                     node.attrs.Add("align", "baseline");
                 }
-                else if ((tableAttributes.align == TableAlign.AXIS) && (node.attrs != null))
+                else if (tableAttributes.align == TableAlign.AXIS && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("align");
                     if (attribute != null)
@@ -2436,7 +2335,7 @@ namespace Attrs
                         s = s + "baseline";
                     }
                 }
-                if ((tableAttributes.rowAligns.Length == 1) && (s.Trim() == "baseline"))
+                if (tableAttributes.rowAligns.Length == 1 && s.Trim() == "baseline")
                 {
                     if (node.attrs != null)
                     {
@@ -2486,7 +2385,7 @@ namespace Attrs
                         sAlign = sAlign + "right";
                     }
                 }
-                if ((tableAttributes.colAligns.Length == 1) && (sAlign.Trim() == "center"))
+                if (tableAttributes.colAligns.Length == 1 && sAlign.Trim() == "center")
                 {
                     if (node.attrs != null)
                     {
@@ -2516,7 +2415,7 @@ namespace Attrs
                     }
                     node.attrs.Add("equalrows", "True");
                 }
-                else if (!tableAttributes.equalRows && (node.attrs != null))
+                else if (!tableAttributes.equalRows && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("equalrows");
                     if (attribute != null)
@@ -2532,7 +2431,7 @@ namespace Attrs
                     }
                     node.attrs.Add("equalcolumns", "True");
                 }
-                else if (!tableAttributes.equalColumns && (node.attrs != null))
+                else if (!tableAttributes.equalColumns && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("equalcolumns");
                     if (attribute != null)
@@ -2548,7 +2447,7 @@ namespace Attrs
                     }
                     node.attrs.Add("displaystyle", "True");
                 }
-                else if (!tableAttributes.displaystyle && (node.attrs != null))
+                else if (!tableAttributes.displaystyle && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("displaystyle");
                     if (attribute != null)
@@ -2564,7 +2463,7 @@ namespace Attrs
                     }
                     node.attrs.Add("framespacing", tableAttributes.framespacing);
                 }
-                else if ((tableAttributes.framespacing == "0.4em 0.5ex") && (node.attrs != null))
+                else if (tableAttributes.framespacing == "0.4em 0.5ex" && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("framespacing");
                     if (attribute != null)
@@ -2572,7 +2471,7 @@ namespace Attrs
                         node.attrs.Remove(attribute);
                     }
                 }
-                if ((tableAttributes.rowSpacing.Length == 1) && (tableAttributes.rowSpacing[0] == "0.5ex"))
+                if (tableAttributes.rowSpacing.Length == 1 && tableAttributes.rowSpacing[0] == "0.5ex")
                 {
                     if (node.attrs != null)
                     {
@@ -2603,7 +2502,7 @@ namespace Attrs
                         node.attrs.Add("rowspacing", ss);
                     }
                 }
-                if ((tableAttributes.colSpacing.Length == 1) && (tableAttributes.colSpacing[0] == "0.8em"))
+                if (tableAttributes.colSpacing.Length == 1 && tableAttributes.colSpacing[0] == "0.8em")
                 {
                     if (node.attrs != null)
                     {
@@ -2650,7 +2549,7 @@ namespace Attrs
                     }
                     node.attrs.Add("frame", "solid");
                 }
-                if ((tableAttributes.frame == TableLineStyle.NONE) && (node.attrs != null))
+                if (tableAttributes.frame == TableLineStyle.NONE && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("frame");
                     if (attribute != null)
@@ -2658,7 +2557,7 @@ namespace Attrs
                         node.attrs.Remove(attribute);
                     }
                 }
-                if ((tableAttributes.rowLines.Length == 1) && (tableAttributes.rowLines[0] == TableLineStyle.NONE))
+                if (tableAttributes.rowLines.Length == 1 && tableAttributes.rowLines[0] == TableLineStyle.NONE)
                 {
                     if (node.attrs != null)
                     {
@@ -2708,7 +2607,7 @@ namespace Attrs
                         node.attrs.Add("rowlines", ss);
                     }
                 }
-                if ((tableAttributes.colLines.Length == 1) && (tableAttributes.colLines[0] == TableLineStyle.NONE))
+                if (tableAttributes.colLines.Length == 1 && tableAttributes.colLines[0] == TableLineStyle.NONE)
                 {
                     if (node.attrs == null)
                     {
@@ -2775,78 +2674,70 @@ namespace Attrs
                     for (attribute = node.attrs.Next(); attribute != null; attribute = node.attrs.Next())
                     {
                         string s = attribute.val.Trim();
-                        if (attribute.name == "rowalign")
+
+                        if (s.Length <= 0) continue;
+                        if (tableRowAttributes == null) tableRowAttributes = new TableRowAttributes();
+                        switch (attribute.name)
                         {
-                            if (s.Length > 0)
+                            case "rowalign":
+                                switch (s.ToUpper())
+                                {
+                                    case "TOP":
+                                        tableRowAttributes.align = RowAlign.TOP;
+                                        break;
+                                    case "BOTTOM":
+                                        tableRowAttributes.align = RowAlign.BOTTOM;
+                                        break;
+                                    case "CENTER":
+                                        tableRowAttributes.align = RowAlign.CENTER;
+                                        break;
+                                    case "BASELINE":
+                                        tableRowAttributes.align = RowAlign.BASELINE;
+                                        break;
+                                    case "AXIS":
+                                        tableRowAttributes.align = RowAlign.AXIS;
+                                        break;
+                                    default:
+                                        tableRowAttributes.align = RowAlign.UNKNOWN;
+                                        break;
+                                }
+                                break;
+                            case "columnalign":
                             {
-                                if (tableRowAttributes == null)
+                                string[] strings = s.Split(new[] { ' ' }, 100);
+                                int numAligns = 0;
+                                for (int i = 0; i < strings.Length; i++)
                                 {
-                                    tableRowAttributes = new TableRowAttributes();
+                                    if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
+                                        strings[i].ToUpper() == "RIGHT")
+                                    {
+                                        numAligns++;
+                                    }
                                 }
-                                if (s.ToUpper() == "TOP")
+                                tableRowAttributes.colAligns = new HAlign[numAligns];
+                                if (numAligns > 0)
                                 {
-                                    tableRowAttributes.align = RowAlign.TOP;
-                                }
-                                else if (s.ToUpper() == "BOTTOM")
-                                {
-                                    tableRowAttributes.align = RowAlign.BOTTOM;
-                                }
-                                else if (s.ToUpper() == "CENTER")
-                                {
-                                    tableRowAttributes.align = RowAlign.CENTER;
-                                }
-                                else if (s.ToUpper() == "BASELINE")
-                                {
-                                    tableRowAttributes.align = RowAlign.BASELINE;
-                                }
-                                else if (s.ToUpper() == "AXIS")
-                                {
-                                    tableRowAttributes.align = RowAlign.AXIS;
+                                    for (int i = 0; i < strings.Length; i++)
+                                    {
+                                        switch (strings[i].ToUpper())
+                                        {
+                                            case "LEFT":
+                                                tableRowAttributes.colAligns[i] = HAlign.LEFT;
+                                                break;
+                                            case "CENTER":
+                                                tableRowAttributes.colAligns[i] = HAlign.CENTER;
+                                                break;
+                                            case "RIGHT":
+                                                tableRowAttributes.colAligns[i] = HAlign.RIGHT;
+                                                break;
+                                        }
+                                    }
                                 }
                                 else
                                 {
-                                    tableRowAttributes.align = RowAlign.UNKNOWN;
+                                    tableRowAttributes.colAligns = new[] { HAlign.CENTER };
                                 }
-                            }
-                        }
-                        else if ((attribute.name == "columnalign") && (s.Length > 0))
-                        {
-                            if (tableRowAttributes == null)
-                            {
-                                tableRowAttributes = new TableRowAttributes();
-                            }
-                            s = s.Trim();
-                            string[] strings = s.Split(new char[] { ' ' }, 100);
-                            int numAligns = 0;
-                            for (int i = 0; i < strings.Length; i++)
-                            {
-                                if (((strings[i].ToUpper() == "LEFT") || (strings[i].ToUpper() == "CENTER")) || (strings[i].ToUpper() == "RIGHT"))
-                                {
-                                    numAligns++;
-                                }
-                            }
-                            tableRowAttributes.colAligns = new HAlign[numAligns];
-                            if (numAligns > 0)
-                            {
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    if (strings[i].ToUpper() == "LEFT")
-                                    {
-                                        tableRowAttributes.colAligns[i] = HAlign.LEFT;
-                                    }
-                                    else if (strings[i].ToUpper() == "CENTER")
-                                    {
-                                        tableRowAttributes.colAligns[i] = HAlign.CENTER;
-                                    }
-                                    else if (strings[i].ToUpper() == "RIGHT")
-                                    {
-                                        tableRowAttributes.colAligns[i] = HAlign.RIGHT;
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                tableRowAttributes.colAligns = new HAlign[] { HAlign.CENTER };
+                                break;
                             }
                         }
                     }
@@ -2861,8 +2752,9 @@ namespace Attrs
 
         public static void ApplyAttributes(Node node, TableRowAttributes tableRowAttributes)
         {
-            if ((((node != null) && (node.type_ != null)) && 
-                ((node.type_.type == ElementType.Mtr) || (node.type_.type == ElementType.Mlabeledtr))) && (tableRowAttributes != null))
+            if (node != null && node.type_ != null &&
+                (node.type_.type == ElementType.Mtr || node.type_.type == ElementType.Mlabeledtr) &&
+                tableRowAttributes != null)
             {
                 if (tableRowAttributes.align == RowAlign.TOP)
                 {
@@ -2904,7 +2796,7 @@ namespace Attrs
                     }
                     node.attrs.Add("rowalign", "axis");
                 }
-                else if ((tableRowAttributes.align == RowAlign.UNKNOWN) && (node.attrs != null))
+                else if (tableRowAttributes.align == RowAlign.UNKNOWN && node.attrs != null)
                 {
                     Nodes.Attribute attribute = node.attrs.Get("rowalign");
                     if (attribute != null)
@@ -2948,7 +2840,7 @@ namespace Attrs
                         s = s + "center";
                     }
                 }
-                if ((tableRowAttributes.colAligns.Length == 1) && (s.Trim() == "center"))
+                if (tableRowAttributes.colAligns.Length == 1 && s.Trim() == "center")
                 {
                     if (node.attrs == null)
                     {
@@ -2974,7 +2866,5 @@ namespace Attrs
                 }
             }
         }
-
     }
 }
-

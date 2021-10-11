@@ -1,17 +1,11 @@
 namespace Nodes
 {
-    using Attrs;
-    using Rendering;
-    using Boxes;
-    using Nodes;
-    
-    using Fonts;
-    using Facade;
     using System;
-    using System.Collections;
     using System.Drawing;
-    using System.Globalization;
-    using System.Xml;
+    using Attrs;
+    using Boxes;
+    using Fonts;
+    using Rendering;
 
     public partial class Node
     {
@@ -172,7 +166,7 @@ namespace Nodes
                 node.literalText = literalText;
                 node.LiteralStart = LiteralStart;
                 node.IsAppend = IsAppend;
-                
+
                 node.tokenType = tokenType;
                 node.yOffset = yOffset;
                 node.displayStyle = displayStyle;
@@ -233,7 +227,7 @@ namespace Nodes
             int r = 0;
             try
             {
-                if (InternalMark == 0)
+                if (InternalMark == 0 || box is null)
                 {
                     return 0;
                 }
@@ -241,15 +235,12 @@ namespace Nodes
                 {
                     return box.Width;
                 }
-                double charW = 0;
-                double w = 0;
-                double literalLength = 0;
-                w = box.Width;
-                literalLength = LiteralLength;
-                if ((w > 0) && (literalLength > 0))
+                double w = box.Width;
+                double literalLength = LiteralLength;
+                if (w > 0 && literalLength > 0)
                 {
-                    charW = w/literalLength;
-                    r = Math.Min(Convert.ToInt32(Math.Round((double) (InternalMark*charW))), box.Width);
+                    var charW = w / literalLength;
+                    r = Math.Min(Convert.ToInt32(Math.Round(InternalMark * charW)), box.Width);
                 }
             }
             catch
@@ -260,7 +251,7 @@ namespace Nodes
 
         public bool AdoptChild(Node ChildNode)
         {
-            if (! ((type_ != null) && (ChildNode.type_ != null)))
+            if (!(type_ != null && ChildNode.type_ != null))
             {
                 return false;
             }
@@ -291,16 +282,16 @@ namespace Nodes
 
         public bool PrependNode(Node node)
         {
-            if (!(((parent_ != null) && (parent_.type_ != null)) && (node.type_ != null)))
+            if (parent_?.type_ is null || node.type_ is null)
             {
                 return false;
             }
             Node nextSibling = this.nextSibling;
             Node prevSibling = this.prevSibling;
-            
+
             Node parent = this.parent_;
             node.level = parent.level + 1;
-            
+
             if (prevSibling == null)
             {
                 node.childIndex = 0;
@@ -331,7 +322,7 @@ namespace Nodes
                     nextSibling = nextSibling.nextSibling;
                 }
             }
-            if (((prevSibling != null) && prevSibling.HasStyleClass()) && (prevSibling.StyleClass.Length > 0))
+            if (prevSibling != null && prevSibling.HasStyleClass() && prevSibling.StyleClass.Length > 0)
             {
                 node.StyleClass = prevSibling.StyleClass;
             }
@@ -342,7 +333,7 @@ namespace Nodes
 
         public bool AppendNode(Node node)
         {
-            if (! (((parent_ != null) && (parent_.type_ != null)) && (node.type_ != null)))
+            if (parent_?.type_ is null && node.type_ is null)
             {
                 return false;
             }
@@ -372,7 +363,7 @@ namespace Nodes
                     nextSibling = nextSibling.nextSibling;
                 }
             }
-            if (HasStyleClass() && (StyleClass.Length > 0))
+            if (HasStyleClass() && StyleClass.Length > 0)
             {
                 node.StyleClass = StyleClass;
             }
@@ -455,7 +446,7 @@ namespace Nodes
 
         private void PushdownStyleScript()
         {
-            if ((type_ != null))
+            if (type_ != null)
             {
                 bool overrodeParentDispStyle = false;
                 bool overrodeScriptLevel = false;
@@ -472,13 +463,13 @@ namespace Nodes
                 {
                     DisplayStyle ownDispStyle = style_.displayStyle;
                     DisplayStyle parentDisplayStyle = DisplayStyle.AUTOMATIC;
-                
-                    if ((parent_ != null) && (parent_.style_ != null))
+
+                    if (parent_?.style_ != null)
                     {
                         parentDisplayStyle = parent_.style_.displayStyle;
                     }
-                    
-                    if ((ownDispStyle != DisplayStyle.AUTOMATIC) && (ownDispStyle != parentDisplayStyle))
+
+                    if (ownDispStyle != DisplayStyle.AUTOMATIC && ownDispStyle != parentDisplayStyle)
                     {
                         if (style_.displayStyle == DisplayStyle.TRUE)
                         {
@@ -495,50 +486,46 @@ namespace Nodes
                     {
                         displayStyle = parent_.displayStyle;
                     }
-                    
+
                     ScriptLevel ownscriptLevel = style_.scriptLevel;
                     ScriptLevel parentScriptLevel = ScriptLevel.NONE;
-                    
-                    if ((parent_ != null) && (parent_.style_ != null))
+
+                    if (parent_?.style_ != null)
                     {
                         parentScriptLevel = parent_.style_.scriptLevel;
                     }
-                    if ((ownscriptLevel != ScriptLevel.NONE) && (ownscriptLevel != parentScriptLevel))
+                    if (ownscriptLevel != ScriptLevel.NONE && ownscriptLevel != parentScriptLevel)
                     {
-                        if (style_.scriptLevel == ScriptLevel.ZERO)
+                        switch (style_.scriptLevel)
                         {
-                            scriptLevel_ = 0;
-                            overrodeScriptLevel = true;
-                        }
-                        else if (style_.scriptLevel == ScriptLevel.ONE)
-                        {
-                            scriptLevel_ = 1;
-                            overrodeScriptLevel = true;
-                        }
-                        else if (style_.scriptLevel == ScriptLevel.TWO)
-                        {
-                            scriptLevel_ = 2;
-                            overrodeScriptLevel = true;
-                        }
-                        else if (style_.scriptLevel == ScriptLevel.PLUS_ONE)
-                        {
-                            overrodePlus = true;
-                            minusValue = 1;
-                        }
-                        else if (style_.scriptLevel == ScriptLevel.PLUS_TWO)
-                        {
-                            overrodePlus = true;
-                            minusValue = 2;
-                        }
-                        else if (style_.scriptLevel == ScriptLevel.MINUS_ONE)
-                        {
-                            overrodeMinus = true;
-                            plusValue = 1;
-                        }
-                        else if (style_.scriptLevel == ScriptLevel.MINUS_TWO)
-                        {
-                            overrodeMinus = true;
-                            plusValue = 2;
+                            case ScriptLevel.ZERO:
+                                scriptLevel_ = 0;
+                                overrodeScriptLevel = true;
+                                break;
+                            case ScriptLevel.ONE:
+                                scriptLevel_ = 1;
+                                overrodeScriptLevel = true;
+                                break;
+                            case ScriptLevel.TWO:
+                                scriptLevel_ = 2;
+                                overrodeScriptLevel = true;
+                                break;
+                            case ScriptLevel.PLUS_ONE:
+                                overrodePlus = true;
+                                minusValue = 1;
+                                break;
+                            case ScriptLevel.PLUS_TWO:
+                                overrodePlus = true;
+                                minusValue = 2;
+                                break;
+                            case ScriptLevel.MINUS_ONE:
+                                overrodeMinus = true;
+                                plusValue = 1;
+                                break;
+                            case ScriptLevel.MINUS_TWO:
+                                overrodeMinus = true;
+                                plusValue = 2;
+                                break;
                         }
                     }
                     else
@@ -547,7 +534,7 @@ namespace Nodes
                     }
                 }
 
-                if (((type_.type != ElementType.Math) && (parent_ != null)) && (parent_.type_ != null))
+                if (type_.type != ElementType.Math && parent_?.type_ != null)
                 {
                     if (!overrodeParentDispStyle)
                     {
@@ -558,17 +545,47 @@ namespace Nodes
                         scriptLevel_ = parent_.scriptLevel_;
                     }
 
-                    if ((((parent_.type_.type == ElementType.Mover) ||
-                          (parent_.type_.type == ElementType.Munder)) ||
-                         ((parent_.type_.type == ElementType.Munderover) ||
-                          (parent_.type_.type == ElementType.Msub))) ||
-                        (((parent_.type_.type == ElementType.Msup) ||
-                          (parent_.type_.type == ElementType.Mmultiscripts)) ||
-                         (parent_.type_.type == ElementType.Msubsup)))
+                    switch (parent_.type_.type)
                     {
-                        if (childIndex > 0)
+                        case ElementType.Mover:
+                        case ElementType.Munder:
+                        case ElementType.Munderover:
+                        case ElementType.Msub:
+                        case ElementType.Msup:
+                        case ElementType.Mmultiscripts:
+                        case ElementType.Msubsup:
                         {
-                            if (!overrodeScriptLevel)
+                            if (childIndex > 0)
+                            {
+                                if (!overrodeScriptLevel)
+                                {
+                                    scriptLevel_ = parent_.scriptLevel_ + 1;
+                                }
+                                if (!overrodeParentDispStyle)
+                                {
+                                    displayStyle = false;
+                                }
+                            }
+                            break;
+                        }
+                        case ElementType.Mroot:
+                        {
+                            if (childIndex > 0 && !overrodeScriptLevel)
+                            {
+                                scriptLevel_ = parent_.scriptLevel_ + 2;
+                            }
+                            break;
+                        }
+                        case ElementType.Mfrac:
+                        {
+                            if (parent_.displayStyle)
+                            {
+                                if (!overrodeScriptLevel)
+                                {
+                                    scriptLevel_ = parent_.scriptLevel_;
+                                }
+                            }
+                            else if (!overrodeScriptLevel)
                             {
                                 scriptLevel_ = parent_.scriptLevel_ + 1;
                             }
@@ -576,31 +593,7 @@ namespace Nodes
                             {
                                 displayStyle = false;
                             }
-                        }
-                    }
-                    else if (parent_.type_.type == ElementType.Mroot)
-                    {
-                        if ((childIndex > 0) && !overrodeScriptLevel)
-                        {
-                            scriptLevel_ = parent_.scriptLevel_ + 2;
-                        }
-                    }
-                    else if (parent_.type_.type == ElementType.Mfrac)
-                    {
-                        if (parent_.displayStyle)
-                        {
-                            if (!overrodeScriptLevel)
-                            {
-                                scriptLevel_ = parent_.scriptLevel_;
-                            }
-                        }
-                        else if (!overrodeScriptLevel)
-                        {
-                            scriptLevel_ = parent_.scriptLevel_ + 1;
-                        }
-                        if (!overrodeParentDispStyle)
-                        {
-                            displayStyle = false;
+                            break;
                         }
                     }
                 }
@@ -635,18 +628,18 @@ namespace Nodes
             int x = 0;
             int y = 0;
             bool hasBox = false;
-            if ((box != null))
+            if (box != null)
             {
                 hasBox = true;
                 x = box.X;
                 y = box.Y;
             }
-            
-            if ((((box == null) || ((level < 2))) || ((level == 2))) || ((level > 2)))
+
+            if (box == null || level < 2 || level == 2 || level > 2)
             {
                 BoxBuilder.MakeBox(this, g);
             }
-            if ((type_ != null) && (type_.type == ElementType.Math))
+            if (type_ != null && type_.type == ElementType.Math)
             {
                 PushdownStyleScript();
             }
@@ -656,75 +649,75 @@ namespace Nodes
                 box.X = x;
                 box.Y = y;
             }
-            
-            
-                NodesList list = GetChildrenNodes();
-                Node n = list.Next();
-                if ((style_ != null) && (style_.size.Length > 0))
+
+
+            NodesList list = GetChildrenNodes();
+            Node n = list.Next();
+            if (style_ != null && style_.size.Length > 0)
+            {
+                try
                 {
-                    try
-                    {
-                        style_.scale = StyleAttributes.FontScale(style_.size, (double) g.GetSuitableFont(this, style_).SizeInPoints); 
-                        style_.size = "";
-                    }
-                    catch
-                    {
-                    }
+                    style_.scale = StyleAttributes.FontScale(style_.size, g.GetSuitableFont(this, style_).SizeInPoints);
+                    style_.size = "";
                 }
-                if ((style_ != null))
+                catch
                 {
-                    if (type_.type == ElementType.Math)
-                    {
-                        style_.isTop = true;
-                    }
-                    else if (style_.canOverride)
-                    {
-                        style_.isTop = false;
-                    }
                 }
-                while (n != null)
+            }
+            if (style_ != null)
+            {
+                if (type_.type == ElementType.Math)
                 {
-                    if (style_ != null)
+                    style_.isTop = true;
+                }
+                else if (style_.canOverride)
+                {
+                    style_.isTop = false;
+                }
+            }
+            while (n != null)
+            {
+                if (style_ != null)
+                {
+                    if (n.style_ != null && n.style_.canOverride && n.IsSameStyleParent())
                     {
-                        if (((n.style_ != null) && n.style_.canOverride) && n.IsSameStyleParent())
+                        n.CombineStyles(n.style_, style_);
+                    }
+                    else if (n.type_.type == ElementType.Entity)
+                    {
+                        n.style_ = null;
+                    }
+                    else
+                    {
+                        try
                         {
-                            n.CombineStyles(n.style_, style_);
-                        }
-                        else if (n.type_.type == ElementType.Entity)
-                        {
-                            n.style_ = null;
-                        }
-                        else
-                        {
-                            try
+                            StyleAttributes style = n.CascadeOverride(style_);
+                            if (style != null)
                             {
-                                StyleAttributes style = n.CascadeOverride(style_);
-                                if (style != null)
+                                if (type_.type == ElementType.Math)
                                 {
-                                    if (type_.type == ElementType.Math)
-                                    {
-                                        style.fontFamily = "";
-                                        style.isUnderline = false;
-                                    }
-                                    n.style_ = new StyleAttributes();
-                                    style.CopyTo(n.style_);
-                                    if ((style_ != null) && style_.isTop)
-                                    {
-                                        n.style_.canOverride = false;
-                                    }
+                                    style.fontFamily = "";
+                                    style.isUnderline = false;
+                                }
+                                n.style_ = new StyleAttributes();
+                                style.CopyTo(n.style_);
+                                if (style_ != null && style_.isTop)
+                                {
+                                    n.style_.canOverride = false;
                                 }
                             }
-                            catch
-                            {
-                            }
+                        }
+                        catch
+                        {
                         }
                     }
-                    n.MeasurePass(g);
-                    box.setChildSize(n);
-                    n = list.Next();
                 }
-            
-            if (((((level < 2)) || ((level == 2))) || ((level > 2))))
+                n.MeasurePass(g);
+                box.setChildSize(n);
+                n = list.Next();
+            }
+
+            if (level < 2 || level == 2 || level > 2)
             {
                 box.getSize(this);
             }
@@ -811,7 +804,7 @@ namespace Nodes
             {
                 box.Y = box.Y + yOffset;
             }
-            if ((yOffset != 0))
+            if (yOffset != 0)
             {
                 NodesList list = GetChildrenNodes();
                 for (Node node = list.Next(); node != null; node = list.Next())
@@ -828,7 +821,7 @@ namespace Nodes
 
         public void PositionPass()
         {
-            if (((box != null)))
+            if (box != null)
             {
                 box.SetPosition(this);
 
@@ -861,41 +854,41 @@ namespace Nodes
                 while (node != null)
                 {
                     if (!notOnWhite &&
-                        (((type_.type == ElementType.Math) ||
-                          (type_.type == ElementType.Mtd)) ||
-                         (type_.type == ElementType.Mrow)))
+                        (type_.type == ElementType.Math ||
+                         type_.type == ElementType.Mtd ||
+                         type_.type == ElementType.Mrow))
                     {
                         notOnWhite = node.NotOnWhite();
                     }
-                    if (node.isVisible && (node.type_.type != ElementType.Mphantom))
+                    if (node.isVisible && node.type_.type != ElementType.Mphantom)
                     {
                         node.print(rect, printMode, MathColor);
                     }
                     node = nodesList.Next();
                 }
 
-                if ((printMode == PaintMode.BACKGROUND))
+                if (printMode == PaintMode.BACKGROUND)
                 {
                     if (!notOnWhite ||
-                        (((type_.type != ElementType.Math) &&
-                          (type_.type != ElementType.Mtd)) &&
-                         (type_.type != ElementType.Mrow)))
+                        type_.type != ElementType.Math &&
+                        type_.type != ElementType.Mtd &&
+                        type_.type != ElementType.Mrow)
                     {
                         return;
                     }
-                    ((BaseBox) box).painter_.FillBackground(this);
+                    ((BaseBox)box).painter_.FillBackground(this);
                 }
             }
             catch
             {
             }
         }
-                
+
         public bool IsSameStyleParent()
         {
             if (parent_ != null)
             {
-                if ((style_ != null) && (parent_.style_ == null))
+                if (style_ != null && parent_.style_ == null)
                 {
                     StyleAttributes styleAttributes = new StyleAttributes();
                     if (!styleAttributes.HasSameStyle(style_))
@@ -903,7 +896,7 @@ namespace Nodes
                         return true;
                     }
                 }
-                else if ((style_ == null) && (parent_.style_ != null))
+                else if (style_ == null && parent_.style_ != null)
                 {
                     StyleAttributes styleAttributes = new StyleAttributes();
                     if (!styleAttributes.HasSameStyle(parent_.style_))
@@ -911,7 +904,7 @@ namespace Nodes
                         return true;
                     }
                 }
-                else if (((style_ != null) && (parent_.style_ != null)) &&
+                else if (style_ != null && parent_.style_ != null &&
                          !parent_.style_.HasSameStyle(style_))
                 {
                     if (parent_.type_.type == ElementType.Math)
@@ -930,11 +923,11 @@ namespace Nodes
 
         public bool IsSameStyle(Node node)
         {
-            if ((style_ == null) && (node.style_ == null))
+            if (style_ == null && node.style_ == null)
             {
                 return true;
             }
-            if ((style_ != null) && (node.style_ == null))
+            if (style_ != null && node.style_ == null)
             {
                 StyleAttributes styleAttributes = new StyleAttributes();
                 if (styleAttributes.HasSameStyle(style_))
@@ -942,7 +935,7 @@ namespace Nodes
                     return true;
                 }
             }
-            else if ((style_ == null) && (node.style_ != null))
+            else if (style_ == null && node.style_ != null)
             {
                 StyleAttributes styleAttributes = new StyleAttributes();
                 if (styleAttributes.HasSameStyle(node.style_))
@@ -950,7 +943,7 @@ namespace Nodes
                     return true;
                 }
             }
-            else if (((style_ != null) && (node.style_ != null)) &&
+            else if (style_ != null && node.style_ != null &&
                      style_.HasSameStyle(node.style_))
             {
                 return true;
@@ -1019,15 +1012,13 @@ namespace Nodes
             {
                 if (box != null)
                 {
-                    if (((p.X >= box.X) &&
-                         (p.X <= (box.X + (box.Width/2)))) &&
-                        ((p.Y >= box.Y) && (p.Y <= (box.Y + box.Height))))
+                    if (p.X >= box.X &&
+                        p.X <= box.X + box.Width / 2 && p.Y >= box.Y && p.Y <= box.Y + box.Height)
                     {
                         return CaretPosition.Left;
                     }
-                    if (((p.X > (box.X + (box.Width/2))) &&
-                         (p.X <= (box.X + box.Width))) &&
-                        ((p.Y >= box.Y) && (p.Y <= (box.Y + box.Height))))
+                    if (p.X > box.X + box.Width / 2 &&
+                        p.X <= box.X + box.Width && p.Y >= box.Y && p.Y <= box.Y + box.Height)
                     {
                         return CaretPosition.Right;
                     }
@@ -1043,7 +1034,7 @@ namespace Nodes
         //
         public void MarkFromPoint(Point p)
         {
-            LiteralStart = -1*(p.X - box.X);
+            LiteralStart = -1 * (p.X - box.X);
         }
 
 
@@ -1051,27 +1042,13 @@ namespace Nodes
         {
             get
             {
-                if (InternalMark == LiteralLength)
-                {
-                    isAppend = true;
-                }
-                else
-                {
-                    isAppend = false;
-                }
+                isAppend = InternalMark == LiteralLength;
                 return isAppend;
             }
             set
             {
                 isAppend = value;
-                if (isAppend)
-                {
-                    InternalMark = LiteralLength;
-                }
-                else
-                {
-                    InternalMark = 0;
-                }
+                InternalMark = isAppend ? LiteralLength : 0;
             }
         }
 
