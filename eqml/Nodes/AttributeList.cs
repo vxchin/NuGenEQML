@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -54,23 +55,17 @@ namespace Nodes
 
         public void Add(string name, string val)
         {
-            try
+            if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(val) && name.ToUpper() == "CLASS")
+                val = val.Replace("_", "-");
+            var attribute = Get(name);
+            if (attribute != null)
             {
-                if (name != null && val != null && name.Length > 0 && val.Length > 0 && name.ToUpper() == "CLASS")
-                    val = val.Replace("_", "-");
-                var attribute = Get(name);
-                if (attribute != null)
-                {
-                    attribute.val = val;
-                }
-                else
-                {
-                    attribute = new Attribute(name, val, "");
-                    Add(attribute);
-                }
+                attribute.val = val;
             }
-            catch
+            else
             {
+                attribute = new Attribute(name, val, "");
+                Add(attribute);
             }
         }
     }
