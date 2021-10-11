@@ -5,7 +5,7 @@ namespace Attrs
     using System.Globalization;
     using Nodes;
 
-    public class AttributeBuilder
+    public static class AttributeBuilder
     {
         public static TableCellAttributes FromNode(Node node)
         {
