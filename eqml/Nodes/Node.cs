@@ -178,11 +178,7 @@ namespace Nodes
                 node.literalText = literalText;
                 node.box = box;
                 node.type_ = type_;
-                if (attrs != null)
-                {
-                    node.attrs = new AttributeList();
-                    attrs.CopyTo(node.attrs);
-                }
+                attrs?.CopyTo(ref node.attrs);
                 node.FontStyle = FontStyle;
                 if (style_ != null)
                 {
@@ -197,11 +193,7 @@ namespace Nodes
             if (node != null)
             {
                 node.type_ = type_;
-                if (attrs != null)
-                {
-                    node.attrs = new AttributeList();
-                    attrs.CopyTo(node.attrs);
-                }
+                attrs?.CopyTo(ref node.attrs);
                 node.displayStyle = displayStyle;
 
                 node.glyph = glyph;

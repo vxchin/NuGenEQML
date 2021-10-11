@@ -40,11 +40,7 @@ namespace Facade
             n.scriptLevel_ = node.scriptLevel_;
             
             n.type_ = node.type_;
-            if (node.attrs != null)
-            {
-                n.attrs = new AttributeList();
-                node.attrs.CopyTo(n.attrs);
-            }
+            node.attrs?.CopyTo(ref n.attrs);
             n.FontStyle = node.FontStyle;
             if (node.style_ != null)
             {
