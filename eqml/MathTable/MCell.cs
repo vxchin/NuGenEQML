@@ -13,7 +13,7 @@ namespace MathTable
             this.columnSpan = 1;
             this.rowSpan = 1;
             this.colSpan = 0;
-            this.tableAttrs = AttributeBuilder.FromNode(node);
+            this.tableAttrs = AttributeBuilder.MTableCellAttributes(node);
             this.row_ = row;
             this.node = node;
             this.colSpan = index;

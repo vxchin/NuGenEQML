@@ -7,76 +7,6 @@ namespace Attrs
 
     public static class AttributeBuilder
     {
-        public static TableCellAttributes FromNode(Node node)
-        {
-            TableCellAttributes tableCellAttributes = null;
-            try
-            {
-                if (node.attrs is null) return null;
-                node.attrs.Reset();
-                for (var n = node.attrs.Next(); n != null; n = node.attrs.Next())
-                {
-                    string s = n.val.Trim();
-                    if (s.Length <= 0) continue;
-                    if (tableCellAttributes == null) tableCellAttributes = new TableCellAttributes();
-                    switch (n.name)
-                    {
-                        case "rowalign":
-                            switch (s.ToUpper())
-                            {
-                                case "TOP":
-                                    tableCellAttributes.rowAlign = RowAlign.TOP;
-                                    break;
-                                case "BOTTOM":
-                                    tableCellAttributes.rowAlign = RowAlign.BOTTOM;
-                                    break;
-                                case "CENTER":
-                                    tableCellAttributes.rowAlign = RowAlign.CENTER;
-                                    break;
-                                case "BASELINE":
-                                    tableCellAttributes.rowAlign = RowAlign.BASELINE;
-                                    break;
-                                case "AXIS":
-                                    tableCellAttributes.rowAlign = RowAlign.AXIS;
-                                    break;
-                                default:
-                                    tableCellAttributes.rowAlign = RowAlign.CENTER;
-                                    break;
-                            }
-                            break;
-                        case "columnalign":
-                            switch (s.ToUpper())
-                            {
-                                case "LEFT":
-                                    tableCellAttributes.columnAlign = HAlign.LEFT;
-                                    break;
-                                case "CENTER":
-                                    tableCellAttributes.columnAlign = HAlign.CENTER;
-                                    break;
-                                case "RIGHT":
-                                    tableCellAttributes.columnAlign = HAlign.RIGHT;
-                                    break;
-                                default:
-                                    tableCellAttributes.columnAlign = HAlign.LEFT;
-                                    break;
-                            }
-                            break;
-                        case "rowspan":
-                            tableCellAttributes.rowSpan = Convert.ToInt32(s.Trim());
-                            break;
-                        case "columnspan":
-                            tableCellAttributes.columnSpan = Convert.ToInt32(s.Trim());
-                            break;
-                    }
-                }
-                node.attrs.Reset();
-            }
-            catch
-            {
-            }
-            return tableCellAttributes;
-        }
-
         public static void ApplyAttrs(Node node, TableCellAttributes tableCellAttributes)
         {
             if (node != null && node.type_ != null && node.type_.type == ElementType.Mtd && tableCellAttributes != null)
@@ -1891,298 +1821,6 @@ namespace Attrs
             }
         }
 
-        public static TableAttributes mtableAttributes(Node node)
-        {
-            TableAttributes tableAttributes = null;
-            try
-            {
-                if (node.attrs is null) return null;
-                node.attrs.Reset();
-                Nodes.Attribute attribute;
-                for (attribute = node.attrs.Next(); attribute != null; attribute = node.attrs.Next())
-                {
-                    string s = attribute.val.Trim();
-                    if (s.Length <= 0) continue;
-                    if (tableAttributes == null) tableAttributes = new TableAttributes();
-                    switch (attribute.name)
-                    {
-                        case "align":
-                            switch (s.ToUpper())
-                            {
-                                case "TOP":
-                                    tableAttributes.align = TableAlign.TOP;
-                                    break;
-                                case "BOTTOM":
-                                    tableAttributes.align = TableAlign.BOTTOM;
-                                    break;
-                                case "CENTER":
-                                    tableAttributes.align = TableAlign.CENTER;
-                                    break;
-                                case "BASELINE":
-                                    tableAttributes.align = TableAlign.BASELINE;
-                                    break;
-                                case "AXIS":
-                                    tableAttributes.align = TableAlign.AXIS;
-                                    break;
-                                default:
-                                    tableAttributes.align = TableAlign.AXIS;
-                                    break;
-                            }
-                            break;
-                        case "side":
-                            switch (s.ToUpper())
-                            {
-                                case "LEFT":
-                                    tableAttributes.side = Side.LEFT;
-                                    break;
-                                case "RIGHT":
-                                    tableAttributes.side = Side.RIGHT;
-                                    break;
-                                case "LEFTOVERLAP":
-                                    tableAttributes.side = Side.LEFTOVERLAP;
-                                    break;
-                                case "RIGHTOVERLAP":
-                                    tableAttributes.side = Side.RIGHTOVERLAP;
-                                    break;
-                            }
-                            break;
-                        case "minlabelspacing":
-                            tableAttributes.minlabelspacing = s.Trim();
-                            break;
-                        case "rowalign":
-                            {
-                                s = s.Trim();
-                                string[] strings = s.Split(new[] { ' ' }, 100);
-                                int numAligns = 0;
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    if (strings[i].ToUpper() == "TOP" || strings[i].ToUpper() == "BOTTOM" || strings[i].ToUpper() == "CENTER" || strings[i].ToUpper() == "BASELINE" || strings[i].ToUpper() == "AXIS")
-                                    {
-                                        numAligns++;
-                                    }
-                                }
-                                tableAttributes.rowAligns = new RowAlign[numAligns];
-                                if (numAligns > 0)
-                                {
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        switch (strings[i].ToUpper())
-                                        {
-                                            case "TOP":
-                                                tableAttributes.rowAligns[i] = RowAlign.TOP;
-                                                break;
-                                            case "BOTTOM":
-                                                tableAttributes.rowAligns[i] = RowAlign.BOTTOM;
-                                                break;
-                                            case "CENTER":
-                                                tableAttributes.rowAligns[i] = RowAlign.CENTER;
-                                                break;
-                                            case "BASELINE":
-                                                tableAttributes.rowAligns[i] = RowAlign.BASELINE;
-                                                break;
-                                            case "AXIS":
-                                                tableAttributes.rowAligns[i] = RowAlign.AXIS;
-                                                break;
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    tableAttributes.rowAligns = new[] { RowAlign.BASELINE };
-                                }
-                                break;
-                            }
-                        case "columnalign":
-                            {
-                                string[] strings = s.Split(new[] { ' ' }, 100);
-                                int numAligns = 0;
-                                for (int i = 0; i < strings.Length; i++)
-                                {
-                                    if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
-                                        strings[i].ToUpper() == "RIGHT")
-                                    {
-                                        numAligns++;
-                                    }
-                                }
-                                tableAttributes.colAligns = new HAlign[numAligns];
-                                if (numAligns > 0)
-                                {
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        switch (strings[i].ToUpper())
-                                        {
-                                            case "LEFT":
-                                                tableAttributes.colAligns[i] = HAlign.LEFT;
-                                                break;
-                                            case "CENTER":
-                                                tableAttributes.colAligns[i] = HAlign.CENTER;
-                                                break;
-                                            case "RIGHT":
-                                                tableAttributes.colAligns[i] = HAlign.RIGHT;
-                                                break;
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    tableAttributes.colAligns = new[] { HAlign.CENTER };
-                                }
-                            }
-                            break;
-                        case "frame":
-                            switch (s.ToUpper())
-                            {
-                                case "SOLID":
-                                    tableAttributes.frame = TableLineStyle.SOLID;
-                                    break;
-                                case "DASHED":
-                                    tableAttributes.frame = TableLineStyle.DASHED;
-                                    break;
-                                default:
-                                    tableAttributes.frame = TableLineStyle.NONE;
-                                    break;
-                            }
-                            break;
-                        case "framespacing":
-                            tableAttributes.framespacing = s;
-                            break;
-                        case "rowspacing":
-                            {
-                                s = s.Trim();
-                                string[] strings = s.Split(new[] { ' ' }, 100);
-                                if (strings.Length > 0)
-                                {
-                                    tableAttributes.rowSpacing = new string[strings.Length];
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        tableAttributes.rowSpacing[i] = strings[i];
-                                    }
-                                }
-                            }
-                            break;
-                        case "columnspacing":
-                            {
-                                s = s.Trim();
-                                string[] strings = s.Split(new char[] { ' ' }, 100);
-                                if (strings.Length > 0)
-                                {
-                                    tableAttributes.colSpacing = new string[strings.Length];
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        tableAttributes.colSpacing[i] = strings[i];
-                                    }
-                                }
-                            }
-                            break;
-                        case "rowlines":
-                            {
-                                s = s.Trim();
-                                string[] strings = s.Split(new char[] { ' ' }, 100);
-                                int numLines = 0;
-                                if (strings.Length > 0)
-                                {
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        if (strings[i].ToUpper() == "NONE" || strings[i].ToUpper() == "SOLID" ||
-                                            strings[i].ToUpper() == "DASHED")
-                                        {
-                                            numLines++;
-                                        }
-                                    }
-                                }
-                                if (numLines > 0)
-                                {
-                                    if (tableAttributes == null)
-                                    {
-                                        tableAttributes = new TableAttributes();
-                                    }
-                                    tableAttributes.rowLines = new TableLineStyle[numLines];
-                                    int lineIndex = 0;
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        switch (strings[i].ToUpper())
-                                        {
-                                            case "SOLID":
-                                                tableAttributes.rowLines[lineIndex] = TableLineStyle.SOLID;
-                                                lineIndex++;
-                                                break;
-                                            case "DASHED":
-                                                tableAttributes.rowLines[lineIndex] = TableLineStyle.DASHED;
-                                                lineIndex++;
-                                                break;
-                                            case "NONE":
-                                                tableAttributes.rowLines[lineIndex] = TableLineStyle.NONE;
-                                                lineIndex++;
-                                                break;
-                                        }
-                                    }
-                                }
-                            }
-                            break;
-                        case "columnlines":
-                            {
-                                s = s.Trim();
-                                string[] strings = s.Split(new[] { ' ' }, 100);
-                                int numLines = 0;
-                                if (strings.Length > 0)
-                                {
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        if (strings[i].ToUpper() == "NONE" || strings[i].ToUpper() == "SOLID" ||
-                                            strings[i].ToUpper() == "DASHED")
-                                        {
-                                            numLines++;
-                                        }
-                                    }
-                                }
-                                if (numLines > 0)
-                                {
-                                    if (tableAttributes == null)
-                                    {
-                                        tableAttributes = new TableAttributes();
-                                    }
-                                    tableAttributes.colLines = new TableLineStyle[numLines];
-                                    int lineIndex = 0;
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        switch (strings[i].ToUpper())
-                                        {
-                                            case "SOLID":
-                                                tableAttributes.colLines[lineIndex] = TableLineStyle.SOLID;
-                                                lineIndex++;
-                                                break;
-                                            case "DASHED":
-                                                tableAttributes.colLines[lineIndex] = TableLineStyle.DASHED;
-                                                lineIndex++;
-                                                break;
-                                            case "NONE":
-                                                tableAttributes.colLines[lineIndex] = TableLineStyle.NONE;
-                                                lineIndex++;
-                                                break;
-                                        }
-                                    }
-                                }
-                            }
-                            break;
-                        case "equalrows":
-                            tableAttributes.equalRows = Convert.ToBoolean(s);
-                            break;
-                        case "equalcolumns":
-                            tableAttributes.equalColumns = Convert.ToBoolean(s);
-                            break;
-                        case "displaystyle":
-                            tableAttributes.displaystyle = Convert.ToBoolean(s);
-                            break;
-                    }
-                }
-                node.attrs.Reset();
-            }
-            catch
-            {
-            }
-            return tableAttributes;
-        }
-
         public static void ApplyAttrs(Node node, TableAttributes tableAttributes)
         {
             if (node != null && node.type_ != null && node.type_.type == ElementType.Mtable && tableAttributes != null)
@@ -2630,94 +2268,6 @@ namespace Attrs
             }
         }
 
-        public static TableRowAttributes MRowAttributes(Node node)
-        {
-            Nodes.Attribute attribute = null;
-            TableRowAttributes tableRowAttributes = null;
-            try
-            {
-                if (node.attrs != null)
-                {
-                    node.attrs.Reset();
-                    for (attribute = node.attrs.Next(); attribute != null; attribute = node.attrs.Next())
-                    {
-                        string s = attribute.val.Trim();
-
-                        if (s.Length <= 0) continue;
-                        if (tableRowAttributes == null) tableRowAttributes = new TableRowAttributes();
-                        switch (attribute.name)
-                        {
-                            case "rowalign":
-                                switch (s.ToUpper())
-                                {
-                                    case "TOP":
-                                        tableRowAttributes.align = RowAlign.TOP;
-                                        break;
-                                    case "BOTTOM":
-                                        tableRowAttributes.align = RowAlign.BOTTOM;
-                                        break;
-                                    case "CENTER":
-                                        tableRowAttributes.align = RowAlign.CENTER;
-                                        break;
-                                    case "BASELINE":
-                                        tableRowAttributes.align = RowAlign.BASELINE;
-                                        break;
-                                    case "AXIS":
-                                        tableRowAttributes.align = RowAlign.AXIS;
-                                        break;
-                                    default:
-                                        tableRowAttributes.align = RowAlign.UNKNOWN;
-                                        break;
-                                }
-                                break;
-                            case "columnalign":
-                                {
-                                    string[] strings = s.Split(new[] { ' ' }, 100);
-                                    int numAligns = 0;
-                                    for (int i = 0; i < strings.Length; i++)
-                                    {
-                                        if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
-                                            strings[i].ToUpper() == "RIGHT")
-                                        {
-                                            numAligns++;
-                                        }
-                                    }
-                                    tableRowAttributes.colAligns = new HAlign[numAligns];
-                                    if (numAligns > 0)
-                                    {
-                                        for (int i = 0; i < strings.Length; i++)
-                                        {
-                                            switch (strings[i].ToUpper())
-                                            {
-                                                case "LEFT":
-                                                    tableRowAttributes.colAligns[i] = HAlign.LEFT;
-                                                    break;
-                                                case "CENTER":
-                                                    tableRowAttributes.colAligns[i] = HAlign.CENTER;
-                                                    break;
-                                                case "RIGHT":
-                                                    tableRowAttributes.colAligns[i] = HAlign.RIGHT;
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        tableRowAttributes.colAligns = new[] { HAlign.CENTER };
-                                    }
-                                    break;
-                                }
-                        }
-                    }
-                }
-                node.attrs?.Reset();
-            }
-            catch
-            {
-            }
-            return tableRowAttributes;
-        }
-
         public static void ApplyAttributes(Node node, TableRowAttributes tableRowAttributes)
         {
             if (node != null && node.type_ != null &&
@@ -2833,6 +2383,456 @@ namespace Attrs
                     }
                 }
             }
+        }
+
+        public static TableAttributes MTableAttributes(Node node)
+        {
+            TableAttributes tableAttributes = null;
+            try
+            {
+                if (node.attrs is null) return null;
+                node.attrs.Reset();
+                Nodes.Attribute attribute;
+                for (attribute = node.attrs.Next(); attribute != null; attribute = node.attrs.Next())
+                {
+                    string s = attribute.val.Trim();
+                    if (s.Length <= 0) continue;
+                    if (tableAttributes == null) tableAttributes = new TableAttributes();
+                    switch (attribute.name)
+                    {
+                        case "align":
+                            switch (s.ToUpper())
+                            {
+                                case "TOP":
+                                    tableAttributes.align = TableAlign.TOP;
+                                    break;
+                                case "BOTTOM":
+                                    tableAttributes.align = TableAlign.BOTTOM;
+                                    break;
+                                case "CENTER":
+                                    tableAttributes.align = TableAlign.CENTER;
+                                    break;
+                                case "BASELINE":
+                                    tableAttributes.align = TableAlign.BASELINE;
+                                    break;
+                                case "AXIS":
+                                    tableAttributes.align = TableAlign.AXIS;
+                                    break;
+                                default:
+                                    tableAttributes.align = TableAlign.AXIS;
+                                    break;
+                            }
+                            break;
+                        case "side":
+                            switch (s.ToUpper())
+                            {
+                                case "LEFT":
+                                    tableAttributes.side = Side.LEFT;
+                                    break;
+                                case "RIGHT":
+                                    tableAttributes.side = Side.RIGHT;
+                                    break;
+                                case "LEFTOVERLAP":
+                                    tableAttributes.side = Side.LEFTOVERLAP;
+                                    break;
+                                case "RIGHTOVERLAP":
+                                    tableAttributes.side = Side.RIGHTOVERLAP;
+                                    break;
+                            }
+                            break;
+                        case "minlabelspacing":
+                            tableAttributes.minlabelspacing = s.Trim();
+                            break;
+                        case "rowalign":
+                        {
+                            s = s.Trim();
+                            string[] strings = s.Split(new[] { ' ' }, 100);
+                            int numAligns = 0;
+                            for (int i = 0; i < strings.Length; i++)
+                            {
+                                if (strings[i].ToUpper() == "TOP" || strings[i].ToUpper() == "BOTTOM" || strings[i].ToUpper() == "CENTER" || strings[i].ToUpper() == "BASELINE" || strings[i].ToUpper() == "AXIS")
+                                {
+                                    numAligns++;
+                                }
+                            }
+                            tableAttributes.rowAligns = new RowAlign[numAligns];
+                            if (numAligns > 0)
+                            {
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    switch (strings[i].ToUpper())
+                                    {
+                                        case "TOP":
+                                            tableAttributes.rowAligns[i] = RowAlign.TOP;
+                                            break;
+                                        case "BOTTOM":
+                                            tableAttributes.rowAligns[i] = RowAlign.BOTTOM;
+                                            break;
+                                        case "CENTER":
+                                            tableAttributes.rowAligns[i] = RowAlign.CENTER;
+                                            break;
+                                        case "BASELINE":
+                                            tableAttributes.rowAligns[i] = RowAlign.BASELINE;
+                                            break;
+                                        case "AXIS":
+                                            tableAttributes.rowAligns[i] = RowAlign.AXIS;
+                                            break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                tableAttributes.rowAligns = new[] { RowAlign.BASELINE };
+                            }
+                            break;
+                        }
+                        case "columnalign":
+                        {
+                            string[] strings = s.Split(new[] { ' ' }, 100);
+                            int numAligns = 0;
+                            for (int i = 0; i < strings.Length; i++)
+                            {
+                                if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
+                                    strings[i].ToUpper() == "RIGHT")
+                                {
+                                    numAligns++;
+                                }
+                            }
+                            tableAttributes.colAligns = new HAlign[numAligns];
+                            if (numAligns > 0)
+                            {
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    switch (strings[i].ToUpper())
+                                    {
+                                        case "LEFT":
+                                            tableAttributes.colAligns[i] = HAlign.LEFT;
+                                            break;
+                                        case "CENTER":
+                                            tableAttributes.colAligns[i] = HAlign.CENTER;
+                                            break;
+                                        case "RIGHT":
+                                            tableAttributes.colAligns[i] = HAlign.RIGHT;
+                                            break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                tableAttributes.colAligns = new[] { HAlign.CENTER };
+                            }
+                        }
+                            break;
+                        case "frame":
+                            switch (s.ToUpper())
+                            {
+                                case "SOLID":
+                                    tableAttributes.frame = TableLineStyle.SOLID;
+                                    break;
+                                case "DASHED":
+                                    tableAttributes.frame = TableLineStyle.DASHED;
+                                    break;
+                                default:
+                                    tableAttributes.frame = TableLineStyle.NONE;
+                                    break;
+                            }
+                            break;
+                        case "framespacing":
+                            tableAttributes.framespacing = s;
+                            break;
+                        case "rowspacing":
+                        {
+                            s = s.Trim();
+                            string[] strings = s.Split(new[] { ' ' }, 100);
+                            if (strings.Length > 0)
+                            {
+                                tableAttributes.rowSpacing = new string[strings.Length];
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    tableAttributes.rowSpacing[i] = strings[i];
+                                }
+                            }
+                        }
+                            break;
+                        case "columnspacing":
+                        {
+                            s = s.Trim();
+                            string[] strings = s.Split(new char[] { ' ' }, 100);
+                            if (strings.Length > 0)
+                            {
+                                tableAttributes.colSpacing = new string[strings.Length];
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    tableAttributes.colSpacing[i] = strings[i];
+                                }
+                            }
+                        }
+                            break;
+                        case "rowlines":
+                        {
+                            s = s.Trim();
+                            string[] strings = s.Split(new char[] { ' ' }, 100);
+                            int numLines = 0;
+                            if (strings.Length > 0)
+                            {
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    if (strings[i].ToUpper() == "NONE" || strings[i].ToUpper() == "SOLID" ||
+                                        strings[i].ToUpper() == "DASHED")
+                                    {
+                                        numLines++;
+                                    }
+                                }
+                            }
+                            if (numLines > 0)
+                            {
+                                if (tableAttributes == null)
+                                {
+                                    tableAttributes = new TableAttributes();
+                                }
+                                tableAttributes.rowLines = new TableLineStyle[numLines];
+                                int lineIndex = 0;
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    switch (strings[i].ToUpper())
+                                    {
+                                        case "SOLID":
+                                            tableAttributes.rowLines[lineIndex] = TableLineStyle.SOLID;
+                                            lineIndex++;
+                                            break;
+                                        case "DASHED":
+                                            tableAttributes.rowLines[lineIndex] = TableLineStyle.DASHED;
+                                            lineIndex++;
+                                            break;
+                                        case "NONE":
+                                            tableAttributes.rowLines[lineIndex] = TableLineStyle.NONE;
+                                            lineIndex++;
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                            break;
+                        case "columnlines":
+                        {
+                            s = s.Trim();
+                            string[] strings = s.Split(new[] { ' ' }, 100);
+                            int numLines = 0;
+                            if (strings.Length > 0)
+                            {
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    if (strings[i].ToUpper() == "NONE" || strings[i].ToUpper() == "SOLID" ||
+                                        strings[i].ToUpper() == "DASHED")
+                                    {
+                                        numLines++;
+                                    }
+                                }
+                            }
+                            if (numLines > 0)
+                            {
+                                if (tableAttributes == null)
+                                {
+                                    tableAttributes = new TableAttributes();
+                                }
+                                tableAttributes.colLines = new TableLineStyle[numLines];
+                                int lineIndex = 0;
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    switch (strings[i].ToUpper())
+                                    {
+                                        case "SOLID":
+                                            tableAttributes.colLines[lineIndex] = TableLineStyle.SOLID;
+                                            lineIndex++;
+                                            break;
+                                        case "DASHED":
+                                            tableAttributes.colLines[lineIndex] = TableLineStyle.DASHED;
+                                            lineIndex++;
+                                            break;
+                                        case "NONE":
+                                            tableAttributes.colLines[lineIndex] = TableLineStyle.NONE;
+                                            lineIndex++;
+                                            break;
+                                    }
+                                }
+                            }
+                        }
+                            break;
+                        case "equalrows":
+                            tableAttributes.equalRows = Convert.ToBoolean(s);
+                            break;
+                        case "equalcolumns":
+                            tableAttributes.equalColumns = Convert.ToBoolean(s);
+                            break;
+                        case "displaystyle":
+                            tableAttributes.displaystyle = Convert.ToBoolean(s);
+                            break;
+                    }
+                }
+                node.attrs.Reset();
+            }
+            catch
+            {
+            }
+            return tableAttributes;
+        }
+
+        public static TableRowAttributes MTableRowAttributes(Node node)
+        {
+            Nodes.Attribute attribute = null;
+            TableRowAttributes tableRowAttributes = null;
+            try
+            {
+                if (node.attrs != null)
+                {
+                    node.attrs.Reset();
+                    for (attribute = node.attrs.Next(); attribute != null; attribute = node.attrs.Next())
+                    {
+                        string s = attribute.val.Trim();
+
+                        if (s.Length <= 0) continue;
+                        if (tableRowAttributes == null) tableRowAttributes = new TableRowAttributes();
+                        switch (attribute.name)
+                        {
+                            case "rowalign":
+                                switch (s.ToUpper())
+                                {
+                                    case "TOP":
+                                        tableRowAttributes.align = RowAlign.TOP;
+                                        break;
+                                    case "BOTTOM":
+                                        tableRowAttributes.align = RowAlign.BOTTOM;
+                                        break;
+                                    case "CENTER":
+                                        tableRowAttributes.align = RowAlign.CENTER;
+                                        break;
+                                    case "BASELINE":
+                                        tableRowAttributes.align = RowAlign.BASELINE;
+                                        break;
+                                    case "AXIS":
+                                        tableRowAttributes.align = RowAlign.AXIS;
+                                        break;
+                                    default:
+                                        tableRowAttributes.align = RowAlign.UNKNOWN;
+                                        break;
+                                }
+                                break;
+                            case "columnalign":
+                            {
+                                string[] strings = s.Split(new[] { ' ' }, 100);
+                                int numAligns = 0;
+                                for (int i = 0; i < strings.Length; i++)
+                                {
+                                    if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
+                                        strings[i].ToUpper() == "RIGHT")
+                                    {
+                                        numAligns++;
+                                    }
+                                }
+                                tableRowAttributes.colAligns = new HAlign[numAligns];
+                                if (numAligns > 0)
+                                {
+                                    for (int i = 0; i < strings.Length; i++)
+                                    {
+                                        switch (strings[i].ToUpper())
+                                        {
+                                            case "LEFT":
+                                                tableRowAttributes.colAligns[i] = HAlign.LEFT;
+                                                break;
+                                            case "CENTER":
+                                                tableRowAttributes.colAligns[i] = HAlign.CENTER;
+                                                break;
+                                            case "RIGHT":
+                                                tableRowAttributes.colAligns[i] = HAlign.RIGHT;
+                                                break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    tableRowAttributes.colAligns = new[] { HAlign.CENTER };
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                node.attrs?.Reset();
+            }
+            catch
+            {
+            }
+            return tableRowAttributes;
+        }
+
+        public static TableCellAttributes MTableCellAttributes(Node node)
+        {
+            TableCellAttributes tableCellAttributes = null;
+            try
+            {
+                if (node.attrs is null) return null;
+                node.attrs.Reset();
+                for (var n = node.attrs.Next(); n != null; n = node.attrs.Next())
+                {
+                    string s = n.val.Trim();
+                    if (s.Length <= 0) continue;
+                    if (tableCellAttributes == null) tableCellAttributes = new TableCellAttributes();
+                    switch (n.name)
+                    {
+                        case "rowalign":
+                            switch (s.ToUpper())
+                            {
+                                case "TOP":
+                                    tableCellAttributes.rowAlign = RowAlign.TOP;
+                                    break;
+                                case "BOTTOM":
+                                    tableCellAttributes.rowAlign = RowAlign.BOTTOM;
+                                    break;
+                                case "CENTER":
+                                    tableCellAttributes.rowAlign = RowAlign.CENTER;
+                                    break;
+                                case "BASELINE":
+                                    tableCellAttributes.rowAlign = RowAlign.BASELINE;
+                                    break;
+                                case "AXIS":
+                                    tableCellAttributes.rowAlign = RowAlign.AXIS;
+                                    break;
+                                default:
+                                    tableCellAttributes.rowAlign = RowAlign.CENTER;
+                                    break;
+                            }
+                            break;
+                        case "columnalign":
+                            switch (s.ToUpper())
+                            {
+                                case "LEFT":
+                                    tableCellAttributes.columnAlign = HAlign.LEFT;
+                                    break;
+                                case "CENTER":
+                                    tableCellAttributes.columnAlign = HAlign.CENTER;
+                                    break;
+                                case "RIGHT":
+                                    tableCellAttributes.columnAlign = HAlign.RIGHT;
+                                    break;
+                                default:
+                                    tableCellAttributes.columnAlign = HAlign.LEFT;
+                                    break;
+                            }
+                            break;
+                        case "rowspan":
+                            tableCellAttributes.rowSpan = Convert.ToInt32(s.Trim());
+                            break;
+                        case "columnspan":
+                            tableCellAttributes.columnSpan = Convert.ToInt32(s.Trim());
+                            break;
+                    }
+                }
+                node.attrs.Reset();
+            }
+            catch
+            {
+            }
+            return tableCellAttributes;
         }
     }
 }

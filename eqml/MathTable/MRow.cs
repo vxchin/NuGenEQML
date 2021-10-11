@@ -15,7 +15,7 @@ namespace MathTable
             this.spacing = "0.5ex";
             this.lines = TableLineStyle.NONE;
             this.index = index;
-            this.attrs = AttributeBuilder.MRowAttributes(node);
+            this.attrs = AttributeBuilder.MTableRowAttributes(node);
             this.colAligns = new HAlign[] { HAlign.UNKNOWN };
             this.matrix = matrix;
             this.node = node;

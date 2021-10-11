@@ -43,7 +43,7 @@ namespace MathTable
             this.colAligns = new HAlign[] { HAlign.LEFT };
             this.rowAligns = new RowAlign[] { RowAlign.BASELINE };
             this.node_ = node;
-            this.attrs = AttributeBuilder.mtableAttributes(node);
+            this.attrs = AttributeBuilder.MTableAttributes(node);
             if (this.attrs != null)
             {
                 this.rowAligns = this.attrs.rowAligns;
