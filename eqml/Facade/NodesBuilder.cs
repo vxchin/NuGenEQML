@@ -6157,20 +6157,24 @@ namespace Facade
                         {
                             point.Y = 0;
                         }
-                        if (point.X > (this.rootNode_.box.X + this.rootNode_.box.Width))
+                        if (this.rootNode_.box != null)
                         {
-                            point.X = (this.rootNode_.box.X + this.rootNode_.box.Width) - 1;
-                        }
-                        if (point.Y > (this.rootNode_.box.Y + this.rootNode_.box.Height))
-                        {
-                            point.Y = (this.rootNode_.box.Y + this.rootNode_.box.Height) - 1;
+                            if (point.X > (this.rootNode_.box.X + this.rootNode_.box.Width))
+                            {
+                                point.X = (this.rootNode_.box.X + this.rootNode_.box.Width) - 1;
+                            }
+                            if (point.Y > (this.rootNode_.box.Y + this.rootNode_.box.Height))
+                            {
+                                point.Y = (this.rootNode_.box.Y + this.rootNode_.box.Height) - 1;
+                            }
                         }
                     }
                 }
                 catch
                 {
                 }
-                Node nodeatPoint = this.rootNode_.NodeAtPoint(point, location);
+                Node nodeatPoint = this.rootNode_?.NodeAtPoint(point, location);
+                if (nodeatPoint is null) return false;
                 if (((nodeatPoint.type_.type == ElementType.Entity) && (nodeatPoint.parent_ != null)) &&
                     ((nodeatPoint.parent_.type_.type == ElementType.Mi) ||
                      (nodeatPoint.parent_.type_.type == ElementType.Mo)))
