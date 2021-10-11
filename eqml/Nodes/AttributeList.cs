@@ -22,24 +22,14 @@ namespace Nodes
             list.Reset();
         }
 
-        public Attribute Next()
-        {
-            try
-            {
-                if (_iterator >= Count) return null;
-                var attribute = this[_iterator];
-                _iterator++;
-                return attribute;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
         public void Reset()
         {
             _iterator = 0;
+        }
+
+        public Attribute Next()
+        {
+            return _iterator < Count ? this[_iterator++] : null;
         }
 
         public Attribute Get(string name)
