@@ -75,6 +75,13 @@ namespace Attrs
         LEFT,
         CENTER,
         RIGHT,
+        UNKNOWN 
+    }
+    public enum VAlign
+    {
+        TOP,
+        CENTER,
+        BOTTOM,
         UNKNOWN
     }
 

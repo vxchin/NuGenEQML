@@ -25,6 +25,7 @@ namespace UI
     {
         protected override bool ProcessDialogKey (Keys keyData)
         {
+            if (!Editable) return true;
             if (builder_.GetCurrentlySelectedNode () == null)
             {
                 return true;

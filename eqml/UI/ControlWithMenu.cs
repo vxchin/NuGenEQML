@@ -24,6 +24,7 @@ namespace UI
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
+            if (!Editable) return;
             try
             {
                 this.Event_MouseDown?.Invoke(this, new MouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta));

@@ -1,19 +1,16 @@
 namespace Genetibase.MathX
 {
-    using Genetibase.ApplicationBlocks;
-    using Nodes;
-    using Fonts;
-    using UI;
-    using Facade;
     using System;
     using System.ComponentModel;
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.IO;
-    using System.Reflection;
-    using System.Runtime.CompilerServices;
     using System.Windows.Forms;
-    using System.Xml;
+    using Attrs;
+    using Fonts;
+    using Genetibase.ApplicationBlocks;
+    using Nodes;
+    using UI;
 
     public class NuGenEQML : UserControl
     {
@@ -697,6 +694,27 @@ namespace Genetibase.MathX
                 this.backgroundColor_ = value;
                 this.BackColor = this.backgroundColor_;
             }
+        }
+
+        [DefaultValue(true)]
+        public bool MC_Editable
+        {
+            get => uiMenu.Editable;
+            set => uiMenu.Editable = value;
+        }
+
+        [DefaultValue(HAlign.LEFT)]
+        public HAlign MC_HAlign
+        {
+            get => this.uiMenu.HAlign;
+            set => this.uiMenu.HAlign = value;
+        }
+
+        [DefaultValue(VAlign.TOP)]
+        public VAlign MC_VAlign
+        {
+            get => this.uiMenu.VAlign;
+            set => this.uiMenu.VAlign = value;
         }
 
         public bool MC_DisplayStyle

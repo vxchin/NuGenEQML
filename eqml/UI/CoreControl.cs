@@ -1,25 +1,19 @@
 namespace UI
 {
-    using Microsoft.Win32;
-    using Attrs;
-    using Facade;
-    using JpegComment;
-    using Boxes;
-    using Nodes;
-    using Operators;
-    using Fonts;
-    using UI;
     using System;
-    using System.ComponentModel;
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.IO;
-    using System.Runtime.CompilerServices;
     using System.Runtime.InteropServices;
-    using System.Text;
     using System.Threading;
     using System.Windows.Forms;
-    using System.Xml;
+    using Attrs;
+    using Facade;
+    using Fonts;
+    using JpegComment;
+    using Microsoft.Win32;
+    using Nodes;
+    using Operators;
 
     internal class BBox
     {
@@ -396,7 +390,7 @@ namespace UI
                             }
                             builder_.FillBackground(updateRect);
 
-                            if (builder_.HasSelection && Focused)
+                            if (Editable && builder_.HasSelection && Focused)
                             {
                                 try
                                 {
@@ -429,7 +423,7 @@ namespace UI
 
                             markY = selectedNode.box.Y + tMargin;
                             caretHeight = selectedNode.box.Height;
-                            if (Focused)
+                            if (Editable && Focused)
                             {
                                 if ((selectedNode.type_ != null))
                                 {
@@ -448,7 +442,7 @@ namespace UI
                                     bbox.Bottom = 0;
                                 }
                             }
-                            if (Focused && showCaret)
+                            if (Editable && Focused && showCaret)
                             {
                                 if ((selectedNode.type_ != null))
                                 {
@@ -1060,6 +1054,8 @@ namespace UI
         //
         public void ReRender()
         {
+            CalcHorzPosition();
+            CalcVertPosition();
             FireInvalidate();
             if (needUpdate)
             {
@@ -1288,6 +1284,11 @@ namespace UI
                         {
                             hasH = true;
                         }
+                        if (!Editable)
+                        {
+                            OffsetX = 0;
+                            OffsetY = 0;
+                        }
                         if (hasH && hasV)
                         {
                             panel_.Visible = true;
@@ -1336,7 +1337,7 @@ namespace UI
                             vertScroller_.Visible = true;
                             horScroller_.Maximum = 0;
                             horScroller_.Visible = false;
-                            OffsetX = 0;
+                            CalcHorzPosition();
                         }
                         else if (hasH)
                         {
@@ -1358,15 +1359,16 @@ namespace UI
                             vertScroller_.Maximum = 0;
                             vertScroller_.Visible = false;
                             offsetY = 0;
+                            CalcVertPosition();
                         }
                         else
                         {
                             horScroller_.Maximum = 0;
                             horScroller_.Visible = false;
-                            OffsetX = 0;
+                            CalcHorzPosition();
                             vertScroller_.Maximum = 0;
                             vertScroller_.Visible = false;
-                            offsetY = 0;
+                            CalcVertPosition();
                         }
                     }
                     else
@@ -1411,6 +1413,39 @@ namespace UI
                 return;
             }
         }
+
+        private void CalcHorzPosition()
+        {
+            switch (this.HAlign)
+            {
+                case HAlign.CENTER:
+                    OffsetX = (canvasWidth - base.ClientRectangle.Width) / 2;
+                    break;
+                case HAlign.RIGHT:
+                    OffsetX = canvasWidth - base.ClientRectangle.Width - 2;
+                    break;
+                default:
+                    offsetX = 0;
+                    break;
+            }
+        }
+
+        private void CalcVertPosition()
+        {
+            switch (this.VAlign)
+            {
+                case VAlign.CENTER:
+                    offsetY = (canvasHeight - base.ClientRectangle.Height) / 2;
+                    break;
+                case VAlign.BOTTOM:
+                    offsetY = canvasHeight - base.ClientRectangle.Height - 2;
+                    break;
+                default:
+                    offsetY = 0;
+                    break;
+            }
+        }
+
         //
         private void HorzScrollHandler(object sender, ScrollEventArgs e)
         {
@@ -2761,6 +2796,31 @@ namespace UI
             }
         }
 
+        public bool Editable { get; set; } = true;
+
+        //public bool AutoStretch { get; set; }
+        public HAlign HAlign
+        {
+            get => _hAlign;
+            set
+            {
+                if (_hAlign == value) return;
+                _hAlign = value;
+                ReRender();
+            }
+        }
+
+        public VAlign VAlign
+        {
+            get => _vAlign;
+            set
+            {
+                if (_vAlign == value) return;
+                _vAlign = value;
+                ReRender();
+            }
+        }
+
         private bool needUpdate;
         private bool needCheckIsPaletted;
         private OperatorDictionary operators_;
@@ -2798,5 +2858,7 @@ namespace UI
         public static short BITSPIXEL;
         public static short PLANES;
         private Panel panel_;
+        private HAlign _hAlign;
+        private VAlign _vAlign;
     }
 }
