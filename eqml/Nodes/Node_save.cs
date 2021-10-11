@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Nodes
 {
     using System;
@@ -12,7 +14,8 @@ namespace Nodes
             SaveToXml(xmlDoc, XMLNode, sXMLEncoding, null, "");
         }
 
-        public void SaveToXml(XmlDocument xmlDoc, XmlNode XMLNode, string sXMLEncoding, Selection Selection_Collection = null)
+        public void SaveToXml(
+            XmlDocument xmlDoc, XmlNode XMLNode, string sXMLEncoding, Selection Selection_Collection = null)
         {
             SaveToXml(xmlDoc, XMLNode, sXMLEncoding, Selection_Collection, namespaceURI);
         }
@@ -45,6 +48,17 @@ namespace Nodes
                     {
                         targetXmlNode = xmlDoc.CreateNode(XmlNodeType.Element, type_.xmlTag, nspace);
 
+                        if ((type_.type == ElementType.Mtable ||
+                             type_.type == ElementType.Mtr ||
+                             type_.type == ElementType.Mtd) && attrs != null && attrs.Any())
+                        {
+                            foreach (var i in attrs)
+                            {
+                                XmlAttribute attr = xmlDoc.CreateAttribute("", i.name, "");
+                                attr.Value = i.val;
+                                targetXmlNode.Attributes?.Append(attr);
+                            }
+                        }
                         if ((type_.type == ElementType.Ms ||
                              type_.type == ElementType.Mtext) && !String.IsNullOrEmpty(literalText))
                         {
@@ -115,21 +129,21 @@ namespace Nodes
             if (XMLNode == null)
             {
                 string xml;
-                if (sXMLEncoding == "UTF-16")
+                switch (sXMLEncoding)
                 {
-                    xml = "<?xml version='1.0' encoding='UTF-16'?>";
-                }
-                else if (sXMLEncoding == "UTF-8")
-                {
-                    xml = "<?xml version='1.0' encoding='UTF-8'?>";
-                }
-                else if (sXMLEncoding.Length > 0)
-                {
-                    xml = "<?xml version='1.0' encoding='" + sXMLEncoding + "'?>";
-                }
-                else
-                {
-                    xml = "<?xml version='1.0'?>";
+                    case "UTF-16":
+                        xml = "<?xml version='1.0' encoding='UTF-16'?>";
+                        break;
+                    case "UTF-8":
+                        xml = "<?xml version='1.0' encoding='UTF-8'?>";
+                        break;
+                    default:
+                        {
+                            xml = sXMLEncoding.Length > 0
+                                ? "<?xml version='1.0' encoding='" + sXMLEncoding + "'?>"
+                                : "<?xml version='1.0'?>";
+                            break;
+                        }
                 }
                 xml += "<root/>";
                 xmlDoc.LoadXml(xml);
@@ -137,10 +151,10 @@ namespace Nodes
                 {
                     XmlAttribute attribute = xmlDoc.CreateAttribute("", "display", "");
                     attribute.Value = "block";
-                    targetXmlNode.Attributes.Append(attribute);
+                    targetXmlNode.Attributes?.Append(attribute);
                 }
 
-                xmlDoc.ReplaceChild(targetXmlNode, xmlDoc.DocumentElement);
+                if (xmlDoc.DocumentElement != null) xmlDoc.ReplaceChild(targetXmlNode, xmlDoc.DocumentElement);
             }
             else if (!ownSel)
             {
@@ -151,7 +165,7 @@ namespace Nodes
                 {
                     XmlAttribute attribute = xmlDoc.CreateAttribute("", "display", "");
                     attribute.Value = "block";
-                    targetXmlNode.Attributes.Append(attribute);
+                    targetXmlNode.Attributes?.Append(attribute);
                     XMLNode.AppendChild(targetXmlNode);
                 }
             }
@@ -235,14 +249,12 @@ namespace Nodes
                     AttributeBuilder.CascadeStyles(next.parent_, snode, next.style_);
                     if (snode.attrs != null)
                     {
-                        snode.attrs.Reset();
-                        for (Attribute i = snode.attrs.Next(); i != null; i = snode.attrs.Next())
+                        foreach (var i in snode.attrs)
                         {
                             XmlAttribute attr = xmlDoc.CreateAttribute("", i.name, "");
                             attr.Value = i.val;
                             mstyleNode.Attributes.Append(attr);
                         }
-                        snode.attrs.Reset();
                     }
                     curXmlNode.AppendChild(mstyleNode);
                     curXmlNode = mstyleNode;
