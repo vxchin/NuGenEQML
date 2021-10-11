@@ -9,96 +9,64 @@ namespace Attrs
     {
         public static TableCellAttributes FromNode(Node node)
         {
-            Nodes.Attribute n = null;
             TableCellAttributes tableCellAttributes = null;
             try
             {
-                if (node.attrs == null)
-                {
-                    return tableCellAttributes;
-                }
+                if (node.attrs is null) return null;
                 node.attrs.Reset();
-                for (n = node.attrs.Next(); n != null; n = node.attrs.Next())
+                for (var n = node.attrs.Next(); n != null; n = node.attrs.Next())
                 {
                     string s = n.val.Trim();
-                    if (n.name == "rowalign")
+                    if (s.Length <= 0) continue;
+                    if (tableCellAttributes == null) tableCellAttributes = new TableCellAttributes();
+                    switch (n.name)
                     {
-                        if (s.Length > 0)
-                        {
-                            if (tableCellAttributes == null)
+                        case "rowalign":
+                            switch (s.ToUpper())
                             {
-                                tableCellAttributes = new TableCellAttributes();
+                                case "TOP":
+                                    tableCellAttributes.rowAlign = RowAlign.TOP;
+                                    break;
+                                case "BOTTOM":
+                                    tableCellAttributes.rowAlign = RowAlign.BOTTOM;
+                                    break;
+                                case "CENTER":
+                                    tableCellAttributes.rowAlign = RowAlign.CENTER;
+                                    break;
+                                case "BASELINE":
+                                    tableCellAttributes.rowAlign = RowAlign.BASELINE;
+                                    break;
+                                case "AXIS":
+                                    tableCellAttributes.rowAlign = RowAlign.AXIS;
+                                    break;
+                                default:
+                                    tableCellAttributes.rowAlign = RowAlign.CENTER;
+                                    break;
                             }
-                            if (s.ToUpper() == "TOP")
+                            break;
+                        case "columnalign":
+                            switch (s.ToUpper())
                             {
-                                tableCellAttributes.rowAlign = RowAlign.TOP;
+                                case "LEFT":
+                                    tableCellAttributes.columnAlign = HAlign.LEFT;
+                                    break;
+                                case "CENTER":
+                                    tableCellAttributes.columnAlign = HAlign.CENTER;
+                                    break;
+                                case "RIGHT":
+                                    tableCellAttributes.columnAlign = HAlign.RIGHT;
+                                    break;
+                                default:
+                                    tableCellAttributes.columnAlign = HAlign.LEFT;
+                                    break;
                             }
-                            else if (s.ToUpper() == "BOTTOM")
-                            {
-                                tableCellAttributes.rowAlign = RowAlign.BOTTOM;
-                            }
-                            else if (s.ToUpper() == "CENTER")
-                            {
-                                tableCellAttributes.rowAlign = RowAlign.CENTER;
-                            }
-                            else if (s.ToUpper() == "BASELINE")
-                            {
-                                tableCellAttributes.rowAlign = RowAlign.BASELINE;
-                            }
-                            else if (s.ToUpper() == "AXIS")
-                            {
-                                tableCellAttributes.rowAlign = RowAlign.AXIS;
-                            }
-                            else
-                            {
-                                tableCellAttributes.rowAlign = RowAlign.CENTER;
-                            }
-                        }
-                    }
-                    else if (n.name == "columnalign")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableCellAttributes == null)
-                            {
-                                tableCellAttributes = new TableCellAttributes();
-                            }
-                            if (s.ToUpper() == "LEFT")
-                            {
-                                tableCellAttributes.columnAlign = HAlign.LEFT;
-                            }
-                            else if (s.ToUpper() == "CENTER")
-                            {
-                                tableCellAttributes.columnAlign = HAlign.CENTER;
-                            }
-                            else if (s.ToUpper() == "RIGHT")
-                            {
-                                tableCellAttributes.columnAlign = HAlign.RIGHT;
-                            }
-                            else
-                            {
-                                tableCellAttributes.columnAlign = HAlign.LEFT;
-                            }
-                        }
-                    }
-                    else if (n.name == "rowspan")
-                    {
-                        if (s.Length > 0)
-                        {
-                            if (tableCellAttributes == null)
-                            {
-                                tableCellAttributes = new TableCellAttributes();
-                            }
+                            break;
+                        case "rowspan":
                             tableCellAttributes.rowSpan = Convert.ToInt32(s.Trim());
-                        }
-                    }
-                    else if (n.name == "columnspan" && s.Length > 0)
-                    {
-                        if (tableCellAttributes == null)
-                        {
-                            tableCellAttributes = new TableCellAttributes();
-                        }
-                        tableCellAttributes.columnSpan = Convert.ToInt32(s.Trim());
+                            break;
+                        case "columnspan":
+                            tableCellAttributes.columnSpan = Convert.ToInt32(s.Trim());
+                            break;
                     }
                 }
                 node.attrs.Reset();
@@ -2703,42 +2671,42 @@ namespace Attrs
                                 }
                                 break;
                             case "columnalign":
-                            {
-                                string[] strings = s.Split(new[] { ' ' }, 100);
-                                int numAligns = 0;
-                                for (int i = 0; i < strings.Length; i++)
                                 {
-                                    if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
-                                        strings[i].ToUpper() == "RIGHT")
-                                    {
-                                        numAligns++;
-                                    }
-                                }
-                                tableRowAttributes.colAligns = new HAlign[numAligns];
-                                if (numAligns > 0)
-                                {
+                                    string[] strings = s.Split(new[] { ' ' }, 100);
+                                    int numAligns = 0;
                                     for (int i = 0; i < strings.Length; i++)
                                     {
-                                        switch (strings[i].ToUpper())
+                                        if (strings[i].ToUpper() == "LEFT" || strings[i].ToUpper() == "CENTER" ||
+                                            strings[i].ToUpper() == "RIGHT")
                                         {
-                                            case "LEFT":
-                                                tableRowAttributes.colAligns[i] = HAlign.LEFT;
-                                                break;
-                                            case "CENTER":
-                                                tableRowAttributes.colAligns[i] = HAlign.CENTER;
-                                                break;
-                                            case "RIGHT":
-                                                tableRowAttributes.colAligns[i] = HAlign.RIGHT;
-                                                break;
+                                            numAligns++;
                                         }
                                     }
+                                    tableRowAttributes.colAligns = new HAlign[numAligns];
+                                    if (numAligns > 0)
+                                    {
+                                        for (int i = 0; i < strings.Length; i++)
+                                        {
+                                            switch (strings[i].ToUpper())
+                                            {
+                                                case "LEFT":
+                                                    tableRowAttributes.colAligns[i] = HAlign.LEFT;
+                                                    break;
+                                                case "CENTER":
+                                                    tableRowAttributes.colAligns[i] = HAlign.CENTER;
+                                                    break;
+                                                case "RIGHT":
+                                                    tableRowAttributes.colAligns[i] = HAlign.RIGHT;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        tableRowAttributes.colAligns = new[] { HAlign.CENTER };
+                                    }
+                                    break;
                                 }
-                                else
-                                {
-                                    tableRowAttributes.colAligns = new[] { HAlign.CENTER };
-                                }
-                                break;
-                            }
                         }
                     }
                 }
