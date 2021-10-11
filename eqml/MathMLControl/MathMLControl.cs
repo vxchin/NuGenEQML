@@ -6,9 +6,9 @@ namespace Genetibase.MathX
     using System.Drawing.Imaging;
     using System.IO;
     using System.Windows.Forms;
+    using ApplicationBlocks;
     using Attrs;
     using Fonts;
-    using Genetibase.ApplicationBlocks;
     using Nodes;
     using UI;
 
@@ -21,54 +21,51 @@ namespace Genetibase.MathX
         public event EventHandler Event_OnUndoRedoStackChanged;
         public event EventHandler Event_OnValidationError;
 
-        static NuGenEQML()
-        {
-        }
-
         public NuGenEQML()
         {
-            this.container_ = null;
-            this.schemaName_ = "MathML_XMLSchema.xsd";
-            this.xmlSource_ = "<?xml version='1.0' ?><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><mrow/></math>";
-            this.backgroundColor_ = Color.White;
-            this.fontCollection = null;
-            this.entityManager = null;
+            container_ = null;
+            schemaName_ = "MathML_XMLSchema.xsd";
+            xmlSource_ =
+                "<?xml version='1.0' ?><math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><mrow/></math>";
+            backgroundColor_ = Color.White;
+            fontCollection = null;
+            entityManager = null;
 
 
-            this.InitializeComponent();
+            InitializeComponent();
 
             FontsProvider fontsProvider = new FontsProvider();
-            this.fontCollection = fontsProvider.LoadAll();
-            this.entityManager = new EntityManager(this.fontCollection);
+            fontCollection = fontsProvider.LoadAll();
+            entityManager = new EntityManager(fontCollection);
 
 
-            this.uiMenu = new ControlWithMenu(this.entityManager, this.fontCollection);
-            this.uiMenu.AllowDrop = true;
+            uiMenu = new ControlWithMenu(entityManager, fontCollection);
+            uiMenu.AllowDrop = true;
 
-            this.uiMenu.BackColor = Color.White;
-            this.uiMenu.Dock = DockStyle.Fill;
+            uiMenu.BackColor = Color.White;
+            uiMenu.Dock = DockStyle.Fill;
 
-            this.uiMenu.Location = new Point(0, 0);
-            this.uiMenu.Name = "m_EditControl";
-            this.uiMenu.OffsetX = 0;
-            this.uiMenu.OffsetY = 0;
-            this.uiMenu.Size = new Size(0x256, 0xe2);
-            this.uiMenu.TabIndex = 0;
+            uiMenu.Location = new Point(0, 0);
+            uiMenu.Name = "m_EditControl";
+            uiMenu.OffsetX = 0;
+            uiMenu.OffsetY = 0;
+            uiMenu.Size = new Size(0x256, 0xe2);
+            uiMenu.TabIndex = 0;
 
-            base.Controls.Add(this.uiMenu);
-            this.uiMenu.SetBounds(0, 0, base.Size.Width, base.Size.Height);
-            this.uiMenu.DoResize(base.Size.Width, base.Size.Height, true, false);
-            this.ResetWidth();
+            Controls.Add(uiMenu);
+            uiMenu.SetBounds(0, 0, Size.Width, Size.Height);
+            uiMenu.DoResize(Size.Width, Size.Height, true, false);
+            ResetWidth();
 
-            this.uiMenu.Event_OnUndoRedoStackChanged += new EventHandler(this.OnUndoRedo);
-            this.uiMenu.Event_OnValidationError += new ValidationHandler(this.OnValidationErrorHandler);
+            uiMenu.Event_OnUndoRedoStackChanged += new EventHandler(OnUndoRedo);
+            uiMenu.Event_OnValidationError += new ValidationHandler(OnValidationErrorHandler);
 
-            this.uiMenu.Event_MouseDown += new MouseEventHandler(this.OnMouseDownHandler);
-            this.uiMenu.Event_OnGotFocus += new EventHandler(this.OnGotFocusHandler);
-            this.uiMenu.Event_OnLostFocus += new EventHandler(this.OnLostFocusHandler);
-            this.uiMenu.KeyPress += new KeyPressEventHandler(this.KeyPressHandler);
-            this.uiMenu.Event_OnSelectionChanged += new OnChangeSelection(this.SelectionChangedHandler);
-            this.uiMenu.Focus();
+            uiMenu.Event_MouseDown += new MouseEventHandler(OnMouseDownHandler);
+            uiMenu.Event_OnGotFocus += new EventHandler(OnGotFocusHandler);
+            uiMenu.Event_OnLostFocus += new EventHandler(OnLostFocusHandler);
+            uiMenu.KeyPress += new KeyPressEventHandler(KeyPressHandler);
+            uiMenu.Event_OnSelectionChanged += new OnChangeSelection(SelectionChangedHandler);
+            uiMenu.Focus();
         }
 
         protected override void Dispose(bool disposing)
@@ -79,9 +76,9 @@ namespace Genetibase.MathX
             catch
             {
             }
-            if (disposing && (this.container_ != null))
+            if (disposing && (container_ != null))
             {
-                this.container_.Dispose();
+                container_.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -89,27 +86,27 @@ namespace Genetibase.MathX
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
-            this.ResetWidth();
+            ResetWidth();
         }
 
         public void pub_Command_SubScript()
         {
-            this.uiMenu.Command_SubScript();
+            uiMenu.Command_SubScript();
         }
 
         public void pub_Command_SubSupScript()
         {
-            this.uiMenu.Command_SubSupScript();
+            uiMenu.Command_SubSupScript();
         }
 
         public void pub_Command_SupScript()
         {
-            this.uiMenu.Command_SupScript();
+            uiMenu.Command_SupScript();
         }
 
         public void pub_Copy()
         {
-            this.uiMenu.Copy();
+            uiMenu.Copy();
         }
 
         public bool pub_CopyActive()
@@ -117,7 +114,7 @@ namespace Genetibase.MathX
             bool flag1 = false;
             try
             {
-                return this.uiMenu.CopyActive();
+                return uiMenu.CopyActive();
             }
             catch
             {
@@ -127,14 +124,14 @@ namespace Genetibase.MathX
 
         public void pub_Cut()
         {
-            this.uiMenu.Cut();
+            uiMenu.Cut();
         }
 
         public bool pub_CutActive()
         {
             try
             {
-                return this.uiMenu.CutActive();
+                return uiMenu.CutActive();
             }
             catch
             {
@@ -144,14 +141,14 @@ namespace Genetibase.MathX
 
         public void pub_Delete()
         {
-            this.uiMenu.Delete();
+            uiMenu.Delete();
         }
 
         public Bitmap pub_Export2Image(float fontSize, int nResolution, ref int ImgBaseline)
         {
             try
             {
-                return this.uiMenu.Export2Image(PixelFormat.Format24bppRgb, fontSize, nResolution, ref ImgBaseline);
+                return uiMenu.Export2Image(PixelFormat.Format24bppRgb, fontSize, nResolution, ref ImgBaseline);
             }
             catch
             {
@@ -163,8 +160,8 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.xmlSource_ = this.uiMenu.GetXML(bStrip_Namespace);
-                return this.xmlSource_;
+                xmlSource_ = uiMenu.GetXML(bStrip_Namespace);
+                return xmlSource_;
             }
             catch
             {
@@ -176,7 +173,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.uiMenu.Insert_MathML(sXML, bValidate);
+                uiMenu.Insert_MathML(sXML, bValidate);
             }
             catch
             {
@@ -185,54 +182,54 @@ namespace Genetibase.MathX
 
         public void pub_InsertAction()
         {
-            this.uiMenu.InsertAction();
+            uiMenu.InsertAction();
         }
 
         public void pub_InsertBrackets(string sEntityName1, string sEntityName2, bool bStretchy)
         {
-            this.uiMenu.InsertBrackets(sEntityName1, sEntityName2, bStretchy);
+            uiMenu.InsertBrackets(sEntityName1, sEntityName2, bStretchy);
         }
 
         public void pub_InsertEntity_Identifier(string entityName, bool bItalic, bool bBold)
         {
-            this.uiMenu.InsertEntity_Identifier(entityName, bItalic, bBold);
+            uiMenu.InsertEntity_Identifier(entityName, bItalic, bBold);
         }
 
         public void pub_InsertEntity_Open_IdentifierDictionary_Dialog()
         {
-            this.uiMenu.InsertEntity_Open_IdentifierDictionary_Dialog(true);
+            uiMenu.InsertEntity_Open_IdentifierDictionary_Dialog(true);
         }
 
         public void pub_InsertEntity_Open_OperatorDictionary_Dialog()
         {
-            this.uiMenu.InsertEntity_Open_IdentifierDictionary_Dialog(false);
+            uiMenu.InsertEntity_Open_IdentifierDictionary_Dialog(false);
         }
 
         public void pub_InsertEntity_Operator(string content, bool insertByName)
         {
-            this.uiMenu.InsertEntity_Operator(content, insertByName);
+            uiMenu.InsertEntity_Operator(content, insertByName);
         }
 
         public void pub_InsertFenced()
         {
-            this.uiMenu.InsertFenced();
+            uiMenu.InsertFenced();
         }
 
         public void pub_InsertFraction()
         {
-            this.uiMenu.InsertFraction();
+            uiMenu.InsertFraction();
         }
 
         public void pub_InsertFraction_Bevelled()
         {
-            this.uiMenu.InsertFraction_Bevelled();
+            uiMenu.InsertFraction_Bevelled();
         }
 
         public void pub_InsertMatrix(int rows, int cols)
         {
             try
             {
-                this.uiMenu.InsertMatrix(rows, cols);
+                uiMenu.InsertMatrix(rows, cols);
             }
             catch
             {
@@ -241,87 +238,87 @@ namespace Genetibase.MathX
 
         public void pub_InsertMatrixDialog()
         {
-            this.uiMenu.InsertMatrixDialog();
+            uiMenu.InsertMatrixDialog();
         }
 
         public void pub_InsertOver()
         {
-            this.uiMenu.InsertOver();
+            uiMenu.InsertOver();
         }
 
         public void pub_InsertOverAccent(string entityName)
         {
-            this.uiMenu.InsertOverAccent(entityName);
+            uiMenu.InsertOverAccent(entityName);
         }
 
         public void pub_InsertPhantom()
         {
-            this.uiMenu.InsertPhantom();
+            uiMenu.InsertPhantom();
         }
 
         public void pub_InsertPrime(string entityName)
         {
-            this.uiMenu.InsertPrime(entityName);
+            uiMenu.InsertPrime(entityName);
         }
 
         public void pub_InsertRoot()
         {
-            this.uiMenu.InsertRoot();
+            uiMenu.InsertRoot();
         }
 
         public void pub_InsertSqrt()
         {
-            this.uiMenu.InsertSqrt();
+            uiMenu.InsertSqrt();
         }
 
         public void pub_InsertStretchyArrow_Over(string entityName)
         {
-            this.uiMenu.InsertStretchyArrow_Over(entityName);
+            uiMenu.InsertStretchyArrow_Over(entityName);
         }
 
         public void pub_InsertStretchyArrow_Under(string entityName)
         {
-            this.uiMenu.InsertStretchyArrow_Under(entityName);
+            uiMenu.InsertStretchyArrow_Under(entityName);
         }
 
         public void pub_InsertStretchyArrow_UnderOver(string entityName)
         {
-            this.uiMenu.InsertStretchyArrow_UnderOver(entityName);
+            uiMenu.InsertStretchyArrow_UnderOver(entityName);
         }
 
         public void pub_InsertSubScript()
         {
-            this.uiMenu.InsertSubScript();
+            uiMenu.InsertSubScript();
         }
 
         public void pub_InsertSubSupScript()
         {
-            this.uiMenu.InsertSubSupScript();
+            uiMenu.InsertSubSupScript();
         }
 
         public void pub_InsertSuperScript()
         {
-            this.uiMenu.InsertSuperScript();
+            uiMenu.InsertSuperScript();
         }
 
         public void pub_InsertText()
         {
-            this.uiMenu.InsertText();
+            uiMenu.InsertText();
         }
 
         public void pub_InsertUnder()
         {
-            this.uiMenu.InsertUnder();
+            uiMenu.InsertUnder();
         }
 
         public void pub_InsertUnderAccent(string entityName)
         {
-            this.uiMenu.InsertUnderAccent(entityName);
+            uiMenu.InsertUnderAccent(entityName);
         }
 
         public void pub_InsertUnderOver()
         {
-            this.uiMenu.InsertUnderOver();
+            uiMenu.InsertUnderOver();
         }
 
         public bool LoadFromFile(string filename)
@@ -344,8 +341,8 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.xmlSource_ = sXML;
-                this.uiMenu.LoadXML(sXML);
+                xmlSource_ = sXML;
+                uiMenu.LoadXML(sXML);
                 return true;
             }
             catch
@@ -356,19 +353,19 @@ namespace Genetibase.MathX
 
         public void pub_Paste()
         {
-            this.uiMenu.Paste();
+            uiMenu.Paste();
         }
 
         public void pub_Redo()
         {
-            this.uiMenu.Redo();
+            uiMenu.Redo();
         }
 
         public bool pub_RedoActive()
         {
             try
             {
-                return this.uiMenu.RedoActive();
+                return uiMenu.RedoActive();
             }
             catch
             {
@@ -380,7 +377,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.uiMenu.Save(fileName);
+                uiMenu.Save(fileName);
                 return true;
             }
             catch
@@ -393,7 +390,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.uiMenu.SavePure(fileName);
+                uiMenu.SavePure(fileName);
                 return true;
             }
             catch
@@ -407,7 +404,7 @@ namespace Genetibase.MathX
             using (NuGenImageExportForm imageExportForm = new NuGenImageExportForm())
             {
                 int i = 0;
-                imageExportForm.ShowDialog(this.uiMenu.Export2Image(PixelFormat.Format24bppRgb, 12, 300, ref i));
+                imageExportForm.ShowDialog(uiMenu.Export2Image(PixelFormat.Format24bppRgb, 12, 300, ref i));
             }
         }
 
@@ -415,7 +412,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.uiMenu.SaveAsJPEG(fileName, fontSize, ImgResolution, ref ImgBaseline);
+                uiMenu.SaveAsJPEG(fileName, fontSize, ImgResolution, ref ImgBaseline);
                 return true;
             }
             catch
@@ -428,7 +425,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.uiMenu.SelectAll();
+                uiMenu.SelectAll();
             }
             catch
             {
@@ -440,12 +437,12 @@ namespace Genetibase.MathX
             try
             {
                 Nodes.Attribute attribute;
-                if (this.uiMenu.builder_ == null)
+                if (uiMenu.builder_ == null)
                 {
                     return;
                 }
                 Node node = null;
-                node = this.uiMenu.builder_.getRoot();
+                node = uiMenu.builder_.getRoot();
                 if (node == null)
                 {
                     return;
@@ -475,7 +472,7 @@ namespace Genetibase.MathX
                     }
                 }
                 node.displayStyle = bDisplayStyle;
-                this.uiMenu.ReRender();
+                uiMenu.ReRender();
             }
             catch
             {
@@ -486,7 +483,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                base.SetBounds(x, y, w, h);
+                SetBounds(x, y, w, h);
             }
             catch
             {
@@ -495,17 +492,17 @@ namespace Genetibase.MathX
 
         public void pub_ShowPropertiesDialog()
         {
-            this.uiMenu.ShowPropertiesDialog();
+            uiMenu.ShowPropertiesDialog();
         }
 
         public void pub_ShowStyleDialog()
         {
-            this.uiMenu.StyleProperties();
+            uiMenu.StyleProperties();
         }
 
         public void pub_Undo()
         {
-            this.uiMenu.Undo();
+            uiMenu.Undo();
         }
 
         public bool pub_UndoActive()
@@ -513,7 +510,7 @@ namespace Genetibase.MathX
             bool flag1 = false;
             try
             {
-                return this.uiMenu.UndoActive();
+                return uiMenu.UndoActive();
             }
             catch
             {
@@ -523,54 +520,54 @@ namespace Genetibase.MathX
 
         public void pub_InsertChar(char c)
         {
-            this.uiMenu.pub_InsertChar(c);
+            uiMenu.pub_InsertChar(c);
         }
 
         private void ResetWidth()
         {
-            if (this.uiMenu != null)
+            if (uiMenu != null)
             {
-                this.uiMenu.SetWidth(base.ClientRectangle.Width);
+                uiMenu.SetWidth(ClientRectangle.Width);
             }
         }
 
         private void OnLoad(object sender, EventArgs e)
         {
-            this.uiMenu.SetSchemas(this.schemaName_);
+            uiMenu.SetSchemas(schemaName_);
 
-            this.uiMenu.SetFonts(this.fontCollection);
+            uiMenu.SetFonts(fontCollection);
             try
             {
-                this.uiMenu.LoadXML(this.xmlSource_, "", true);
+                uiMenu.LoadXML(xmlSource_, "", true);
             }
             catch
             {
             }
-            this.uiMenu.Invalidate();
-            this.uiMenu.Focus();
+            uiMenu.Invalidate();
+            uiMenu.Focus();
         }
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuGenEQML));
-            this.SuspendLayout();
+            ComponentResourceManager resources =
+                new ComponentResourceManager(typeof(NuGenEQML));
+            SuspendLayout();
             // 
             // MathMLControl
             // 
-            this.BackColor = System.Drawing.Color.White;
-            this.DoubleBuffered = true;
-            this.Name = "MathMLControl";
+            BackColor = Color.White;
+            DoubleBuffered = true;
+            Name = "MathMLControl";
             resources.ApplyResources(this, "$this");
-            this.Load += new System.EventHandler(this.OnLoad);
-            this.ResumeLayout(false);
-
+            Load += new EventHandler(OnLoad);
+            ResumeLayout(false);
         }
 
         private void OnUndoRedo(object sender, EventArgs e)
         {
             try
             {
-                this.Event_OnUndoRedoStackChanged?.Invoke(this, EventArgs.Empty);
+                Event_OnUndoRedoStackChanged?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
@@ -581,7 +578,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_MouseDown?.Invoke(this, new MouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta));
+                Event_MouseDown?.Invoke(this, new MouseEventArgs(e.Button, e.Clicks, e.X, e.Y, e.Delta));
             }
             catch
             {
@@ -592,7 +589,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.OnKeyPress(e);
+                OnKeyPress(e);
             }
             catch
             {
@@ -603,7 +600,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnValidationError?.Invoke(this, new ValidationErrorEventArgs(e.Message, e.Line, e.Pos));
+                Event_OnValidationError?.Invoke(this, new ValidationErrorEventArgs(e.Message, e.Line, e.Pos));
             }
             catch
             {
@@ -614,7 +611,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnGotFocus?.Invoke(this, EventArgs.Empty);
+                Event_OnGotFocus?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
@@ -625,7 +622,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnLostFocus?.Invoke(this, EventArgs.Empty);
+                Event_OnLostFocus?.Invoke(this, EventArgs.Empty);
             }
             catch
             {
@@ -636,7 +633,7 @@ namespace Genetibase.MathX
         {
             try
             {
-                this.Event_OnSelectionChanged?.Invoke(this, new OnMathMLSelectionChanged(e.HasSelection));
+                Event_OnSelectionChanged?.Invoke(this, new OnMathMLSelectionChanged(e.HasSelection));
             }
             catch
             {
@@ -647,56 +644,37 @@ namespace Genetibase.MathX
         [Browsable(false)]
         public override Color BackColor
         {
-            get
-            {
-                return base.BackColor;
-            }
-            set
-            {
-                base.BackColor = value;
-            }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         [Browsable(false)]
         public override Image BackgroundImage
         {
-            get
-            {
-                return base.BackgroundImage;
-            }
-            set
-            {
-                base.BackgroundImage = value;
-            }
+            get => base.BackgroundImage;
+            set => base.BackgroundImage = value;
         }
 
         [Browsable(false)]
         public override Color ForeColor
         {
-            get
-            {
-                return base.ForeColor;
-            }
-            set
-            {
-                base.ForeColor = value;
-            }
+            get => base.ForeColor;
+            set => base.ForeColor = value;
         }
 
+        [DefaultValue(typeof(Color), "White")]
         public Color MC_BackgroundColor
         {
-            get
-            {
-                return this.backgroundColor_;
-            }
+            get => backgroundColor_;
             set
             {
-                this.backgroundColor_ = value;
-                this.BackColor = this.backgroundColor_;
+                backgroundColor_ = value;
+                BackColor = backgroundColor_;
             }
         }
 
         [DefaultValue(true)]
+        [Description("Gets or sets whether end-users are allowed to edit data.")]
         public bool MC_Editable
         {
             get => uiMenu.Editable;
@@ -704,179 +682,103 @@ namespace Genetibase.MathX
         }
 
         [DefaultValue(HAlign.LEFT)]
+        [Description("Get or sets the horizontal alignment of whole content.")]
         public HAlign MC_HAlign
         {
-            get => this.uiMenu.HAlign;
-            set => this.uiMenu.HAlign = value;
+            get => uiMenu.HAlign;
+            set => uiMenu.HAlign = value;
         }
 
         [DefaultValue(VAlign.TOP)]
+        [Description("Get or sets the vertical alignment of whole content.")]
         public VAlign MC_VAlign
         {
-            get => this.uiMenu.VAlign;
-            set => this.uiMenu.VAlign = value;
+            get => uiMenu.VAlign;
+            set => uiMenu.VAlign = value;
         }
 
         public bool MC_DisplayStyle
         {
             get
             {
-                bool flag1 = false;
-                try
-                {
-                    if (this.uiMenu.builder_ != null)
-                    {
-                        Node z_1 = null;
-                        z_1 = this.uiMenu.builder_.getRoot();
-                        if (z_1 == null)
-                        {
-                            return flag1;
-                        }
-                        flag1 = z_1.displayStyle;
-                    }
-                }
-                catch
-                {
-                }
-                return flag1;
+                var result = uiMenu?.builder_?.getRoot()?.displayStyle;
+                return result.HasValue && result.Value;
             }
         }
 
+        [DefaultValue(true)]
         public bool AutoCloseBrackets
         {
-            get
-            {
-                bool r = true;
-                if (this.uiMenu != null)
-                {
-                    r = this.uiMenu.AutoCloseBrackets;
-                }
-                return r;
-            }
+            get => uiMenu is null || uiMenu.AutoCloseBrackets;
             set
             {
-                if (this.uiMenu != null)
-                {
-                    this.uiMenu.AutoCloseBrackets = value;
-                }
+                if (uiMenu != null) uiMenu.AutoCloseBrackets = value;
             }
         }
 
+        [DefaultValue(true)]
         public bool MC_EnableStretchyBrackets
         {
-            get
-            {
-                bool r = true;
-                if ((this.uiMenu != null) && this.uiMenu.NonStretchyBrackets)
-                {
-                    r = false;
-                }
-                return r;
-            }
+            get => uiMenu is null || !uiMenu.NonStretchyBrackets;
             set
             {
-                if (this.uiMenu != null)
-                {
-                    if (value)
-                    {
-                        this.uiMenu.NonStretchyBrackets = false;
-                    }
-                    else
-                    {
-                        this.uiMenu.NonStretchyBrackets = true;
-                    }
-                }
+                if (uiMenu != null) uiMenu.NonStretchyBrackets = !value;
             }
         }
 
+        [DefaultValue(12F)]
         public float MC_FontSize
         {
             get
             {
-                if (this.uiMenu == null)
-                {
-                    return 12f;
-                }
+                if (uiMenu is null) return 12F;
                 try
                 {
-                    return this.uiMenu.FontSize;
+                    return uiMenu.FontSize;
                 }
                 catch
                 {
-                    return 12f;
+                    return 12F;
                 }
             }
             set
             {
-                if (this.uiMenu != null)
+                if (uiMenu is null) return;
+                try
                 {
-                    try
-                    {
-                        this.uiMenu.FontSize = value;
-                    }
-                    catch
-                    {
-                    }
+                    uiMenu.FontSize = value;
+                }
+                catch
+                {
                 }
             }
         }
 
+        [DefaultValue(true)]
         public bool MC_UseDefaultContextMenu
         {
-            get
-            {
-                bool r = true;
-                if (this.uiMenu != null)
-                {
-                    r = this.uiMenu.UseDefaultContextMenu;
-                }
-                return r;
-            }
+            get => uiMenu is null || uiMenu.UseDefaultContextMenu;
             set
             {
-                if (this.uiMenu != null)
-                {
-                    this.uiMenu.UseDefaultContextMenu = value;
-                }
+                if (uiMenu != null) uiMenu.UseDefaultContextMenu = value;
             }
         }
 
+        [DefaultValue(false)]
         public bool ParentControl_DesignMode
         {
-            get
-            {
-                try
-                {
-                    return this.uiMenu.ParentControl_DesignMode;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
+            get => uiMenu != null && uiMenu.ParentControl_DesignMode;
             set
             {
-                try
-                {
-                    this.uiMenu.ParentControl_DesignMode = value;
-                }
-                catch
-                {
-                }
+                if (uiMenu != null) uiMenu.ParentControl_DesignMode = value;
             }
         }
 
         [Browsable(false)]
-        public override System.Windows.Forms.RightToLeft RightToLeft
+        public override RightToLeft RightToLeft
         {
-            get
-            {
-                return base.RightToLeft;
-            }
-            set
-            {
-                base.RightToLeft = value;
-            }
+            get => base.RightToLeft;
+            set => base.RightToLeft = value;
         }
 
         private string schemaName_;
@@ -889,4 +791,3 @@ namespace Genetibase.MathX
         private Container container_;
     }
 }
-

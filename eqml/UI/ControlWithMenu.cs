@@ -1,12 +1,10 @@
 namespace UI
 {
-    using Fonts;
     using System;
     using System.ComponentModel;
     using System.Drawing;
-    using System.Resources;
-    using System.Runtime.CompilerServices;
     using System.Windows.Forms;
+    using Fonts;
 
     public delegate void OnChangeSelection(object sender, SelectionArgs e);
 
@@ -14,7 +12,7 @@ namespace UI
     {
         public event MouseEventHandler Event_MouseDown;
 
-        public ControlWithMenu(EntityManager MathMLEntityManager, FontCollection FontCollection) 
+        public ControlWithMenu(EntityManager MathMLEntityManager, FontCollection FontCollection)
             : base(MathMLEntityManager, FontCollection)
         {
             this.designMode = false;
@@ -187,19 +185,19 @@ namespace UI
             this.propItem = new MenuItem();
             this.styleItem = new MenuItem();
             this.menu_.MenuItems.AddRange(new MenuItem[] { this.undoItem, this.redoItem, this.sep1, this.cutItem, this.copyItem, this.pasteItem, this.deleteItem, this.sep2, this.insertItem, this.sep9, this.propFractionItem, this.propFencedItem, this.propTableItem, this.propActionItem, this.propItem, this.styleItem });
-                        
+
             this.undoItem.Index = 0;
             this.undoItem.Text = "Undo";
             this.undoItem.Click += new EventHandler(this.OnUndo);
 
-            
+
             this.redoItem.Index = 1;
             this.redoItem.Text = "Redo";
             this.redoItem.Click += new EventHandler(this.OnRedo);
-                        
+
             this.sep1.Index = 2;
             this.sep1.Text = "-";
-            
+
             this.cutItem.Index = 3;
             this.cutItem.Text = "Cut";
             this.cutItem.Click += new EventHandler(this.OnCut);
@@ -211,90 +209,90 @@ namespace UI
             this.pasteItem.Index = 5;
             this.pasteItem.Text = "Paste";
             this.pasteItem.Click += new EventHandler(this.OnPaste);
-                        
+
             this.deleteItem.Index = 6;
             this.deleteItem.Text = "Delete";
             this.deleteItem.Click += new EventHandler(this.OnDelete);
-                        
+
             this.sep2.Index = 7;
             this.sep2.Text = "-";
-                        
+
             this.insertItem.Index = 8;
-            this.insertItem.MenuItems.AddRange(new MenuItem[] { 
-                this.fractionItem, this.squareRootItem, this.rootItem, this.sep3, this.matrixItem, this.sep4, this.superscriptItem, this.subscriptItem, this.fencedItem, this.sep5, this.moItem, this.miItem, this.sep6, this.mtextItem, this.sep7, this.mphantomItem, 
+            this.insertItem.MenuItems.AddRange(new MenuItem[] {
+                this.fractionItem, this.squareRootItem, this.rootItem, this.sep3, this.matrixItem, this.sep4, this.superscriptItem, this.subscriptItem, this.fencedItem, this.sep5, this.moItem, this.miItem, this.sep6, this.mtextItem, this.sep7, this.mphantomItem,
                 this.sep8, this.mactionItem
              });
             this.insertItem.Text = "Insert";
-                        
+
             this.fractionItem.Index = 0;
             this.fractionItem.Text = "Fraction";
             this.fractionItem.Click += new EventHandler(this.OnFraction);
-                        
+
             this.squareRootItem.Index = 1;
             this.squareRootItem.Text = "Square Root";
             this.squareRootItem.Click += new EventHandler(this.OnSquareRoot);
-                        
+
             this.rootItem.Index = 2;
             this.rootItem.Text = "Root";
             this.rootItem.Click += new EventHandler(this.OnRoot);
-                        
+
             this.sep3.Index = 3;
             this.sep3.Text = "-";
-                        
+
             this.matrixItem.Index = 4;
             this.matrixItem.Text = "Matrix";
             this.matrixItem.Click += new EventHandler(this.OnMatrix);
-                        
+
             this.sep4.Index = 5;
             this.sep4.Text = "-";
-                        
+
             this.superscriptItem.Index = 6;
             this.superscriptItem.Text = "Superscript";
             this.superscriptItem.Click += new EventHandler(this.SuperscriptHandler);
-            
+
             this.subscriptItem.Index = 7;
             this.subscriptItem.Text = "Subscript";
             this.subscriptItem.Click += new EventHandler(this.SubscriptHandler);
-                        
+
             this.fencedItem.Index = 8;
             this.fencedItem.Text = "Fenced";
             this.fencedItem.Click += new EventHandler(this.FencedHandler);
-                        
+
             this.sep5.Index = 9;
             this.sep5.Text = "-";
-                        
+
             this.moItem.Index = 10;
             this.moItem.Text = "Mathematical Operator";
             this.moItem.Click += new EventHandler(this.MoHandler);
-                        
+
             this.miItem.Index = 11;
             this.miItem.Text = "Mathematical Identifier";
             this.miItem.Click += new EventHandler(this.MiHandler);
-                        
+
             this.sep6.Index = 12;
             this.sep6.Text = "-";
-                        
+
             this.mtextItem.Index = 13;
             this.mtextItem.Text = "Text";
             this.mtextItem.Click += new EventHandler(this.MtextHandler);
-                        
+
             this.sep7.Index = 14;
             this.sep7.Text = "-";
-                        
+
             this.mphantomItem.Index = 15;
             this.mphantomItem.Text = "Phantom";
             this.mphantomItem.Click += new EventHandler(this.OnPhantom);
-                        
+
             this.sep8.Index = 0x10;
             this.sep8.Text = "-";
-                        
+
             this.mactionItem.Index = 0x11;
             this.mactionItem.Text = "Action";
             this.mactionItem.Click += new EventHandler(this.OnAction);
-                        
+
             this.sep9.Index = 9;
             this.sep9.Text = "-";
-                        
+
             this.propFractionItem.Index = 10;
             this.propFractionItem.Text = "Fraction Properties";
             this.propFractionItem.Click += new EventHandler(this.OnFractionProperties);
@@ -310,11 +308,11 @@ namespace UI
             this.propActionItem.Index = 13;
             this.propActionItem.Text = "Action Properties";
             this.propActionItem.Click += new EventHandler(this.OnActionProperties);
-            
+
             this.propItem.Index = 14;
             this.propItem.Text = "-";
 
-            
+
             this.styleItem.Index = 15;
             this.styleItem.Text = "Style Properties";
             this.styleItem.Click += new EventHandler(this.OnStyleProperties);
@@ -339,7 +337,7 @@ namespace UI
             bool style_Active = false;
 
             base.SelectActiveMenuItems(ref copy_Active, ref bCut_Active, ref bUndo_Active, ref bRedo_Active, ref bProp_Fraction_Active, ref bProp_Table_Active, ref bProp_Fenced_Active, ref bProp_Action_Active, ref style_Active);
-            
+
             this.undoItem.Enabled = false;
             this.redoItem.Enabled = false;
             this.copyItem.Enabled = false;
@@ -438,7 +436,7 @@ namespace UI
         private MenuItem fencedItem;
         private MenuItem moItem;
         private MenuItem miItem;
-        
+
         private MenuItem mtextItem;
         private MenuItem mphantomItem;
         private MenuItem mactionItem;
@@ -446,10 +444,10 @@ namespace UI
         private MenuItem propFencedItem;
         private MenuItem propTableItem;
         private MenuItem propActionItem;
-        
+
         public ContextMenu menu_;
         private bool designMode;
-        private bool useDefaultContextMenu;
+        private bool useDefaultContextMenu = true;
 
         private MenuItem sep1;
         private MenuItem sep2;
@@ -463,7 +461,7 @@ namespace UI
 
         private MenuItem propItem;
         private MenuItem styleItem;
-        
+
         private MenuItem undoItem;
         private MenuItem redoItem;
         private MenuItem cutItem;

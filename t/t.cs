@@ -95,20 +95,20 @@ namespace Sample3
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.mathMLControl1 = new Genetibase.MathX.NuGenEQML();
             this.mainContainer = new System.Windows.Forms.SplitContainer();
-            this.topPanel = new System.Windows.Forms.Panel();
             this.contentContainer = new System.Windows.Forms.SplitContainer();
+            this.topPanel = new System.Windows.Forms.Panel();
+            this.mathMLControl1 = new Genetibase.MathX.NuGenEQML();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
             this.mainContainer.Panel1.SuspendLayout();
             this.mainContainer.Panel2.SuspendLayout();
             this.mainContainer.SuspendLayout();
-            this.topPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contentContainer)).BeginInit();
             this.contentContainer.Panel1.SuspendLayout();
             this.contentContainer.Panel2.SuspendLayout();
             this.contentContainer.SuspendLayout();
+            this.topPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_
@@ -157,22 +157,6 @@ namespace Sample3
             this.button3.Text = "SavePure";
             this.button3.Click += new System.EventHandler(this.save_mathml_pure);
             // 
-            // mathMLControl1
-            // 
-            this.mathMLControl1.AutoCloseBrackets = true;
-            this.mathMLControl1.BackColor = System.Drawing.Color.White;
-            this.mathMLControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mathMLControl1.Location = new System.Drawing.Point(0, 0);
-            this.mathMLControl1.MC_BackgroundColor = System.Drawing.Color.White;
-            this.mathMLControl1.MC_EnableStretchyBrackets = true;
-            this.mathMLControl1.MC_FontSize = 14F;
-            this.mathMLControl1.MC_UseDefaultContextMenu = true;
-            this.mathMLControl1.Name = "mathMLControl1";
-            this.mathMLControl1.ParentControl_DesignMode = false;
-            this.mathMLControl1.Size = new System.Drawing.Size(610, 329);
-            this.mathMLControl1.TabIndex = 0;
-            this.mathMLControl1.Event_OnSelectionChanged += new System.EventHandler(this.mathMLControl1_Event_OnSelectionChanged);
-            // 
             // mainContainer
             // 
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -189,18 +173,6 @@ namespace Sample3
             this.mainContainer.Size = new System.Drawing.Size(894, 605);
             this.mainContainer.SplitterDistance = 610;
             this.mainContainer.TabIndex = 3;
-            // 
-            // topPanel
-            // 
-            this.topPanel.Controls.Add(this.button_);
-            this.topPanel.Controls.Add(this.button1);
-            this.topPanel.Controls.Add(this.button2);
-            this.topPanel.Controls.Add(this.button3);
-            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topPanel.Location = new System.Drawing.Point(0, 0);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(894, 28);
-            this.topPanel.TabIndex = 4;
             // 
             // contentContainer
             // 
@@ -219,6 +191,28 @@ namespace Sample3
             this.contentContainer.Size = new System.Drawing.Size(610, 605);
             this.contentContainer.SplitterDistance = 329;
             this.contentContainer.TabIndex = 0;
+            // 
+            // topPanel
+            // 
+            this.topPanel.Controls.Add(this.button_);
+            this.topPanel.Controls.Add(this.button1);
+            this.topPanel.Controls.Add(this.button2);
+            this.topPanel.Controls.Add(this.button3);
+            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topPanel.Location = new System.Drawing.Point(0, 0);
+            this.topPanel.Name = "topPanel";
+            this.topPanel.Size = new System.Drawing.Size(894, 28);
+            this.topPanel.TabIndex = 4;
+            // 
+            // mathMLControl1
+            // 
+            this.mathMLControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mathMLControl1.Location = new System.Drawing.Point(0, 0);
+            this.mathMLControl1.MC_FontSize = 14F;
+            this.mathMLControl1.Name = "mathMLControl1";
+            this.mathMLControl1.Size = new System.Drawing.Size(610, 329);
+            this.mathMLControl1.TabIndex = 0;
+            this.mathMLControl1.Event_OnSelectionChanged += new System.EventHandler(this.mathMLControl1_Event_OnSelectionChanged);
             // 
             // propertyGrid
             // 
@@ -242,12 +236,12 @@ namespace Sample3
             this.mainContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
             this.mainContainer.ResumeLayout(false);
-            this.topPanel.ResumeLayout(false);
             this.contentContainer.Panel1.ResumeLayout(false);
             this.contentContainer.Panel2.ResumeLayout(false);
             this.contentContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contentContainer)).EndInit();
             this.contentContainer.ResumeLayout(false);
+            this.topPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
