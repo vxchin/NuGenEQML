@@ -45,7 +45,6 @@ namespace Nodes
                     {
                         targetXmlNode = xmlDoc.CreateNode(XmlNodeType.Element, type_.xmlTag, nspace);
 
-                        XmlNode selNode;
                         if ((type_.type == ElementType.Ms ||
                              type_.type == ElementType.Mtext) && !String.IsNullOrEmpty(literalText))
                         {
@@ -72,7 +71,7 @@ namespace Nodes
                                     s = s.Substring(0, Selection_Collection.literalLength);
                                 }
                             }
-                            selNode = xmlDoc.CreateTextNode(s);
+                            var selNode = xmlDoc.CreateTextNode(s);
                             targetXmlNode.AppendChild(selNode);
                         }
                         else if (type_.type != ElementType.Mglyph && !String.IsNullOrEmpty(literalText))
@@ -102,7 +101,7 @@ namespace Nodes
                                     s = s.Substring(0, Selection_Collection.literalLength);
                                 }
                             }
-                            selNode = xmlDoc.CreateTextNode(s);
+                            var selNode = xmlDoc.CreateTextNode(s);
                             targetXmlNode.AppendChild(selNode);
                         }
                     }
