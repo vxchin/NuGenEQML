@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using Genetibase.ApplicationBlocks;
 
 namespace Sample3
 {
@@ -246,7 +247,10 @@ namespace Sample3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            mathMLControl1.pub_Export();
+            using (NuGenImageExportForm imageExportForm = new NuGenImageExportForm())
+            {
+                imageExportForm.ShowDialog(mathMLControl1.pub_Export2Image());
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

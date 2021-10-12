@@ -6,7 +6,6 @@ namespace Genetibase.MathX
     using System.Drawing.Imaging;
     using System.IO;
     using System.Windows.Forms;
-    using ApplicationBlocks;
     using Attrs;
     using Fonts;
     using Nodes;
@@ -155,6 +154,13 @@ namespace Genetibase.MathX
                 return null;
             }
         }
+
+        public Image pub_Export2Image(float fontSize = 12F, int resolution = 300)
+        {
+            var i = 0;
+            return pub_Export2Image(fontSize, resolution, ref i);
+        }
+
 
         public string pub_GetXML(bool bStrip_Namespace)
         {
@@ -396,15 +402,6 @@ namespace Genetibase.MathX
             catch
             {
                 return false;
-            }
-        }
-
-        public void pub_Export()
-        {
-            using (NuGenImageExportForm imageExportForm = new NuGenImageExportForm())
-            {
-                int i = 0;
-                imageExportForm.ShowDialog(uiMenu.Export2Image(PixelFormat.Format24bppRgb, 12, 300, ref i));
             }
         }
 

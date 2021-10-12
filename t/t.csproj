@@ -82,6 +82,26 @@
       <Project>{A95BA64D-E86C-4994-BEA7-D2B178F59526}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
+    <Reference Include="Genetibase.ApplicationBlocks, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferenceAssemblies\Genetibase.ApplicationBlocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Genetibase.Shared, Version=3.20.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferenceAssemblies\Genetibase.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Genetibase.Shared.Controls, Version=1.41.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferenceAssemblies\Genetibase.Shared.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Genetibase.Shared.Design, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferenceAssemblies\Genetibase.Shared.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Genetibase.Win32, Version=1.18.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferenceAssemblies\Genetibase.Win32.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <Name>mscorlib</Name>
     </Reference>

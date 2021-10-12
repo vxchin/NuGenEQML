@@ -78,26 +78,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Genetibase.ApplicationBlocks, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReferenceAssemblies\Genetibase.ApplicationBlocks.dll</HintPath>
-    </Reference>
-    <Reference Include="Genetibase.Shared, Version=3.20.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReferenceAssemblies\Genetibase.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="Genetibase.Shared.Controls, Version=1.41.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReferenceAssemblies\Genetibase.Shared.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Genetibase.Shared.Design, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReferenceAssemblies\Genetibase.Shared.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Genetibase.Win32, Version=1.18.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReferenceAssemblies\Genetibase.Win32.dll</HintPath>
-    </Reference>
     <Reference Include="mscorlib">
       <Name>mscorlib</Name>
       <HintPath>mscorlib.dll</HintPath>
@@ -110,10 +90,6 @@
     <Reference Include="System.Drawing">
       <Name>System.Drawing</Name>
       <HintPath>System.Drawing.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security">
-      <Name>System.Security</Name>
-      <HintPath>System.Security.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
