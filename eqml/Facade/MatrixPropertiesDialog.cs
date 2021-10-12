@@ -1,100 +1,92 @@
 namespace Facade
 {
-    using Attrs;
-    using MathTable;
-    using Nodes;
     using System;
     using System.ComponentModel;
     using System.Drawing;
-    using System.Drawing.Drawing2D;
-    using System.Resources;
     using System.Windows.Forms;
+    using Attrs;
+    using MathTable;
+    using Nodes;
 
     internal class MatrixPropertiesDialog : Form
     {
         internal class MathTableButton : Button
         {
-            public MathTableButton()
-            {
-                this.row = 0;
-                this.col = 0;
-            }
-
             public int row;
             public int col;
         }
 
         public MatrixPropertiesDialog()
         {
-            this.numRows = 6;
-            this.numCols = 6;
-            this.buttonsOrigin = new Point(40, 0xd8);
-            this.container = null;
-            this.success_ = false;
-            this.bWidth = 0x18;
-            this.bHeight = 0x18;
-            this.canvasWidth = 10;
-            this.InitializeComponent();
+            numRows = 6;
+            numCols = 6;
+            buttonsOrigin = new Point(40, 0xd8);
+            container = null;
+            success_ = false;
+            bWidth = 0x18;
+            bHeight = 0x18;
+            canvasWidth = 10;
+            InitializeComponent();
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (this.container != null))
+            if (disposing && container != null)
             {
-                this.container.Dispose();
+                container.Dispose();
             }
             base.Dispose(disposing);
         }
-        
+
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (keyData == Keys.Return)
+            switch (keyData)
             {
-                this.Success = true;
-                base.Close();
-            }
-            else if (keyData == Keys.Escape)
-            {
-                this.Success = false;
-                base.Close();
-            }
-            else
-            {
-                return base.ProcessDialogKey(keyData);
+                case Keys.Return:
+                    Success = true;
+                    Close();
+                    break;
+                case Keys.Escape:
+                    Success = false;
+                    Close();
+                    break;
+                default:
+                    return base.ProcessDialogKey(keyData);
             }
             return true;
         }
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MatrixPropertiesDialog));
-            this.group1 = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(MatrixPropertiesDialog));
+            this.tableAlignmentGroup = new System.Windows.Forms.GroupBox();
             this.tablealignAxis = new System.Windows.Forms.RadioButton();
             this.tablealignbaseline = new System.Windows.Forms.RadioButton();
             this.tablealigncenter = new System.Windows.Forms.RadioButton();
             this.tablealignbottom = new System.Windows.Forms.RadioButton();
             this.tablealigntop_ = new System.Windows.Forms.RadioButton();
-            this.group2 = new System.Windows.Forms.GroupBox();
+            this.rowAlignmentGroup = new System.Windows.Forms.GroupBox();
             this.rowalignaxis = new System.Windows.Forms.RadioButton();
             this.rowalignbaseline = new System.Windows.Forms.RadioButton();
             this.rowaligncenter = new System.Windows.Forms.RadioButton();
             this.rowalignbottom = new System.Windows.Forms.RadioButton();
             this.rowaligntop = new System.Windows.Forms.RadioButton();
-            this.group3 = new System.Windows.Forms.GroupBox();
+            this.columnAlignmentGroup = new System.Windows.Forms.GroupBox();
             this.colaligncenter = new System.Windows.Forms.RadioButton();
             this.colalignright = new System.Windows.Forms.RadioButton();
             this.colalignleft = new System.Windows.Forms.RadioButton();
-            this.group4 = new System.Windows.Forms.GroupBox();
+            this.rowLinesGroup = new System.Windows.Forms.GroupBox();
             this.tablelinestylesolid = new System.Windows.Forms.RadioButton();
             this.tablelinestyledashed = new System.Windows.Forms.RadioButton();
             this.tablelinestylenone = new System.Windows.Forms.RadioButton();
             this.rowspacing = new System.Windows.Forms.TextBox();
-            this.group5 = new System.Windows.Forms.GroupBox();
+            this.columnLinesGroup = new System.Windows.Forms.GroupBox();
             this.collinestylesolid = new System.Windows.Forms.RadioButton();
             this.collinestyledashed = new System.Windows.Forms.RadioButton();
             this.collinestylenone = new System.Windows.Forms.RadioButton();
             this.colSpacing_ = new System.Windows.Forms.TextBox();
-            this.group6 = new System.Windows.Forms.GroupBox();
+            this.tableFrameGroup = new System.Windows.Forms.GroupBox();
             this.tablelinesolid = new System.Windows.Forms.RadioButton();
             this.tablelinedashed = new System.Windows.Forms.RadioButton();
             this.tablelinenone = new System.Windows.Forms.RadioButton();
@@ -113,23 +105,23 @@ namespace Facade
             this.group10 = new System.Windows.Forms.GroupBox();
             this.group11 = new System.Windows.Forms.GroupBox();
             this.cellsTab = new System.Windows.Forms.TabPage();
-            this.group12 = new System.Windows.Forms.GroupBox();
+            this.cellRowAlignmentGroup = new System.Windows.Forms.GroupBox();
             this.rowalignaxis_ = new System.Windows.Forms.RadioButton();
             this.rowalignbaseline_ = new System.Windows.Forms.RadioButton();
             this.rowaligncenter_ = new System.Windows.Forms.RadioButton();
             this.rowalignbottom_ = new System.Windows.Forms.RadioButton();
             this.rowaligntop_ = new System.Windows.Forms.RadioButton();
-            this.group13 = new System.Windows.Forms.GroupBox();
+            this.cellColumnAlignmentGroup = new System.Windows.Forms.GroupBox();
             this.raligncenter = new System.Windows.Forms.RadioButton();
             this.rowalignright = new System.Windows.Forms.RadioButton();
             this.rowalignleft = new System.Windows.Forms.RadioButton();
             this.selAllbutton = new Glass.GlassButton();
-            this.group1.SuspendLayout();
-            this.group2.SuspendLayout();
-            this.group3.SuspendLayout();
-            this.group4.SuspendLayout();
-            this.group5.SuspendLayout();
-            this.group6.SuspendLayout();
+            this.tableAlignmentGroup.SuspendLayout();
+            this.rowAlignmentGroup.SuspendLayout();
+            this.columnAlignmentGroup.SuspendLayout();
+            this.rowLinesGroup.SuspendLayout();
+            this.columnLinesGroup.SuspendLayout();
+            this.tableFrameGroup.SuspendLayout();
             this.tabcontrol.SuspendLayout();
             this.tableTab.SuspendLayout();
             this.group7.SuspendLayout();
@@ -140,21 +132,21 @@ namespace Facade
             this.group10.SuspendLayout();
             this.group11.SuspendLayout();
             this.cellsTab.SuspendLayout();
-            this.group12.SuspendLayout();
-            this.group13.SuspendLayout();
+            this.cellRowAlignmentGroup.SuspendLayout();
+            this.cellColumnAlignmentGroup.SuspendLayout();
             this.SuspendLayout();
             // 
-            // group1
+            // tableAlignmentGroup
             // 
-            this.group1.Controls.Add(this.tablealignAxis);
-            this.group1.Controls.Add(this.tablealignbaseline);
-            this.group1.Controls.Add(this.tablealigncenter);
-            this.group1.Controls.Add(this.tablealignbottom);
-            this.group1.Controls.Add(this.tablealigntop_);
-            this.group1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group1, "group1");
-            this.group1.Name = "group1";
-            this.group1.TabStop = false;
+            this.tableAlignmentGroup.Controls.Add(this.tablealignAxis);
+            this.tableAlignmentGroup.Controls.Add(this.tablealignbaseline);
+            this.tableAlignmentGroup.Controls.Add(this.tablealigncenter);
+            this.tableAlignmentGroup.Controls.Add(this.tablealignbottom);
+            this.tableAlignmentGroup.Controls.Add(this.tablealigntop_);
+            this.tableAlignmentGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.tableAlignmentGroup, "tableAlignmentGroup");
+            this.tableAlignmentGroup.Name = "tableAlignmentGroup";
+            this.tableAlignmentGroup.TabStop = false;
             // 
             // tablealignAxis
             // 
@@ -162,49 +154,49 @@ namespace Facade
             resources.ApplyResources(this.tablealignAxis, "tablealignAxis");
             this.tablealignAxis.Name = "tablealignAxis";
             this.tablealignAxis.TabStop = true;
-            this.tablealignAxis.CheckedChanged += new System.EventHandler(this.taAxisClick);
+            this.tablealignAxis.CheckedChanged += this.taAxisClick;
             // 
             // tablealignbaseline
             // 
             resources.ApplyResources(this.tablealignbaseline, "tablealignbaseline");
             this.tablealignbaseline.Name = "tablealignbaseline";
-            this.tablealignbaseline.CheckedChanged += new System.EventHandler(this.taBaselineClick);
+            this.tablealignbaseline.CheckedChanged += this.taBaselineClick;
             // 
             // tablealigncenter
             // 
             resources.ApplyResources(this.tablealigncenter, "tablealigncenter");
             this.tablealigncenter.Name = "tablealigncenter";
-            this.tablealigncenter.CheckedChanged += new System.EventHandler(this.taCenterClick);
+            this.tablealigncenter.CheckedChanged += this.taCenterClick;
             // 
             // tablealignbottom
             // 
             resources.ApplyResources(this.tablealignbottom, "tablealignbottom");
             this.tablealignbottom.Name = "tablealignbottom";
-            this.tablealignbottom.CheckedChanged += new System.EventHandler(this.taBottomClick);
+            this.tablealignbottom.CheckedChanged += this.taBottomClick;
             // 
             // tablealigntop_
             // 
             resources.ApplyResources(this.tablealigntop_, "tablealigntop_");
             this.tablealigntop_.Name = "tablealigntop_";
-            this.tablealigntop_.CheckedChanged += new System.EventHandler(this.tatopClick);
+            this.tablealigntop_.CheckedChanged += this.tatopClick;
             // 
-            // group2
+            // rowAlignmentGroup
             // 
-            this.group2.Controls.Add(this.rowalignaxis);
-            this.group2.Controls.Add(this.rowalignbaseline);
-            this.group2.Controls.Add(this.rowaligncenter);
-            this.group2.Controls.Add(this.rowalignbottom);
-            this.group2.Controls.Add(this.rowaligntop);
-            this.group2.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group2, "group2");
-            this.group2.Name = "group2";
-            this.group2.TabStop = false;
+            this.rowAlignmentGroup.Controls.Add(this.rowalignaxis);
+            this.rowAlignmentGroup.Controls.Add(this.rowalignbaseline);
+            this.rowAlignmentGroup.Controls.Add(this.rowaligncenter);
+            this.rowAlignmentGroup.Controls.Add(this.rowalignbottom);
+            this.rowAlignmentGroup.Controls.Add(this.rowaligntop);
+            this.rowAlignmentGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.rowAlignmentGroup, "rowAlignmentGroup");
+            this.rowAlignmentGroup.Name = "rowAlignmentGroup";
+            this.rowAlignmentGroup.TabStop = false;
             // 
             // rowalignaxis
             // 
             resources.ApplyResources(this.rowalignaxis, "rowalignaxis");
             this.rowalignaxis.Name = "rowalignaxis";
-            this.rowalignaxis.CheckedChanged += new System.EventHandler(this.raaxisClick);
+            this.rowalignaxis.CheckedChanged += this.raaxisClick;
             // 
             // rowalignbaseline
             // 
@@ -212,35 +204,35 @@ namespace Facade
             resources.ApplyResources(this.rowalignbaseline, "rowalignbaseline");
             this.rowalignbaseline.Name = "rowalignbaseline";
             this.rowalignbaseline.TabStop = true;
-            this.rowalignbaseline.CheckedChanged += new System.EventHandler(this.raBaselineClick);
+            this.rowalignbaseline.CheckedChanged += this.raBaselineClick;
             // 
             // rowaligncenter
             // 
             resources.ApplyResources(this.rowaligncenter, "rowaligncenter");
             this.rowaligncenter.Name = "rowaligncenter";
-            this.rowaligncenter.CheckedChanged += new System.EventHandler(this.raCenterClick);
+            this.rowaligncenter.CheckedChanged += this.raCenterClick;
             // 
             // rowalignbottom
             // 
             resources.ApplyResources(this.rowalignbottom, "rowalignbottom");
             this.rowalignbottom.Name = "rowalignbottom";
-            this.rowalignbottom.CheckedChanged += new System.EventHandler(this.raBottomClick);
+            this.rowalignbottom.CheckedChanged += this.raBottomClick;
             // 
             // rowaligntop
             // 
             resources.ApplyResources(this.rowaligntop, "rowaligntop");
             this.rowaligntop.Name = "rowaligntop";
-            this.rowaligntop.CheckedChanged += new System.EventHandler(this.raTopClick);
+            this.rowaligntop.CheckedChanged += this.raTopClick;
             // 
-            // group3
+            // columnAlignmentGroup
             // 
-            this.group3.Controls.Add(this.colaligncenter);
-            this.group3.Controls.Add(this.colalignright);
-            this.group3.Controls.Add(this.colalignleft);
-            this.group3.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group3, "group3");
-            this.group3.Name = "group3";
-            this.group3.TabStop = false;
+            this.columnAlignmentGroup.Controls.Add(this.colaligncenter);
+            this.columnAlignmentGroup.Controls.Add(this.colalignright);
+            this.columnAlignmentGroup.Controls.Add(this.colalignleft);
+            this.columnAlignmentGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.columnAlignmentGroup, "columnAlignmentGroup");
+            this.columnAlignmentGroup.Name = "columnAlignmentGroup";
+            this.columnAlignmentGroup.TabStop = false;
             // 
             // colaligncenter
             // 
@@ -248,41 +240,41 @@ namespace Facade
             resources.ApplyResources(this.colaligncenter, "colaligncenter");
             this.colaligncenter.Name = "colaligncenter";
             this.colaligncenter.TabStop = true;
-            this.colaligncenter.CheckedChanged += new System.EventHandler(this.caCenterclick);
+            this.colaligncenter.CheckedChanged += this.caCenterclick;
             // 
             // colalignright
             // 
             resources.ApplyResources(this.colalignright, "colalignright");
             this.colalignright.Name = "colalignright";
-            this.colalignright.CheckedChanged += new System.EventHandler(this.caRightClick);
+            this.colalignright.CheckedChanged += this.caRightClick;
             // 
             // colalignleft
             // 
             resources.ApplyResources(this.colalignleft, "colalignleft");
             this.colalignleft.Name = "colalignleft";
-            this.colalignleft.CheckedChanged += new System.EventHandler(this.caLeftClick);
+            this.colalignleft.CheckedChanged += this.caLeftClick;
             // 
-            // group4
+            // rowLinesGroup
             // 
-            this.group4.Controls.Add(this.tablelinestylesolid);
-            this.group4.Controls.Add(this.tablelinestyledashed);
-            this.group4.Controls.Add(this.tablelinestylenone);
-            this.group4.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group4, "group4");
-            this.group4.Name = "group4";
-            this.group4.TabStop = false;
+            this.rowLinesGroup.Controls.Add(this.tablelinestylesolid);
+            this.rowLinesGroup.Controls.Add(this.tablelinestyledashed);
+            this.rowLinesGroup.Controls.Add(this.tablelinestylenone);
+            this.rowLinesGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.rowLinesGroup, "rowLinesGroup");
+            this.rowLinesGroup.Name = "rowLinesGroup";
+            this.rowLinesGroup.TabStop = false;
             // 
             // tablelinestylesolid
             // 
             resources.ApplyResources(this.tablelinestylesolid, "tablelinestylesolid");
             this.tablelinestylesolid.Name = "tablelinestylesolid";
-            this.tablelinestylesolid.CheckedChanged += new System.EventHandler(this.tlsolidClick);
+            this.tablelinestylesolid.CheckedChanged += this.tlsolidClick;
             // 
             // tablelinestyledashed
             // 
             resources.ApplyResources(this.tablelinestyledashed, "tablelinestyledashed");
             this.tablelinestyledashed.Name = "tablelinestyledashed";
-            this.tablelinestyledashed.CheckedChanged += new System.EventHandler(this.tlDashedClick);
+            this.tablelinestyledashed.CheckedChanged += this.tlDashedClick;
             // 
             // tablelinestylenone
             // 
@@ -290,36 +282,36 @@ namespace Facade
             resources.ApplyResources(this.tablelinestylenone, "tablelinestylenone");
             this.tablelinestylenone.Name = "tablelinestylenone";
             this.tablelinestylenone.TabStop = true;
-            this.tablelinestylenone.CheckedChanged += new System.EventHandler(this.tlNoneClick);
+            this.tablelinestylenone.CheckedChanged += this.tlNoneClick;
             // 
             // rowspacing
             // 
             this.rowspacing.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.rowspacing, "rowspacing");
             this.rowspacing.Name = "rowspacing";
-            this.rowspacing.TextChanged += new System.EventHandler(this.rspacingchanged);
+            this.rowspacing.TextChanged += this.rspacingchanged;
             // 
-            // group5
+            // columnLinesGroup
             // 
-            this.group5.Controls.Add(this.collinestylesolid);
-            this.group5.Controls.Add(this.collinestyledashed);
-            this.group5.Controls.Add(this.collinestylenone);
-            this.group5.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group5, "group5");
-            this.group5.Name = "group5";
-            this.group5.TabStop = false;
+            this.columnLinesGroup.Controls.Add(this.collinestylesolid);
+            this.columnLinesGroup.Controls.Add(this.collinestyledashed);
+            this.columnLinesGroup.Controls.Add(this.collinestylenone);
+            this.columnLinesGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.columnLinesGroup, "columnLinesGroup");
+            this.columnLinesGroup.Name = "columnLinesGroup";
+            this.columnLinesGroup.TabStop = false;
             // 
             // collinestylesolid
             // 
             resources.ApplyResources(this.collinestylesolid, "collinestylesolid");
             this.collinestylesolid.Name = "collinestylesolid";
-            this.collinestylesolid.CheckedChanged += new System.EventHandler(this.clSolidClick);
+            this.collinestylesolid.CheckedChanged += this.clSolidClick;
             // 
             // collinestyledashed
             // 
             resources.ApplyResources(this.collinestyledashed, "collinestyledashed");
             this.collinestyledashed.Name = "collinestyledashed";
-            this.collinestyledashed.CheckedChanged += new System.EventHandler(this.clDashedClick);
+            this.collinestyledashed.CheckedChanged += this.clDashedClick;
             // 
             // collinestylenone
             // 
@@ -327,36 +319,36 @@ namespace Facade
             resources.ApplyResources(this.collinestylenone, "collinestylenone");
             this.collinestylenone.Name = "collinestylenone";
             this.collinestylenone.TabStop = true;
-            this.collinestylenone.CheckedChanged += new System.EventHandler(this.clNoneClick);
+            this.collinestylenone.CheckedChanged += this.clNoneClick;
             // 
             // colSpacing_
             // 
             this.colSpacing_.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.colSpacing_, "colSpacing_");
             this.colSpacing_.Name = "colSpacing_";
-            this.colSpacing_.TextChanged += new System.EventHandler(this.cspacingChanged);
+            this.colSpacing_.TextChanged += this.cspacingChanged;
             // 
-            // group6
+            // tableFrameGroup
             // 
-            this.group6.Controls.Add(this.tablelinesolid);
-            this.group6.Controls.Add(this.tablelinedashed);
-            this.group6.Controls.Add(this.tablelinenone);
-            this.group6.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group6, "group6");
-            this.group6.Name = "group6";
-            this.group6.TabStop = false;
+            this.tableFrameGroup.Controls.Add(this.tablelinesolid);
+            this.tableFrameGroup.Controls.Add(this.tablelinedashed);
+            this.tableFrameGroup.Controls.Add(this.tablelinenone);
+            this.tableFrameGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.tableFrameGroup, "tableFrameGroup");
+            this.tableFrameGroup.Name = "tableFrameGroup";
+            this.tableFrameGroup.TabStop = false;
             // 
             // tablelinesolid
             // 
             resources.ApplyResources(this.tablelinesolid, "tablelinesolid");
             this.tablelinesolid.Name = "tablelinesolid";
-            this.tablelinesolid.CheckedChanged += new System.EventHandler(this.tlSolidChecked);
+            this.tablelinesolid.CheckedChanged += this.tlSolidChecked;
             // 
             // tablelinedashed
             // 
             resources.ApplyResources(this.tablelinedashed, "tablelinedashed");
             this.tablelinedashed.Name = "tablelinedashed";
-            this.tablelinedashed.CheckedChanged += new System.EventHandler(this.tlDashedChecked);
+            this.tablelinedashed.CheckedChanged += this.tlDashedChecked;
             // 
             // tablelinenone
             // 
@@ -364,38 +356,38 @@ namespace Facade
             resources.ApplyResources(this.tablelinenone, "tablelinenone");
             this.tablelinenone.Name = "tablelinenone";
             this.tablelinenone.TabStop = true;
-            this.tablelinenone.CheckedChanged += new System.EventHandler(this.tlNoneChecked);
+            this.tablelinenone.CheckedChanged += this.tlNoneChecked;
             // 
             // tablespacing
             // 
             resources.ApplyResources(this.tablespacing, "tablespacing");
             this.tablespacing.Name = "tablespacing";
-            this.tablespacing.TextChanged += new System.EventHandler(this.tspacingChanged);
+            this.tablespacing.TextChanged += this.tspacingChanged;
             // 
             // equalCols
             // 
             resources.ApplyResources(this.equalCols, "equalCols");
             this.equalCols.Name = "equalCols";
-            this.equalCols.CheckedChanged += new System.EventHandler(this.EqualColsChanged);
+            this.equalCols.CheckedChanged += this.EqualColsChanged;
             // 
             // equalRows
             // 
             resources.ApplyResources(this.equalRows, "equalRows");
             this.equalRows.Name = "equalRows";
-            this.equalRows.CheckedChanged += new System.EventHandler(this.EqualRowsCheckedChanged);
+            this.equalRows.CheckedChanged += this.EqualRowsCheckedChanged;
             // 
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Click += new System.EventHandler(this.OnCancel);
+            this.cancelButton.Click += this.OnCancel;
             // 
             // okButton
             // 
             resources.ApplyResources(this.okButton, "okButton");
             this.okButton.Name = "okButton";
-            this.okButton.Click += new System.EventHandler(this.OnOk);
+            this.okButton.Click += this.OnOk;
             // 
             // tabcontrol
             // 
@@ -406,13 +398,13 @@ namespace Facade
             resources.ApplyResources(this.tabcontrol, "tabcontrol");
             this.tabcontrol.Name = "tabcontrol";
             this.tabcontrol.SelectedIndex = 0;
-            this.tabcontrol.SelectedIndexChanged += new System.EventHandler(this.TabChange);
+            this.tabcontrol.SelectedIndexChanged += this.TabChange;
             // 
             // tableTab
             // 
             this.tableTab.Controls.Add(this.group7);
-            this.tableTab.Controls.Add(this.group6);
-            this.tableTab.Controls.Add(this.group1);
+            this.tableTab.Controls.Add(this.tableFrameGroup);
+            this.tableTab.Controls.Add(this.tableAlignmentGroup);
             resources.ApplyResources(this.tableTab, "tableTab");
             this.tableTab.Name = "tableTab";
             // 
@@ -428,8 +420,8 @@ namespace Facade
             // 
             this.rowstab.Controls.Add(this.group8);
             this.rowstab.Controls.Add(this.group9);
-            this.rowstab.Controls.Add(this.group4);
-            this.rowstab.Controls.Add(this.group2);
+            this.rowstab.Controls.Add(this.rowLinesGroup);
+            this.rowstab.Controls.Add(this.rowAlignmentGroup);
             resources.ApplyResources(this.rowstab, "rowstab");
             this.rowstab.Name = "rowstab";
             // 
@@ -453,8 +445,8 @@ namespace Facade
             // 
             this.colsTab.Controls.Add(this.group10);
             this.colsTab.Controls.Add(this.group11);
-            this.colsTab.Controls.Add(this.group5);
-            this.colsTab.Controls.Add(this.group3);
+            this.colsTab.Controls.Add(this.columnLinesGroup);
+            this.colsTab.Controls.Add(this.columnAlignmentGroup);
             resources.ApplyResources(this.colsTab, "colsTab");
             this.colsTab.Name = "colsTab";
             // 
@@ -476,28 +468,28 @@ namespace Facade
             // 
             // cellsTab
             // 
-            this.cellsTab.Controls.Add(this.group12);
-            this.cellsTab.Controls.Add(this.group13);
+            this.cellsTab.Controls.Add(this.cellRowAlignmentGroup);
+            this.cellsTab.Controls.Add(this.cellColumnAlignmentGroup);
             resources.ApplyResources(this.cellsTab, "cellsTab");
             this.cellsTab.Name = "cellsTab";
             // 
-            // group12
+            // cellRowAlignmentGroup
             // 
-            this.group12.Controls.Add(this.rowalignaxis_);
-            this.group12.Controls.Add(this.rowalignbaseline_);
-            this.group12.Controls.Add(this.rowaligncenter_);
-            this.group12.Controls.Add(this.rowalignbottom_);
-            this.group12.Controls.Add(this.rowaligntop_);
-            this.group12.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group12, "group12");
-            this.group12.Name = "group12";
-            this.group12.TabStop = false;
+            this.cellRowAlignmentGroup.Controls.Add(this.rowalignaxis_);
+            this.cellRowAlignmentGroup.Controls.Add(this.rowalignbaseline_);
+            this.cellRowAlignmentGroup.Controls.Add(this.rowaligncenter_);
+            this.cellRowAlignmentGroup.Controls.Add(this.rowalignbottom_);
+            this.cellRowAlignmentGroup.Controls.Add(this.rowaligntop_);
+            this.cellRowAlignmentGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.cellRowAlignmentGroup, "cellRowAlignmentGroup");
+            this.cellRowAlignmentGroup.Name = "cellRowAlignmentGroup";
+            this.cellRowAlignmentGroup.TabStop = false;
             // 
             // rowalignaxis_
             // 
             resources.ApplyResources(this.rowalignaxis_, "rowalignaxis_");
             this.rowalignaxis_.Name = "rowalignaxis_";
-            this.rowalignaxis_.CheckedChanged += new System.EventHandler(this.raAxisChecked);
+            this.rowalignaxis_.CheckedChanged += this.raAxisChecked;
             // 
             // rowalignbaseline_
             // 
@@ -505,35 +497,35 @@ namespace Facade
             resources.ApplyResources(this.rowalignbaseline_, "rowalignbaseline_");
             this.rowalignbaseline_.Name = "rowalignbaseline_";
             this.rowalignbaseline_.TabStop = true;
-            this.rowalignbaseline_.CheckedChanged += new System.EventHandler(this.raBaselineChecked);
+            this.rowalignbaseline_.CheckedChanged += this.raBaselineChecked;
             // 
             // rowaligncenter_
             // 
             resources.ApplyResources(this.rowaligncenter_, "rowaligncenter_");
             this.rowaligncenter_.Name = "rowaligncenter_";
-            this.rowaligncenter_.CheckedChanged += new System.EventHandler(this.raCenterChecked);
+            this.rowaligncenter_.CheckedChanged += this.raCenterChecked;
             // 
             // rowalignbottom_
             // 
             resources.ApplyResources(this.rowalignbottom_, "rowalignbottom_");
             this.rowalignbottom_.Name = "rowalignbottom_";
-            this.rowalignbottom_.CheckedChanged += new System.EventHandler(this.raBottomChecked);
+            this.rowalignbottom_.CheckedChanged += this.raBottomChecked;
             // 
             // rowaligntop_
             // 
             resources.ApplyResources(this.rowaligntop_, "rowaligntop_");
             this.rowaligntop_.Name = "rowaligntop_";
-            this.rowaligntop_.CheckedChanged += new System.EventHandler(this.raTopChecked);
+            this.rowaligntop_.CheckedChanged += this.raTopChecked;
             // 
-            // group13
+            // cellColumnAlignmentGroup
             // 
-            this.group13.Controls.Add(this.raligncenter);
-            this.group13.Controls.Add(this.rowalignright);
-            this.group13.Controls.Add(this.rowalignleft);
-            this.group13.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            resources.ApplyResources(this.group13, "group13");
-            this.group13.Name = "group13";
-            this.group13.TabStop = false;
+            this.cellColumnAlignmentGroup.Controls.Add(this.raligncenter);
+            this.cellColumnAlignmentGroup.Controls.Add(this.rowalignright);
+            this.cellColumnAlignmentGroup.Controls.Add(this.rowalignleft);
+            this.cellColumnAlignmentGroup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            resources.ApplyResources(this.cellColumnAlignmentGroup, "cellColumnAlignmentGroup");
+            this.cellColumnAlignmentGroup.Name = "cellColumnAlignmentGroup";
+            this.cellColumnAlignmentGroup.TabStop = false;
             // 
             // raligncenter
             // 
@@ -541,26 +533,26 @@ namespace Facade
             resources.ApplyResources(this.raligncenter, "raligncenter");
             this.raligncenter.Name = "raligncenter";
             this.raligncenter.TabStop = true;
-            this.raligncenter.CheckedChanged += new System.EventHandler(this.rCenterCheck);
+            this.raligncenter.CheckedChanged += this.rCenterCheck;
             // 
             // rowalignright
             // 
             resources.ApplyResources(this.rowalignright, "rowalignright");
             this.rowalignright.Name = "rowalignright";
-            this.rowalignright.CheckedChanged += new System.EventHandler(this.raRightChecked);
+            this.rowalignright.CheckedChanged += this.raRightChecked;
             // 
             // rowalignleft
             // 
             resources.ApplyResources(this.rowalignleft, "rowalignleft");
             this.rowalignleft.Name = "rowalignleft";
-            this.rowalignleft.CheckedChanged += new System.EventHandler(this.raLeftChecked);
+            this.rowalignleft.CheckedChanged += this.raLeftChecked;
             // 
             // selAllbutton
             // 
             this.selAllbutton.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.selAllbutton, "selAllbutton");
             this.selAllbutton.Name = "selAllbutton";
-            this.selAllbutton.Click += new System.EventHandler(this.SelectAllClick);
+            this.selAllbutton.Click += this.SelectAllClick;
             // 
             // MatrixPropertiesDialog
             // 
@@ -576,12 +568,12 @@ namespace Facade
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MatrixPropertiesDialog";
-            this.group1.ResumeLayout(false);
-            this.group2.ResumeLayout(false);
-            this.group3.ResumeLayout(false);
-            this.group4.ResumeLayout(false);
-            this.group5.ResumeLayout(false);
-            this.group6.ResumeLayout(false);
+            this.tableAlignmentGroup.ResumeLayout(false);
+            this.rowAlignmentGroup.ResumeLayout(false);
+            this.columnAlignmentGroup.ResumeLayout(false);
+            this.rowLinesGroup.ResumeLayout(false);
+            this.columnLinesGroup.ResumeLayout(false);
+            this.tableFrameGroup.ResumeLayout(false);
             this.tabcontrol.ResumeLayout(false);
             this.tableTab.ResumeLayout(false);
             this.group7.ResumeLayout(false);
@@ -595,627 +587,582 @@ namespace Facade
             this.group10.PerformLayout();
             this.group11.ResumeLayout(false);
             this.cellsTab.ResumeLayout(false);
-            this.group12.ResumeLayout(false);
-            this.group13.ResumeLayout(false);
+            this.cellRowAlignmentGroup.ResumeLayout(false);
+            this.cellColumnAlignmentGroup.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         public void SetTarget(Node node)
         {
-            this.center = new Point(this.bWidth + this.canvasWidth, this.tabcontrol.Height + 30);
+            center = new Point(bWidth + canvasWidth, tabcontrol.Height + 30);
             if (node != null)
             {
-                this.matrix = new MTable(node);
-                this.numRows = this.matrix.RowCount;
-                this.numCols = this.matrix.ColCount;
+                matrix = new MTable(node);
+                numRows = matrix.RowCount;
+                numCols = matrix.ColCount;
             }
-            if (node != null)
+            if (node == null) return;
+            CreateButtons();
+            for (int i = 0; i < numRows; i++)
             {
-                this.CreateButtons();
-                for (int i = 0; i < this.numRows; i++)
+                for (int j = 0; j < numCols; j++)
                 {
-                    for (int j = 0; j < this.numCols; j++)
-                    {
-                        this.buttons[i][j].Visible = false;
-                        this.buttons[i][j].FlatStyle = FlatStyle.Flat;
-                    }
+                    buttons[i][j].Visible = false;
+                    buttons[i][j].FlatStyle = FlatStyle.Flat;
                 }
-                this.RecalcButtons();
-                this.SelectTableTab();
-                if (this.matrix.align == TableAlign.TOP)
-                {
-                    this.tablealigntop_.Checked = true;
-                }
-                else if (this.matrix.align == TableAlign.BOTTOM)
-                {
-                    this.tablealignbottom.Checked = true;
-                }
-                else if (this.matrix.align == TableAlign.CENTER)
-                {
-                    this.tablealigncenter.Checked = true;
-                }
-                else if (this.matrix.align == TableAlign.BASELINE)
-                {
-                    this.tablealignbaseline.Checked = true;
-                }
-                else if (this.matrix.align == TableAlign.AXIS)
-                {
-                    this.tablealignAxis.Checked = true;
-                }
-                if (this.matrix.frame == TableLineStyle.NONE)
-                {
-                    this.tablelinenone.Checked = true;
-                }
-                else if (this.matrix.frame == TableLineStyle.SOLID)
-                {
-                    this.tablelinesolid.Checked = true;
-                }
-                else if (this.matrix.frame == TableLineStyle.DASHED)
-                {
-                    this.tablelinedashed.Checked = true;
-                }
-                this.equalRows.Checked = this.matrix.equalRows;
-                this.equalCols.Checked = this.matrix.equalColumns;
-                this.tablespacing.Text = this.matrix.framespacing;
             }
+            RecalcButtons();
+            SelectTableTab();
+            switch (matrix.align)
+            {
+                case TableAlign.TOP:
+                    tablealigntop_.Checked = true;
+                    break;
+                case TableAlign.BOTTOM:
+                    tablealignbottom.Checked = true;
+                    break;
+                case TableAlign.CENTER:
+                    tablealigncenter.Checked = true;
+                    break;
+                case TableAlign.BASELINE:
+                    tablealignbaseline.Checked = true;
+                    break;
+                case TableAlign.AXIS:
+                    tablealignAxis.Checked = true;
+                    break;
+            }
+            switch (matrix.frame)
+            {
+                case TableLineStyle.NONE:
+                    tablelinenone.Checked = true;
+                    break;
+                case TableLineStyle.SOLID:
+                    tablelinesolid.Checked = true;
+                    break;
+                case TableLineStyle.DASHED:
+                    tablelinedashed.Checked = true;
+                    break;
+            }
+            equalRows.Checked = matrix.equalRows;
+            equalCols.Checked = matrix.equalColumns;
+            tablespacing.Text = matrix.framespacing;
         }
 
         private void taCenterClick(object sender, EventArgs e)
         {
-            this.SetTableAlign();
+            SetTableAlign();
         }
 
         private void taBaselineClick(object sender, EventArgs e)
         {
-            this.SetTableAlign();
+            SetTableAlign();
         }
 
         private void taAxisClick(object sender, EventArgs e)
         {
-            this.SetTableAlign();
+            SetTableAlign();
         }
 
         private void SetTableAlign()
         {
-            if (this.tablealigntop_.Checked)
+            if (tablealigntop_.Checked)
             {
-                this.matrix.align = TableAlign.TOP;
+                matrix.align = TableAlign.TOP;
             }
-            else if (this.tablealigncenter.Checked)
+            else if (tablealigncenter.Checked)
             {
-                this.matrix.align = TableAlign.CENTER;
+                matrix.align = TableAlign.CENTER;
             }
-            else if (this.tablealignAxis.Checked)
+            else if (tablealignAxis.Checked)
             {
-                this.matrix.align = TableAlign.AXIS;
+                matrix.align = TableAlign.AXIS;
             }
-            else if (this.tablealignbaseline.Checked)
+            else if (tablealignbaseline.Checked)
             {
-                this.matrix.align = TableAlign.BASELINE;
+                matrix.align = TableAlign.BASELINE;
             }
-            else if (this.tablealignbottom.Checked)
+            else if (tablealignbottom.Checked)
             {
-                this.matrix.align = TableAlign.BOTTOM;
+                matrix.align = TableAlign.BOTTOM;
             }
         }
 
         private void EqualRowsCheckedChanged(object sender, EventArgs e)
         {
-            this.matrix.equalRows = this.equalRows.Checked;
+            matrix.equalRows = equalRows.Checked;
         }
 
         private void raTopClick(object sender, EventArgs e)
         {
-            this.SetRowAlign();
+            SetRowAlign();
         }
 
         private void raBottomClick(object sender, EventArgs e)
         {
-            this.SetRowAlign();
+            SetRowAlign();
         }
 
         private void raCenterClick(object sender, EventArgs e)
         {
-            this.SetRowAlign();
+            SetRowAlign();
         }
 
         private void raBaselineClick(object sender, EventArgs e)
         {
-            this.SetRowAlign();
+            SetRowAlign();
         }
 
         private void raaxisClick(object sender, EventArgs e)
         {
-            this.SetRowAlign();
+            SetRowAlign();
         }
 
         private void TabChange(object sender, EventArgs e)
         {
-            switch (this.tabcontrol.SelectedIndex)
+            switch (tabcontrol.SelectedIndex)
             {
-                case 0:
-                {
-                    if (this.matrix.selKind_ != TableCellKind.SelAll)
-                    {
-                        this.SelectTableTab();
-                    }
+                case 0 when matrix.selKind_ != TableCellKind.SelAll:
+                    SelectTableTab();
                     break;
-                }
-                case 1:
-                {
-                    if (this.matrix.selKind_ != TableCellKind.RowSelected)
-                    {
-                        this.SelectRowTab(0);
-                    }
+                case 1 when matrix.selKind_ != TableCellKind.RowSelected:
+                    SelectRowTab(0);
                     break;
-                }
-                case 2:
-                {
-                    if (this.matrix.selKind_ != TableCellKind.ColSelected)
-                    {
-                        this.SelectColTab(0);
-                    }
+                case 2 when matrix.selKind_ != TableCellKind.ColSelected:
+                    SelectColTab(0);
                     break;
-                }
-                case 3:
-                {
-                    if ((this.matrix.selKind_ != TableCellKind.RowColSelected) && (this.matrix.selKind_ != TableCellKind.BottomSelected))
-                    {
-                        this.SelectCellTab(0, 0);
-                    }
+                case 3 when matrix.selKind_ != TableCellKind.RowColSelected &&
+                            matrix.selKind_ != TableCellKind.BottomSelected:
+                    SelectCellTab(0, 0);
                     break;
-                }
             }
-            this.Recheck();
+            Recheck();
         }
 
         private void SetRowAlign()
         {
-            if (this.rowaligntop.Checked)
+            if (rowaligntop.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.TOP);
+                matrix.SetRowAlign(RowAlign.TOP);
             }
-            else if (this.rowaligncenter.Checked)
+            else if (rowaligncenter.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.CENTER);
+                matrix.SetRowAlign(RowAlign.CENTER);
             }
-            else if (this.rowalignbaseline.Checked)
+            else if (rowalignbaseline.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.BASELINE);
+                matrix.SetRowAlign(RowAlign.BASELINE);
             }
-            else if (this.rowalignaxis.Checked)
+            else if (rowalignaxis.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.AXIS);
+                matrix.SetRowAlign(RowAlign.AXIS);
             }
-            else if (this.rowalignbottom.Checked)
+            else if (rowalignbottom.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.BOTTOM);
+                matrix.SetRowAlign(RowAlign.BOTTOM);
             }
-            this.RecalcButtons();
+            RecalcButtons();
         }
 
         private void rspacingchanged(object sender, EventArgs e)
         {
-            this.matrix.SetRowSpacing(this.rowspacing.Text);
+            matrix.SetRowSpacing(rowspacing.Text);
         }
 
         private void tlNoneClick(object sender, EventArgs e)
         {
-            this.SetLineStyle();
+            SetLineStyle();
         }
 
         private void tlsolidClick(object sender, EventArgs e)
         {
-            this.SetLineStyle();
+            SetLineStyle();
         }
 
         private void tlDashedClick(object sender, EventArgs e)
         {
-            this.SetLineStyle();
+            SetLineStyle();
         }
 
         private void SetLineStyle()
         {
-            if (this.tablelinestylenone.Checked)
+            if (tablelinestylenone.Checked)
             {
-                this.matrix.SetLineStyle(TableLineStyle.NONE);
+                matrix.SetLineStyle(TableLineStyle.NONE);
             }
-            else if (this.tablelinestylesolid.Checked)
+            else if (tablelinestylesolid.Checked)
             {
-                this.matrix.SetLineStyle(TableLineStyle.SOLID);
+                matrix.SetLineStyle(TableLineStyle.SOLID);
             }
-            else if (this.tablelinestyledashed.Checked)
+            else if (tablelinestyledashed.Checked)
             {
-                this.matrix.SetLineStyle(TableLineStyle.DASHED);
+                matrix.SetLineStyle(TableLineStyle.DASHED);
             }
-            base.Invalidate();
+            Invalidate();
         }
 
         private void EqualColsChanged(object sender, EventArgs e)
         {
-            this.matrix.equalColumns = this.equalCols.Checked;
+            matrix.equalColumns = equalCols.Checked;
         }
 
         private void caLeftClick(object sender, EventArgs e)
         {
-            this.SetColAlign();
+            SetColAlign();
         }
 
         private void caCenterclick(object sender, EventArgs e)
         {
-            this.SetColAlign();
+            SetColAlign();
         }
 
         private void caRightClick(object sender, EventArgs e)
         {
-            this.SetColAlign();
+            SetColAlign();
         }
 
         private void tspacingChanged(object sender, EventArgs e)
         {
-            this.matrix.framespacing = this.tablespacing.Text;
+            matrix.framespacing = tablespacing.Text;
         }
 
         private void SetColAlign()
         {
-            if (this.colalignleft.Checked)
+            if (colalignleft.Checked)
             {
-                this.matrix.SetColAlign(HAlign.LEFT);
+                matrix.SetColAlign(HAlign.LEFT);
             }
-            else if (this.colaligncenter.Checked)
+            else if (colaligncenter.Checked)
             {
-                this.matrix.SetColAlign(HAlign.CENTER);
+                matrix.SetColAlign(HAlign.CENTER);
             }
-            else if (this.colalignright.Checked)
+            else if (colalignright.Checked)
             {
-                this.matrix.SetColAlign(HAlign.RIGHT);
+                matrix.SetColAlign(HAlign.RIGHT);
             }
-            this.RecalcButtons();
+            RecalcButtons();
         }
 
         private void cspacingChanged(object sender, EventArgs e)
         {
-            this.matrix.SetColSpacing(this.colSpacing_.Text);
+            matrix.SetColSpacing(colSpacing_.Text);
         }
 
         private void clNoneClick(object sender, EventArgs e)
         {
-            this.SetTableLineStyle();
+            SetTableLineStyle();
         }
 
         private void clSolidClick(object sender, EventArgs e)
         {
-            this.SetTableLineStyle();
+            SetTableLineStyle();
         }
 
         private void clDashedClick(object sender, EventArgs e)
         {
-            this.SetTableLineStyle();
+            SetTableLineStyle();
         }
 
         private void SetTableLineStyle()
         {
-            if (this.collinestylenone.Checked)
+            if (collinestylenone.Checked)
             {
-                this.matrix.SetTableLineStyle(TableLineStyle.NONE);
+                matrix.SetTableLineStyle(TableLineStyle.NONE);
             }
-            else if (this.collinestylesolid.Checked)
+            else if (collinestylesolid.Checked)
             {
-                this.matrix.SetTableLineStyle(TableLineStyle.SOLID);
+                matrix.SetTableLineStyle(TableLineStyle.SOLID);
             }
-            else if (this.collinestyledashed.Checked)
+            else if (collinestyledashed.Checked)
             {
-                this.matrix.SetTableLineStyle(TableLineStyle.DASHED);
+                matrix.SetTableLineStyle(TableLineStyle.DASHED);
             }
-            base.Invalidate();
+            Invalidate();
         }
 
         private void raLeftChecked(object sender, EventArgs e)
         {
-            this.SetRowColAlign();
+            SetRowColAlign();
         }
 
         private void rCenterCheck(object sender, EventArgs e)
         {
-            this.SetRowColAlign();
+            SetRowColAlign();
         }
 
         private void raRightChecked(object sender, EventArgs e)
         {
-            this.SetRowColAlign();
+            SetRowColAlign();
         }
 
         private void SetRowColAlign()
         {
-            if (this.rowalignleft.Checked)
+            if (rowalignleft.Checked)
             {
-                this.matrix.SetColAlign(HAlign.LEFT);
+                matrix.SetColAlign(HAlign.LEFT);
             }
-            else if (this.raligncenter.Checked)
+            else if (raligncenter.Checked)
             {
-                this.matrix.SetColAlign(HAlign.CENTER);
+                matrix.SetColAlign(HAlign.CENTER);
             }
-            else if (this.rowalignright.Checked)
+            else if (rowalignright.Checked)
             {
-                this.matrix.SetColAlign(HAlign.RIGHT);
+                matrix.SetColAlign(HAlign.RIGHT);
             }
-            this.RecalcButtons();
+            RecalcButtons();
         }
 
         private void tlNoneChecked(object sender, EventArgs e)
         {
-            this.SetFrame();
+            SetFrame();
         }
 
         private void raTopChecked(object sender, EventArgs e)
         {
-            this.PropogateRowAlign();
+            PropogateRowAlign();
         }
 
         private void raBottomChecked(object sender, EventArgs e)
         {
-            this.PropogateRowAlign();
+            PropogateRowAlign();
         }
 
         private void raCenterChecked(object sender, EventArgs e)
         {
-            this.PropogateRowAlign();
+            PropogateRowAlign();
         }
 
         private void raBaselineChecked(object sender, EventArgs e)
         {
-            this.PropogateRowAlign();
+            PropogateRowAlign();
         }
 
         private void raAxisChecked(object sender, EventArgs e)
         {
-            this.PropogateRowAlign();
+            PropogateRowAlign();
         }
 
         private void PropogateRowAlign()
         {
-            if (this.rowaligntop_.Checked)
+            if (rowaligntop_.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.TOP);
+                matrix.SetRowAlign(RowAlign.TOP);
             }
-            else if (this.rowaligncenter_.Checked)
+            else if (rowaligncenter_.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.CENTER);
+                matrix.SetRowAlign(RowAlign.CENTER);
             }
-            else if (this.rowalignbaseline_.Checked)
+            else if (rowalignbaseline_.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.BASELINE);
+                matrix.SetRowAlign(RowAlign.BASELINE);
             }
-            else if (this.rowalignaxis_.Checked)
+            else if (rowalignaxis_.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.AXIS);
+                matrix.SetRowAlign(RowAlign.AXIS);
             }
-            else if (this.rowalignbottom_.Checked)
+            else if (rowalignbottom_.Checked)
             {
-                this.matrix.SetRowAlign(RowAlign.BOTTOM);
+                matrix.SetRowAlign(RowAlign.BOTTOM);
             }
-            this.RecalcButtons();
+            RecalcButtons();
         }
 
         private void SelectAllClick(object sender, EventArgs e)
         {
-            this.SelectTableTab();
+            SelectTableTab();
         }
 
         private void WholeRowClick(object sender, EventArgs e)
         {
-            this.SelectRowTab(((MathTableButton) sender).row);
-            this.Recheck();
+            SelectRowTab(((MathTableButton)sender).row);
+            Recheck();
         }
 
         private void WholeColClick(object sender, EventArgs e)
         {
-            this.SelectColTab(((MathTableButton) sender).col);
-            this.Recheck();
+            SelectColTab(((MathTableButton)sender).col);
+            Recheck();
         }
 
         private void ButtonsClick(object sender, EventArgs e)
         {
-            this.SelectCellTab(((MathTableButton) sender).row, ((MathTableButton) sender).col);
-            this.Recheck();
+            SelectCellTab(((MathTableButton)sender).row, ((MathTableButton)sender).col);
+            Recheck();
         }
 
         private void tlSolidChecked(object sender, EventArgs e)
         {
-            this.SetFrame();
+            SetFrame();
         }
 
         private void bottomsClick(object sender, EventArgs e)
         {
-            int col = ((MathTableButton) sender).col;
-            int row = ((MathTableButton) sender).row;
-            this.SelectCellTab(row, col);
-            this.Recheck();
+            int col = ((MathTableButton)sender).col;
+            int row = ((MathTableButton)sender).row;
+            SelectCellTab(row, col);
+            Recheck();
         }
 
         private void SelectTableTab()
         {
-            this.matrix.SelectAll();
-            this.tabcontrol.SelectedIndex = 0;
-            this.RecalcButtons();
+            matrix.SelectAll();
+            tabcontrol.SelectedIndex = 0;
+            RecalcButtons();
         }
 
         private void SelectRowTab(int row)
         {
-            this.matrix.SetCurRow(row);
-            this.tabcontrol.SelectedIndex = 1;
-            this.RecalcButtons();
+            matrix.SetCurRow(row);
+            tabcontrol.SelectedIndex = 1;
+            RecalcButtons();
         }
 
         private void SelectColTab(int col)
         {
-            this.matrix.SetCurCol(col);
-            this.tabcontrol.SelectedIndex = 2;
-            this.RecalcButtons();
+            matrix.SetCurCol(col);
+            tabcontrol.SelectedIndex = 2;
+            RecalcButtons();
         }
 
         private void SelectCellTab(int row, int col)
         {
-            this.matrix.SetCurRowCol(row, col);
-            this.RecalcButtons();
-            this.tabcontrol.SelectedIndex = 3;
+            matrix.SetCurRowCol(row, col);
+            RecalcButtons();
+            tabcontrol.SelectedIndex = 3;
         }
 
         private void CreateButtons()
         {
             int hhh = 0;
             int hh = 0;
-            hh = (base.ClientRectangle.Height - (this.center.Y - this.bHeight)) - 30;
-            hhh = (this.center.Y + (this.numRows * (this.bHeight + this.canvasWidth))) - (this.center.Y - this.bHeight);
+            hh = ClientRectangle.Height - (center.Y - bHeight) - 30;
+            hhh = center.Y + numRows * (bHeight + canvasWidth) - (center.Y - bHeight);
             if (hhh <= hh)
             {
-                while (hhh < (hh - 10))
+                while (hhh < hh - 10)
                 {
-                    base.Height -= 10;
-                    hh = (base.ClientRectangle.Height - (this.center.Y - this.bHeight)) - 30;
+                    Height -= 10;
+                    hh = ClientRectangle.Height - (center.Y - bHeight) - 30;
                 }
-                this.okButton.Location = new Point((((base.ClientRectangle.Width - this.cancelButton.Width) - this.okButton.Width) - 10) - 10, (base.ClientRectangle.Height - this.okButton.Height) - 10);
-                this.cancelButton.Location = new Point((base.ClientRectangle.Width - this.cancelButton.Width) - 10, (base.ClientRectangle.Height - this.okButton.Height) - 10);
+                okButton.Location = new Point(ClientRectangle.Width - cancelButton.Width - okButton.Width - 10 - 10,
+                    ClientRectangle.Height - okButton.Height - 10);
+                cancelButton.Location = new Point(ClientRectangle.Width - cancelButton.Width - 10,
+                    ClientRectangle.Height - okButton.Height - 10);
             }
             else
             {
                 while (hhh > hh)
                 {
-                    this.bHeight -= 2;
-                    this.bWidth -= 2;
-                    this.canvasWidth--;
-                    hhh = (this.center.Y + (this.numRows * (this.bHeight + this.canvasWidth))) - (this.center.Y - this.bHeight);
+                    bHeight -= 2;
+                    bWidth -= 2;
+                    canvasWidth--;
+                    hhh = center.Y + numRows * (bHeight + canvasWidth) - (center.Y - bHeight);
                 }
             }
-            this.selAllbutton.Location = new Point(this.center.X - this.bWidth, this.center.Y - this.bHeight);
-            this.selAllbutton.Size = new Size((this.bWidth * 2) / 3, (this.bHeight * 2) / 3);
-            this.bottoms = new MathTableButton[this.numRows];
-            this.buttons = new MathTableButton[this.numRows][];
-            this.rowButtons = new MathTableButton[this.numRows];
-            this.colButtons = new MathTableButton[this.numCols];
-            for (int i = 0; i < this.numRows; i++)
+            selAllbutton.Location = new Point(center.X - bWidth, center.Y - bHeight);
+            selAllbutton.Size = new Size(bWidth * 2 / 3, bHeight * 2 / 3);
+            bottoms = new MathTableButton[numRows];
+            buttons = new MathTableButton[numRows][];
+            rowButtons = new MathTableButton[numRows];
+            colButtons = new MathTableButton[numCols];
+            for (int i = 0; i < numRows; i++)
             {
-                this.buttons[i] = new MathTableButton[this.numCols];
+                buttons[i] = new MathTableButton[numCols];
             }
-            for (int i = 0; i < this.numCols; i++)
+            for (int i = 0; i < numCols; i++)
             {
-                this.colButtons[i] = new MathTableButton();
-                this.colButtons[i].Location = new Point(this.center.X + (i * (this.bWidth + this.canvasWidth)), this.center.Y - this.bHeight);
-                this.colButtons[i].Name = "Col_" + i.ToString() + "";
-                this.colButtons[i].Size = new Size(this.bWidth, (this.bHeight * 2) / 3);
-                this.colButtons[i].col = i;
-                this.colButtons[i].Click += new EventHandler(this.WholeColClick);
-                base.Controls.AddRange(new Control[] { this.colButtons[i] });
-                this.colButtons[i].FlatStyle = FlatStyle.Flat;
+                colButtons[i] = new MathTableButton();
+                colButtons[i].Location = new Point(center.X + i * (bWidth + canvasWidth), center.Y - bHeight);
+                colButtons[i].Name = $"Col_{i}";
+                colButtons[i].Size = new Size(bWidth, bHeight * 2 / 3);
+                colButtons[i].col = i;
+                colButtons[i].Click += WholeColClick;
+                Controls.AddRange(new Control[] { colButtons[i] });
+                colButtons[i].FlatStyle = FlatStyle.Flat;
             }
-            for (int i = 0; i < this.numRows; i++)
+            for (int i = 0; i < numRows; i++)
             {
-                this.rowButtons[i] = new MathTableButton();
-                this.rowButtons[i].Location = new Point(this.center.X - this.bWidth, this.center.Y + (i * (this.bHeight + this.canvasWidth)));
-                this.rowButtons[i].Name = "Row_" + i.ToString() + "";
-                this.rowButtons[i].Size = new Size((this.bWidth * 2) / 3, this.bHeight);
-                this.rowButtons[i].row = i;
-                this.rowButtons[i].Click += new EventHandler(this.WholeRowClick);
-                base.Controls.AddRange(new Control[] { this.rowButtons[i] });
-                this.rowButtons[i].FlatStyle = FlatStyle.Flat;
+                rowButtons[i] = new MathTableButton();
+                rowButtons[i].Location = new Point(center.X - bWidth, center.Y + i * (bHeight + canvasWidth));
+                rowButtons[i].Name = $"Row_{i}";
+                rowButtons[i].Size = new Size(bWidth * 2 / 3, bHeight);
+                rowButtons[i].row = i;
+                rowButtons[i].Click += WholeRowClick;
+                Controls.AddRange(new Control[] { rowButtons[i] });
+                rowButtons[i].FlatStyle = FlatStyle.Flat;
 
-                this.bottoms[i] = new MathTableButton();
-                this.bottoms[i].row = i;
-                this.bottoms[i].col = this.matrix.ColCount;
-                this.bottoms[i].BackColor = SystemColors.ControlLightLight;
-                this.bottoms[i].FlatStyle = FlatStyle.Flat;
-                this.bottoms[i].Location = new Point(this.buttonsOrigin.X + (this.numCols * 0x22), this.buttonsOrigin.Y + (i * 0x22));
-                this.bottoms[i].Name = string.Concat(new string[] { "Cell_", i.ToString(), "_", this.numCols.ToString(), "" });
-                this.bottoms[i].Size = new Size(0x18, 0x18);
-                this.bottoms[i].Click += new EventHandler(this.bottomsClick);
-                base.Controls.AddRange(new Control[] { this.bottoms[i] });
-                this.bottoms[i].FlatStyle = FlatStyle.Flat;
+                bottoms[i] = new MathTableButton();
+                bottoms[i].row = i;
+                bottoms[i].col = matrix.ColCount;
+                bottoms[i].BackColor = SystemColors.ControlLightLight;
+                bottoms[i].FlatStyle = FlatStyle.Flat;
+                bottoms[i].Location = new Point(buttonsOrigin.X + numCols * 0x22, buttonsOrigin.Y + i * 0x22);
+                bottoms[i].Name = $"Cell_{i}_{numCols}";
+                bottoms[i].Size = new Size(0x18, 0x18);
+                bottoms[i].Click += bottomsClick;
+                Controls.AddRange(new Control[] { bottoms[i] });
+                bottoms[i].FlatStyle = FlatStyle.Flat;
 
-                for (int j = 0; j < this.numCols; j++)
+                for (int j = 0; j < numCols; j++)
                 {
-                    this.buttons[i][j] = new MathTableButton();
-                    this.buttons[i][j].row = i;
-                    this.buttons[i][j].col = j;
-                    this.buttons[i][j].BackColor = SystemColors.ControlLightLight;
-                    this.buttons[i][j].FlatStyle = FlatStyle.Flat;
-                    this.buttons[i][j].Location = new Point(this.buttonsOrigin.X + (j * 0x22), this.buttonsOrigin.Y + (i * 0x22));
-                    this.buttons[i][j].Name = string.Concat(new string[] { "Cell_", i.ToString(), "_", j.ToString(), "" });
-                    this.buttons[i][j].Size = new Size(0x18, 0x18);
-                    this.buttons[i][j].Click += new EventHandler(this.ButtonsClick);
-                    this.buttons[i][j].FlatStyle = FlatStyle.Flat;
-                    base.Controls.AddRange(new Control[] { this.buttons[i][j] });
+                    buttons[i][j] = new MathTableButton();
+                    buttons[i][j].row = i;
+                    buttons[i][j].col = j;
+                    buttons[i][j].BackColor = SystemColors.ControlLightLight;
+                    buttons[i][j].FlatStyle = FlatStyle.Flat;
+                    buttons[i][j].Location = new Point(buttonsOrigin.X + j * 0x22, buttonsOrigin.Y + i * 0x22);
+                    buttons[i][j].Name = $"Cell_{i}_{j}";
+                    buttons[i][j].Size = new Size(0x18, 0x18);
+                    buttons[i][j].Click += ButtonsClick;
+                    buttons[i][j].FlatStyle = FlatStyle.Flat;
+                    Controls.AddRange(new Control[] { buttons[i][j] });
                 }
             }
         }
 
         private void RecalcButtons()
         {
-            for (int i = 0; i < this.numRows; i++)
+            for (int i = 0; i < numRows; i++)
             {
-                this.bottoms[i].BackColor = Color.LightGray;
-                for (int j = 0; j < this.numCols; j++)
-                {
-                    this.buttons[i][j].BackColor = Color.LightGray;
-                }
+                bottoms[i].BackColor = Color.LightGray;
+                for (int j = 0; j < numCols; j++) buttons[i][j].BackColor = Color.LightGray;
             }
-            switch (this.matrix.selKind_)
+            switch (matrix.selKind_)
             {
                 case TableCellKind.SelAll:
-                {
-                    for (int i = 0; i < this.numRows; i++)
-                    {
-                        for (int j = 0; j < this.numCols; j++)
-                        {
-                            this.buttons[i][j].BackColor = Color.LightBlue;
-                        }
-                    }
+                    for (int i = 0; i < numRows; i++)
+                        for (int j = 0; j < numCols; j++)
+                            buttons[i][j].BackColor = Color.LightBlue;
                     break;
-                }
                 case TableCellKind.RowSelected:
-                {
-                    for (int i = 0; i < this.numCols; i++)
-                    {
-                        this.buttons[this.matrix.curRow][i].BackColor = Color.LightBlue;
-                    }
+                    for (int i = 0; i < numCols; i++)
+                        buttons[matrix.curRow][i].BackColor = Color.LightBlue;
                     break;
-                }
                 case TableCellKind.ColSelected:
-                {
-                    for (int i = 0; i < this.numRows; i++)
-                    {
-                        this.buttons[i][this.matrix.curCol].BackColor = Color.LightBlue;
-                    }
+                    for (int i = 0; i < numRows; i++)
+                        buttons[i][matrix.curCol].BackColor = Color.LightBlue;
                     break;
-                }
                 case TableCellKind.RowColSelected:
-                {
-                    if (this.matrix.curCol >= this.matrix.ColCount)
+                    if (matrix.curCol >= matrix.ColCount)
                     {
-                        if (this.matrix.curCol == this.matrix.ColCount)
-                        {
-                            this.bottoms[this.matrix.curRow].BackColor = Color.LightBlue;
-                        }
-                        break;
+                        if (matrix.curCol == matrix.ColCount)
+                            bottoms[matrix.curRow].BackColor = Color.LightBlue;
                     }
-                    this.buttons[this.matrix.curRow][this.matrix.curCol].BackColor = Color.LightBlue;
+                    else
+                        buttons[matrix.curRow][matrix.curCol].BackColor = Color.LightBlue;
                     break;
-                }
                 case TableCellKind.BottomSelected:
-                {
-                    this.bottoms[this.matrix.curRow].BackColor = Color.LightBlue;
+                    bottoms[matrix.curRow].BackColor = Color.LightBlue;
                     break;
-                }
             }
-            for (int i = 0; i < this.matrix.RowCount; i++)
+            for (int i = 0; i < matrix.RowCount; i++)
             {
-                MRow row = this.matrix.GetRow(i);
+                MRow row = matrix.GetRow(i);
                 if (!row.isLabeled)
                 {
-                    this.bottoms[i].Visible = false;
+                    bottoms[i].Visible = false;
                     continue;
                 }
-                this.bottoms[i].Visible = true;
+                bottoms[i].Visible = true;
                 MCell cell = row.cell;
                 int hv = 0;
                 int rv = 0;
@@ -1224,57 +1171,45 @@ namespace Facade
                 switch (hAlign)
                 {
                     case HAlign.LEFT:
-                    {
-                        hv = -this.canvasWidth / 2;
+                        hv = -canvasWidth / 2;
                         break;
-                    }
                     case HAlign.CENTER:
-                    {
                         hv = 0;
                         break;
-                    }
                     case HAlign.RIGHT:
-                        hv = this.canvasWidth / 2;
+                        hv = canvasWidth / 2;
                         break;
                 }
-            
+
                 switch (rowAlign)
                 {
                     case RowAlign.TOP:
-                    {
-                        rv = -this.canvasWidth / 2;
+                        rv = -canvasWidth / 2;
                         break;
-                    }
                     case RowAlign.BOTTOM:
-                        rv = this.canvasWidth / 2;
+                        rv = canvasWidth / 2;
                         break;
-
                     case RowAlign.CENTER:
                     case RowAlign.BASELINE:
                     case RowAlign.AXIS:
-                    {
                         rv = 0;
                         break;
-                    }
                 }
-            
-                this.bottoms[i].Location = new Point(((this.center.X + (cell.colSpan * (this.bWidth + this.canvasWidth))) + hv) + 30, (this.center.Y + (i * (this.bHeight + this.canvasWidth))) + rv);
-                if (cell.tableAttrs != null)
-                {
-                    this.bottoms[i].Size = new Size((this.bWidth * cell.tableAttrs.columnSpan) + (this.canvasWidth * (cell.tableAttrs.columnSpan - 1)), (this.bHeight * cell.tableAttrs.rowSpan) + (this.canvasWidth * (cell.tableAttrs.rowSpan - 1)));
-                }
-                else
-                {
-                    this.bottoms[i].Size = new Size(this.bWidth, this.bHeight);
-                }
+
+                bottoms[i].Location = new Point(center.X + cell.colSpan * (bWidth + canvasWidth) + hv + 30,
+                    center.Y + i * (bHeight + canvasWidth) + rv);
+                bottoms[i].Size = cell.tableAttrs is null
+                    ? new Size(bWidth, bHeight)
+                    : new Size(bWidth * cell.tableAttrs.columnSpan + canvasWidth * (cell.tableAttrs.columnSpan - 1),
+                        bHeight * cell.tableAttrs.rowSpan + canvasWidth * (cell.tableAttrs.rowSpan - 1));
             }
-            for (int i = 0; i < this.matrix.RowCount; i++)
+            for (int i = 0; i < matrix.RowCount; i++)
             {
-                MRow row = this.matrix.GetRow(i);
+                MRow row = matrix.GetRow(i);
                 for (int j = 0; j < row.Count; j++)
                 {
                     MCell cell = row.Get(j);
-                    this.buttons[i][cell.colSpan].Visible = true;
+                    buttons[i][cell.colSpan].Visible = true;
                     int halignV = 0;
                     int ralignV = 0;
                     HAlign hAlign = cell.GetColAlign();
@@ -1282,49 +1217,38 @@ namespace Facade
                     switch (hAlign)
                     {
                         case HAlign.LEFT:
-                        {
-                            halignV = -this.canvasWidth / 2;
+                            halignV = -canvasWidth / 2;
                             break;
-                        }
                         case HAlign.CENTER:
-                        {
                             halignV = 0;
                             break;
-                        }
                         case HAlign.RIGHT:
-                            halignV = this.canvasWidth / 2;
+                            halignV = canvasWidth / 2;
                             break;
                     }
-                
+
                     switch (rowAlign)
                     {
                         case RowAlign.TOP:
-                        {
-                            ralignV = -this.canvasWidth / 2;
+                            ralignV = -canvasWidth / 2;
                             break;
-                        }
                         case RowAlign.BOTTOM:
-                            ralignV = this.canvasWidth / 2;
+                            ralignV = canvasWidth / 2;
                             break;
-
                         case RowAlign.CENTER:
                         case RowAlign.BASELINE:
                         case RowAlign.AXIS:
-                        {
                             ralignV = 0;
                             break;
-                        }
                     }
-                
-                    this.buttons[i][cell.colSpan].Location = new Point((this.center.X + (cell.colSpan * (this.bWidth + this.canvasWidth))) + halignV, (this.center.Y + (i * (this.bHeight + this.canvasWidth))) + ralignV);
-                    if (cell.tableAttrs != null)
-                    {
-                        this.buttons[i][cell.colSpan].Size = new Size((this.bWidth * cell.tableAttrs.columnSpan) + (this.canvasWidth * (cell.tableAttrs.columnSpan - 1)), (this.bHeight * cell.tableAttrs.rowSpan) + (this.canvasWidth * (cell.tableAttrs.rowSpan - 1)));
-                    }
-                    else
-                    {
-                        this.buttons[i][cell.colSpan].Size = new Size(this.bWidth, this.bHeight);
-                    }
+
+                    buttons[i][cell.colSpan].Location =
+                        new Point(center.X + cell.colSpan * (bWidth + canvasWidth) + halignV,
+                            center.Y + i * (bHeight + canvasWidth) + ralignV);
+                    buttons[i][cell.colSpan].Size = cell.tableAttrs is null
+                        ? new Size(bWidth, bHeight)
+                        : new Size(bWidth * cell.tableAttrs.columnSpan + canvasWidth * (cell.tableAttrs.columnSpan - 1),
+                            bHeight * cell.tableAttrs.rowSpan + canvasWidth * (cell.tableAttrs.rowSpan - 1));
                 }
             }
         }
@@ -1333,92 +1257,76 @@ namespace Facade
         {
             bool fpouind;
             MCell lrow;
-            switch (this.matrix.selKind_)
+            switch (matrix.selKind_)
             {
                 case TableCellKind.SelAll:
                     return;
 
                 case TableCellKind.RowSelected:
-                {
-                    int cRow = this.matrix.curRow;
+                    int cRow = matrix.curRow;
                     RowAlign rowAlign = RowAlign.UNKNOWN;
                     bool changed = true;
-                    MRow row = this.matrix.GetRow(cRow);
+                    MRow row = matrix.GetRow(cRow);
                     for (int i = 0; i < row.cells.Count; i++)
                     {
-                        MCell cell = this.matrix.Get(cRow, i);
-                        if (cell != null)
-                        {
-                            if ((i > 0) && (cell.rowAlign != rowAlign))
-                            {
-                                changed = false;
-                            }
-                            rowAlign = cell.rowAlign;
-                        }
+                        MCell cell = matrix.Get(cRow, i);
+                        if (cell is null) continue;
+                        if (i > 0 && cell.rowAlign != rowAlign) changed = false;
+                        rowAlign = cell.rowAlign;
                     }
                     if (changed)
                     {
-                        if (rowAlign == RowAlign.TOP)
+                        switch (rowAlign)
                         {
-                            this.rowaligntop.Checked = true;
-                        }
-                        else if (rowAlign == RowAlign.CENTER)
-                        {
-                            this.rowaligncenter.Checked = true;
-                        }
-                        else if (rowAlign == RowAlign.BASELINE)
-                        {
-                            this.rowalignbaseline.Checked = true;
-                        }
-                        else if (rowAlign == RowAlign.AXIS)
-                        {
-                            this.rowalignaxis.Checked = true;
-                        }
-                        else if (rowAlign == RowAlign.BOTTOM)
-                        {
-                            this.rowalignbottom.Checked = true;
+                            case RowAlign.TOP:
+                                rowaligntop.Checked = true;
+                                break;
+                            case RowAlign.CENTER:
+                                rowaligncenter.Checked = true;
+                                break;
+                            case RowAlign.BASELINE:
+                                rowalignbaseline.Checked = true;
+                                break;
+                            case RowAlign.AXIS:
+                                rowalignaxis.Checked = true;
+                                break;
+                            case RowAlign.BOTTOM:
+                                rowalignbottom.Checked = true;
+                                break;
                         }
                     }
                     else
                     {
-                        this.rowaligntop.Checked = false;
-                        this.rowaligncenter.Checked = false;
-                        this.rowalignbaseline.Checked = false;
-                        this.rowalignaxis.Checked = false;
-                        this.rowalignbottom.Checked = false;
+                        rowaligntop.Checked = false;
+                        rowaligncenter.Checked = false;
+                        rowalignbaseline.Checked = false;
+                        rowalignaxis.Checked = false;
+                        rowalignbottom.Checked = false;
                     }
-                    this.rowspacing.Text = row.spacing;
+                    rowspacing.Text = row.spacing;
                     switch (row.lines)
                     {
                         case TableLineStyle.NONE:
-                        {
-                            this.tablelinestylenone.Checked = true;
+                            tablelinestylenone.Checked = true;
                             return;
-                        }
                         case TableLineStyle.SOLID:
-                        {
-                            this.tablelinestylesolid.Checked = true;
+                            tablelinestylesolid.Checked = true;
                             return;
-                        }
                         case TableLineStyle.DASHED:
-                        {
-                            this.tablelinestyledashed.Checked = true;
+                            tablelinestyledashed.Checked = true;
                             return;
-                        }
                     }
                     return;
-                }
                 case TableCellKind.ColSelected:
-                {
-                    int ccol = this.matrix.curCol;
+                    int ccol = matrix.curCol;
                     HAlign columnAlign = HAlign.UNKNOWN;
                     bool need = true;
-                    for (int i = 0; i < this.numRows; i++)
+                    for (int i = 0; i < numRows; i++)
                     {
-                        MCell cell = this.matrix.Get(i, ccol);
+                        MCell cell = matrix.Get(i, ccol);
                         if (cell != null)
                         {
-                            if ((i > 0) && (cell.columnAlign != columnAlign))
+                            if (i > 0 && cell.columnAlign != columnAlign)
                             {
                                 need = false;
                             }
@@ -1427,57 +1335,49 @@ namespace Facade
                     }
                     if (need)
                     {
-                        if (columnAlign == HAlign.LEFT)
+                        switch (columnAlign)
                         {
-                            this.colalignleft.Checked = true;
-                        }
-                        else if (columnAlign == HAlign.CENTER)
-                        {
-                            this.colaligncenter.Checked = true;
-                        }
-                        else if (columnAlign == HAlign.RIGHT)
-                        {
-                            this.colalignright.Checked = true;
+                            case HAlign.LEFT:
+                                colalignleft.Checked = true;
+                                break;
+                            case HAlign.CENTER:
+                                colaligncenter.Checked = true;
+                                break;
+                            case HAlign.RIGHT:
+                                colalignright.Checked = true;
+                                break;
                         }
                     }
                     else
                     {
-                        this.colalignleft.Checked = false;
-                        this.colaligncenter.Checked = false;
-                        this.colalignright.Checked = false;
+                        colalignleft.Checked = false;
+                        colaligncenter.Checked = false;
+                        colalignright.Checked = false;
                     }
-                    this.colSpacing_.Text = this.matrix.GetColSpacing(ccol);
-                    switch (this.matrix.GetTableLineStyle(ccol))
+                    colSpacing_.Text = matrix.GetColSpacing(ccol);
+                    switch (matrix.GetTableLineStyle(ccol))
                     {
                         case TableLineStyle.NONE:
-                        {
-                            this.collinestylenone.Checked = true;
+                            collinestylenone.Checked = true;
                             return;
-                        }
                         case TableLineStyle.SOLID:
-                        {
-                            this.collinestylesolid.Checked = true;
+                            collinestylesolid.Checked = true;
                             return;
-                        }
                         case TableLineStyle.DASHED:
-                        {
-                            this.collinestyledashed.Checked = true;
+                            collinestyledashed.Checked = true;
                             return;
-                        }
                     }
                     return;
-                }
                 case TableCellKind.RowColSelected:
                 case TableCellKind.BottomSelected:
-                {
                     fpouind = false;
                     lrow = null;
-                    if (this.matrix.selKind_ != TableCellKind.RowColSelected)
+                    if (matrix.selKind_ != TableCellKind.RowColSelected)
                     {
-                        if (this.matrix.selKind_ == TableCellKind.BottomSelected)
+                        if (matrix.selKind_ == TableCellKind.BottomSelected)
                         {
-                            MRow mRow = this.matrix.GetRow(this.matrix.curRow);
-                            if (mRow.isLabeled && (mRow.cell != null))
+                            MRow mRow = matrix.GetRow(matrix.curRow);
+                            if (mRow.isLabeled && mRow.cell != null)
                             {
                                 lrow = mRow.cell;
                                 fpouind = true;
@@ -1485,110 +1385,99 @@ namespace Facade
                         }
                         break;
                     }
-                    lrow = this.matrix.Get(this.matrix.curRow, this.matrix.curCol);
+                    lrow = matrix.Get(matrix.curRow, matrix.curCol);
                     fpouind = true;
                     break;
-                }
                 default:
                     return;
             }
-            if (fpouind)
+            if (!fpouind) return;
+            switch (lrow.columnAlign)
             {
-                if (lrow.columnAlign == HAlign.LEFT)
-                {
-                    this.rowalignleft.Checked = true;
-                }
-                else if (lrow.columnAlign == HAlign.CENTER)
-                {
-                    this.raligncenter.Checked = true;
-                }
-                else if (lrow.columnAlign == HAlign.RIGHT)
-                {
-                    this.rowalignright.Checked = true;
-                }
-                if (lrow.rowAlign == RowAlign.TOP)
-                {
-                    this.rowaligntop_.Checked = true;
-                }
-                else if (lrow.rowAlign == RowAlign.CENTER)
-                {
-                    this.rowaligncenter_.Checked = true;
-                }
-                else if (lrow.rowAlign == RowAlign.BASELINE)
-                {
-                    this.rowalignbaseline_.Checked = true;
-                }
-                else if (lrow.rowAlign == RowAlign.AXIS)
-                {
-                    this.rowalignaxis_.Checked = true;
-                }
-                else if (lrow.rowAlign == RowAlign.BOTTOM)
-                {
-                    this.rowalignbottom_.Checked = true;
-                }
+                case HAlign.LEFT:
+                    rowalignleft.Checked = true;
+                    break;
+                case HAlign.CENTER:
+                    raligncenter.Checked = true;
+                    break;
+                case HAlign.RIGHT:
+                    rowalignright.Checked = true;
+                    break;
+            }
+            switch (lrow.rowAlign)
+            {
+                case RowAlign.TOP:
+                    rowaligntop_.Checked = true;
+                    break;
+                case RowAlign.CENTER:
+                    rowaligncenter_.Checked = true;
+                    break;
+                case RowAlign.BASELINE:
+                    rowalignbaseline_.Checked = true;
+                    break;
+                case RowAlign.AXIS:
+                    rowalignaxis_.Checked = true;
+                    break;
+                case RowAlign.BOTTOM:
+                    rowalignbottom_.Checked = true;
+                    break;
             }
         }
 
         private void tlDashedChecked(object sender, EventArgs e)
         {
-            this.SetFrame();
+            SetFrame();
         }
 
         private void OnOk(object sender, EventArgs e)
         {
-            this.Success = true;
-            base.Close();
+            Success = true;
+            Close();
         }
 
         private void OnCancel(object sender, EventArgs e)
         {
-            this.Success = false;
-            base.Close();
+            Success = false;
+            Close();
         }
 
         private void SetFrame()
         {
-            if (this.tablelinenone.Checked)
+            if (tablelinenone.Checked)
             {
-                this.matrix.frame = TableLineStyle.NONE;
+                matrix.frame = TableLineStyle.NONE;
             }
-            else if (this.tablelinesolid.Checked)
+            else if (tablelinesolid.Checked)
             {
-                this.matrix.frame = TableLineStyle.SOLID;
+                matrix.frame = TableLineStyle.SOLID;
             }
-            else if (this.tablelinedashed.Checked)
+            else if (tablelinedashed.Checked)
             {
-                this.matrix.frame = TableLineStyle.DASHED;
+                matrix.frame = TableLineStyle.DASHED;
             }
-            base.Invalidate();
+            Invalidate();
         }
 
         private void tatopClick(object sender, EventArgs e)
         {
-            this.SetTableAlign();
+            SetTableAlign();
         }
 
         private void taBottomClick(object sender, EventArgs e)
         {
-            this.SetTableAlign();
+            SetTableAlign();
         }
 
 
         public bool Success
         {
-            get
-            {
-                return this.success_;
-            }
-            set
-            {
-                this.success_ = value;
-            }
+            get { return success_; }
+            set { success_ = value; }
         }
 
 
-        private GroupBox group1;
-        private GroupBox group2;
+        private GroupBox tableAlignmentGroup;
+        private GroupBox rowAlignmentGroup;
         private RadioButton rowalignaxis;
         private RadioButton rowalignbaseline;
         private RadioButton rowaligncenter;
@@ -1599,18 +1488,18 @@ namespace Facade
         private RadioButton colalignleft;
         private RadioButton tablelinestylesolid;
         private RadioButton tablelinestyledashed;
-        private GroupBox group3;
+        private GroupBox columnAlignmentGroup;
         private RadioButton tablelinestylenone;
         private RadioButton collinestylesolid;
         private RadioButton collinestyledashed;
         private RadioButton collinestylenone;
-        private GroupBox group6;
+        private GroupBox tableFrameGroup;
         private RadioButton tablelinesolid;
         private RadioButton tablelinedashed;
         private RadioButton tablelinenone;
         private CheckBox equalRows;
         private CheckBox equalCols;
-        private GroupBox group4;
+        private GroupBox rowLinesGroup;
         private TextBox rowspacing;
         private TextBox colSpacing_;
         private Glass.GlassButton cancelButton;
@@ -1621,7 +1510,7 @@ namespace Facade
         private MathTableButton[] colButtons;
         private int numRows;
         private int numCols;
-        private GroupBox group5;
+        private GroupBox columnLinesGroup;
         private Point buttonsOrigin;
         private Container container;
         private bool success_;
@@ -1631,9 +1520,9 @@ namespace Facade
         private TabPage colsTab;
         private TabPage cellsTab;
         private Glass.GlassButton selAllbutton;
-        private GroupBox group12;
+        private GroupBox cellRowAlignmentGroup;
         private RadioButton tablealigntop_;
-        private GroupBox group13;
+        private GroupBox cellColumnAlignmentGroup;
         private GroupBox group11;
         private GroupBox group9;
         private RadioButton raligncenter;
@@ -1659,4 +1548,3 @@ namespace Facade
         private RadioButton tablealignAxis;
     }
 }
-

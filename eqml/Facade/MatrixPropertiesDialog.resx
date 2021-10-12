@@ -112,23 +112,107 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="&gt;&gt;tablealignAxis.Name" xml:space="preserve">
+    <value>tablealignAxis</value>
+  </data>
+  <data name="&gt;&gt;tablealignAxis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablealignAxis.Parent" xml:space="preserve">
+    <value>tableAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;tablealignAxis.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tablealignbaseline.Name" xml:space="preserve">
+    <value>tablealignbaseline</value>
+  </data>
+  <data name="&gt;&gt;tablealignbaseline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablealignbaseline.Parent" xml:space="preserve">
+    <value>tableAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;tablealignbaseline.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tablealigncenter.Name" xml:space="preserve">
+    <value>tablealigncenter</value>
+  </data>
+  <data name="&gt;&gt;tablealigncenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablealigncenter.Parent" xml:space="preserve">
+    <value>tableAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;tablealigncenter.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tablealignbottom.Name" xml:space="preserve">
+    <value>tablealignbottom</value>
+  </data>
+  <data name="&gt;&gt;tablealignbottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablealignbottom.Parent" xml:space="preserve">
+    <value>tableAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;tablealignbottom.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;tablealigntop_.Name" xml:space="preserve">
+    <value>tablealigntop_</value>
+  </data>
+  <data name="&gt;&gt;tablealigntop_.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablealigntop_.Parent" xml:space="preserve">
+    <value>tableAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;tablealigntop_.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tableAlignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 48</value>
+  </data>
+  <data name="tableAlignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>368, 41</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tableAlignmentGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="tableAlignmentGroup.Text" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="&gt;&gt;tableAlignmentGroup.Name" xml:space="preserve">
+    <value>tableAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;tableAlignmentGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableAlignmentGroup.Parent" xml:space="preserve">
+    <value>tableTab</value>
+  </data>
+  <data name="&gt;&gt;tableAlignmentGroup.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tablealignAxis.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="tablealignAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 14</value>
+    <value>304, 15</value>
   </data>
   <data name="tablealignAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 21</value>
+    <value>56, 23</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tablealignAxis.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
@@ -139,10 +223,10 @@
     <value>tablealignAxis</value>
   </data>
   <data name="&gt;&gt;tablealignAxis.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablealignAxis.Parent" xml:space="preserve">
-    <value>group1</value>
+    <value>tableAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;tablealignAxis.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -151,10 +235,10 @@
     <value>System</value>
   </data>
   <data name="tablealignbaseline.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 14</value>
+    <value>216, 15</value>
   </data>
   <data name="tablealignbaseline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 21</value>
+    <value>80, 23</value>
   </data>
   <data name="tablealignbaseline.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -166,10 +250,10 @@
     <value>tablealignbaseline</value>
   </data>
   <data name="&gt;&gt;tablealignbaseline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablealignbaseline.Parent" xml:space="preserve">
-    <value>group1</value>
+    <value>tableAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;tablealignbaseline.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -178,10 +262,10 @@
     <value>System</value>
   </data>
   <data name="tablealigncenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
+    <value>72, 15</value>
   </data>
   <data name="tablealigncenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="tablealigncenter.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -193,10 +277,10 @@
     <value>tablealigncenter</value>
   </data>
   <data name="&gt;&gt;tablealigncenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablealigncenter.Parent" xml:space="preserve">
-    <value>group1</value>
+    <value>tableAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;tablealigncenter.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -205,10 +289,10 @@
     <value>System</value>
   </data>
   <data name="tablealignbottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
+    <value>144, 15</value>
   </data>
   <data name="tablealignbottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 21</value>
+    <value>72, 23</value>
   </data>
   <data name="tablealignbottom.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -220,10 +304,10 @@
     <value>tablealignbottom</value>
   </data>
   <data name="&gt;&gt;tablealignbottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablealignbottom.Parent" xml:space="preserve">
-    <value>group1</value>
+    <value>tableAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;tablealignbottom.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -232,10 +316,10 @@
     <value>System</value>
   </data>
   <data name="tablealigntop_.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
+    <value>8, 15</value>
   </data>
   <data name="tablealigntop_.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="tablealigntop_.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -247,46 +331,106 @@
     <value>tablealigntop_</value>
   </data>
   <data name="&gt;&gt;tablealigntop_.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablealigntop_.Parent" xml:space="preserve">
-    <value>group1</value>
+    <value>tableAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;tablealigntop_.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="group1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 45</value>
+  <data name="&gt;&gt;rowalignaxis.Name" xml:space="preserve">
+    <value>rowalignaxis</value>
   </data>
-  <data name="group1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 38</value>
+  <data name="&gt;&gt;rowalignaxis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="group1.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+  <data name="&gt;&gt;rowalignaxis.Parent" xml:space="preserve">
+    <value>rowAlignmentGroup</value>
   </data>
-  <data name="group1.Text" xml:space="preserve">
+  <data name="&gt;&gt;rowalignaxis.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline.Name" xml:space="preserve">
+    <value>rowalignbaseline</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline.Parent" xml:space="preserve">
+    <value>rowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter.Name" xml:space="preserve">
+    <value>rowaligncenter</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter.Parent" xml:space="preserve">
+    <value>rowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom.Name" xml:space="preserve">
+    <value>rowalignbottom</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom.Parent" xml:space="preserve">
+    <value>rowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop.Name" xml:space="preserve">
+    <value>rowaligntop</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop.Parent" xml:space="preserve">
+    <value>rowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="rowAlignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 48</value>
+  </data>
+  <data name="rowAlignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>368, 41</value>
+  </data>
+  <data name="rowAlignmentGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="rowAlignmentGroup.Text" xml:space="preserve">
     <value>Alignment</value>
   </data>
-  <data name="&gt;&gt;group1.Name" xml:space="preserve">
-    <value>group1</value>
+  <data name="&gt;&gt;rowAlignmentGroup.Name" xml:space="preserve">
+    <value>rowAlignmentGroup</value>
   </data>
-  <data name="&gt;&gt;group1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;rowAlignmentGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;group1.Parent" xml:space="preserve">
-    <value>tableTab</value>
+  <data name="&gt;&gt;rowAlignmentGroup.Parent" xml:space="preserve">
+    <value>rowstab</value>
   </data>
-  <data name="&gt;&gt;group1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;rowAlignmentGroup.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="rowalignaxis.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="rowalignaxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>253, 14</value>
+    <value>304, 15</value>
   </data>
   <data name="rowalignaxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 21</value>
+    <value>51, 23</value>
   </data>
   <data name="rowalignaxis.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -298,10 +442,10 @@
     <value>rowalignaxis</value>
   </data>
   <data name="&gt;&gt;rowalignaxis.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignaxis.Parent" xml:space="preserve">
-    <value>group2</value>
+    <value>rowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignaxis.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -310,10 +454,10 @@
     <value>System</value>
   </data>
   <data name="rowalignbaseline.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 14</value>
+    <value>216, 15</value>
   </data>
   <data name="rowalignbaseline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 21</value>
+    <value>80, 23</value>
   </data>
   <data name="rowalignbaseline.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -325,10 +469,10 @@
     <value>rowalignbaseline</value>
   </data>
   <data name="&gt;&gt;rowalignbaseline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignbaseline.Parent" xml:space="preserve">
-    <value>group2</value>
+    <value>rowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignbaseline.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -337,10 +481,10 @@
     <value>System</value>
   </data>
   <data name="rowaligncenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
+    <value>72, 15</value>
   </data>
   <data name="rowaligncenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="rowaligncenter.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -352,10 +496,10 @@
     <value>rowaligncenter</value>
   </data>
   <data name="&gt;&gt;rowaligncenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowaligncenter.Parent" xml:space="preserve">
-    <value>group2</value>
+    <value>rowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowaligncenter.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -364,10 +508,10 @@
     <value>System</value>
   </data>
   <data name="rowalignbottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
+    <value>144, 15</value>
   </data>
   <data name="rowalignbottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 21</value>
+    <value>67, 23</value>
   </data>
   <data name="rowalignbottom.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -379,10 +523,10 @@
     <value>rowalignbottom</value>
   </data>
   <data name="&gt;&gt;rowalignbottom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignbottom.Parent" xml:space="preserve">
-    <value>group2</value>
+    <value>rowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignbottom.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -391,10 +535,10 @@
     <value>System</value>
   </data>
   <data name="rowaligntop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
+    <value>8, 15</value>
   </data>
   <data name="rowaligntop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="rowaligntop.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -406,46 +550,82 @@
     <value>rowaligntop</value>
   </data>
   <data name="&gt;&gt;rowaligntop.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowaligntop.Parent" xml:space="preserve">
-    <value>group2</value>
+    <value>rowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowaligntop.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="group2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 45</value>
+  <data name="&gt;&gt;colaligncenter.Name" xml:space="preserve">
+    <value>colaligncenter</value>
   </data>
-  <data name="group2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>307, 38</value>
+  <data name="&gt;&gt;colaligncenter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="group2.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
+  <data name="&gt;&gt;colaligncenter.Parent" xml:space="preserve">
+    <value>columnAlignmentGroup</value>
   </data>
-  <data name="group2.Text" xml:space="preserve">
+  <data name="&gt;&gt;colaligncenter.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;colalignright.Name" xml:space="preserve">
+    <value>colalignright</value>
+  </data>
+  <data name="&gt;&gt;colalignright.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colalignright.Parent" xml:space="preserve">
+    <value>columnAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;colalignright.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;colalignleft.Name" xml:space="preserve">
+    <value>colalignleft</value>
+  </data>
+  <data name="&gt;&gt;colalignleft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colalignleft.Parent" xml:space="preserve">
+    <value>columnAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;colalignleft.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="columnAlignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 48</value>
+  </data>
+  <data name="columnAlignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 41</value>
+  </data>
+  <data name="columnAlignmentGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="columnAlignmentGroup.Text" xml:space="preserve">
     <value>Alignment</value>
   </data>
-  <data name="&gt;&gt;group2.Name" xml:space="preserve">
-    <value>group2</value>
+  <data name="&gt;&gt;columnAlignmentGroup.Name" xml:space="preserve">
+    <value>columnAlignmentGroup</value>
   </data>
-  <data name="&gt;&gt;group2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;columnAlignmentGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;group2.Parent" xml:space="preserve">
-    <value>rowstab</value>
+  <data name="&gt;&gt;columnAlignmentGroup.Parent" xml:space="preserve">
+    <value>colsTab</value>
   </data>
-  <data name="&gt;&gt;group2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;columnAlignmentGroup.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="colaligncenter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="colaligncenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
+    <value>72, 15</value>
   </data>
   <data name="colaligncenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="colaligncenter.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -457,10 +637,10 @@
     <value>colaligncenter</value>
   </data>
   <data name="&gt;&gt;colaligncenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;colaligncenter.Parent" xml:space="preserve">
-    <value>group3</value>
+    <value>columnAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;colaligncenter.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -469,10 +649,10 @@
     <value>System</value>
   </data>
   <data name="colalignright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
+    <value>144, 15</value>
   </data>
   <data name="colalignright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="colalignright.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -484,10 +664,10 @@
     <value>colalignright</value>
   </data>
   <data name="&gt;&gt;colalignright.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;colalignright.Parent" xml:space="preserve">
-    <value>group3</value>
+    <value>columnAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;colalignright.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -496,10 +676,10 @@
     <value>System</value>
   </data>
   <data name="colalignleft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
+    <value>8, 15</value>
   </data>
   <data name="colalignleft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="colalignleft.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -511,46 +691,82 @@
     <value>colalignleft</value>
   </data>
   <data name="&gt;&gt;colalignleft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;colalignleft.Parent" xml:space="preserve">
-    <value>group3</value>
+    <value>columnAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;colalignleft.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="group3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 45</value>
+  <data name="&gt;&gt;tablelinestylesolid.Name" xml:space="preserve">
+    <value>tablelinestylesolid</value>
   </data>
-  <data name="group3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 38</value>
+  <data name="&gt;&gt;tablelinestylesolid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="group3.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+  <data name="&gt;&gt;tablelinestylesolid.Parent" xml:space="preserve">
+    <value>rowLinesGroup</value>
   </data>
-  <data name="group3.Text" xml:space="preserve">
-    <value>Alignment</value>
+  <data name="&gt;&gt;tablelinestylesolid.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;group3.Name" xml:space="preserve">
-    <value>group3</value>
+  <data name="&gt;&gt;tablelinestyledashed.Name" xml:space="preserve">
+    <value>tablelinestyledashed</value>
   </data>
-  <data name="&gt;&gt;group3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tablelinestyledashed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;group3.Parent" xml:space="preserve">
-    <value>colsTab</value>
+  <data name="&gt;&gt;tablelinestyledashed.Parent" xml:space="preserve">
+    <value>rowLinesGroup</value>
   </data>
-  <data name="&gt;&gt;group3.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;tablelinestyledashed.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tablelinestylenone.Name" xml:space="preserve">
+    <value>tablelinestylenone</value>
+  </data>
+  <data name="&gt;&gt;tablelinestylenone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablelinestylenone.Parent" xml:space="preserve">
+    <value>rowLinesGroup</value>
+  </data>
+  <data name="&gt;&gt;tablelinestylenone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="rowLinesGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="rowLinesGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 45</value>
+  </data>
+  <data name="rowLinesGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="rowLinesGroup.Text" xml:space="preserve">
+    <value>Lines</value>
+  </data>
+  <data name="&gt;&gt;rowLinesGroup.Name" xml:space="preserve">
+    <value>rowLinesGroup</value>
+  </data>
+  <data name="&gt;&gt;rowLinesGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowLinesGroup.Parent" xml:space="preserve">
+    <value>rowstab</value>
+  </data>
+  <data name="&gt;&gt;rowLinesGroup.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="tablelinestylesolid.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="tablelinestylesolid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
+    <value>72, 15</value>
   </data>
   <data name="tablelinestylesolid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="tablelinestylesolid.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
@@ -562,10 +778,10 @@
     <value>tablelinestylesolid</value>
   </data>
   <data name="&gt;&gt;tablelinestylesolid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablelinestylesolid.Parent" xml:space="preserve">
-    <value>group4</value>
+    <value>rowLinesGroup</value>
   </data>
   <data name="&gt;&gt;tablelinestylesolid.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -574,10 +790,10 @@
     <value>System</value>
   </data>
   <data name="tablelinestyledashed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
+    <value>144, 15</value>
   </data>
   <data name="tablelinestyledashed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 21</value>
+    <value>80, 23</value>
   </data>
   <data name="tablelinestyledashed.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -589,10 +805,10 @@
     <value>tablelinestyledashed</value>
   </data>
   <data name="&gt;&gt;tablelinestyledashed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablelinestyledashed.Parent" xml:space="preserve">
-    <value>group4</value>
+    <value>rowLinesGroup</value>
   </data>
   <data name="&gt;&gt;tablelinestyledashed.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -601,10 +817,10 @@
     <value>System</value>
   </data>
   <data name="tablelinestylenone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
+    <value>8, 15</value>
   </data>
   <data name="tablelinestylenone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="tablelinestylenone.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -616,43 +832,19 @@
     <value>tablelinestylenone</value>
   </data>
   <data name="&gt;&gt;tablelinestylenone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablelinestylenone.Parent" xml:space="preserve">
-    <value>group4</value>
+    <value>rowLinesGroup</value>
   </data>
   <data name="&gt;&gt;tablelinestylenone.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="group4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="group4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 42</value>
-  </data>
-  <data name="group4.TabIndex" type="System.Int32, mscorlib">
-    <value>37</value>
-  </data>
-  <data name="group4.Text" xml:space="preserve">
-    <value>Lines</value>
-  </data>
-  <data name="&gt;&gt;group4.Name" xml:space="preserve">
-    <value>group4</value>
-  </data>
-  <data name="&gt;&gt;group4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;group4.Parent" xml:space="preserve">
-    <value>rowstab</value>
-  </data>
-  <data name="&gt;&gt;group4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="rowspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 17</value>
+    <value>16, 18</value>
   </data>
   <data name="rowspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
+    <value>56, 14</value>
   </data>
   <data name="rowspacing.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -664,7 +856,7 @@
     <value>rowspacing</value>
   </data>
   <data name="&gt;&gt;rowspacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowspacing.Parent" xml:space="preserve">
     <value>group8</value>
@@ -672,14 +864,74 @@
   <data name="&gt;&gt;rowspacing.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;collinestylesolid.Name" xml:space="preserve">
+    <value>collinestylesolid</value>
+  </data>
+  <data name="&gt;&gt;collinestylesolid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;collinestylesolid.Parent" xml:space="preserve">
+    <value>columnLinesGroup</value>
+  </data>
+  <data name="&gt;&gt;collinestylesolid.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;collinestyledashed.Name" xml:space="preserve">
+    <value>collinestyledashed</value>
+  </data>
+  <data name="&gt;&gt;collinestyledashed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;collinestyledashed.Parent" xml:space="preserve">
+    <value>columnLinesGroup</value>
+  </data>
+  <data name="&gt;&gt;collinestyledashed.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;collinestylenone.Name" xml:space="preserve">
+    <value>collinestylenone</value>
+  </data>
+  <data name="&gt;&gt;collinestylenone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;collinestylenone.Parent" xml:space="preserve">
+    <value>columnLinesGroup</value>
+  </data>
+  <data name="&gt;&gt;collinestylenone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="columnLinesGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="columnLinesGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 45</value>
+  </data>
+  <data name="columnLinesGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="columnLinesGroup.Text" xml:space="preserve">
+    <value>Lines</value>
+  </data>
+  <data name="&gt;&gt;columnLinesGroup.Name" xml:space="preserve">
+    <value>columnLinesGroup</value>
+  </data>
+  <data name="&gt;&gt;columnLinesGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;columnLinesGroup.Parent" xml:space="preserve">
+    <value>colsTab</value>
+  </data>
+  <data name="&gt;&gt;columnLinesGroup.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="collinestylesolid.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="collinestylesolid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
+    <value>72, 15</value>
   </data>
   <data name="collinestylesolid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="collinestylesolid.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -691,10 +943,10 @@
     <value>collinestylesolid</value>
   </data>
   <data name="&gt;&gt;collinestylesolid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;collinestylesolid.Parent" xml:space="preserve">
-    <value>group5</value>
+    <value>columnLinesGroup</value>
   </data>
   <data name="&gt;&gt;collinestylesolid.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -703,10 +955,10 @@
     <value>System</value>
   </data>
   <data name="collinestyledashed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
+    <value>144, 15</value>
   </data>
   <data name="collinestyledashed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 21</value>
+    <value>80, 23</value>
   </data>
   <data name="collinestyledashed.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -718,10 +970,10 @@
     <value>collinestyledashed</value>
   </data>
   <data name="&gt;&gt;collinestyledashed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;collinestyledashed.Parent" xml:space="preserve">
-    <value>group5</value>
+    <value>columnLinesGroup</value>
   </data>
   <data name="&gt;&gt;collinestyledashed.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -730,10 +982,10 @@
     <value>System</value>
   </data>
   <data name="collinestylenone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
+    <value>8, 15</value>
   </data>
   <data name="collinestylenone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="collinestylenone.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -745,43 +997,19 @@
     <value>collinestylenone</value>
   </data>
   <data name="&gt;&gt;collinestylenone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;collinestylenone.Parent" xml:space="preserve">
-    <value>group5</value>
+    <value>columnLinesGroup</value>
   </data>
   <data name="&gt;&gt;collinestylenone.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="group5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="group5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 42</value>
-  </data>
-  <data name="group5.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="group5.Text" xml:space="preserve">
-    <value>Lines</value>
-  </data>
-  <data name="&gt;&gt;group5.Name" xml:space="preserve">
-    <value>group5</value>
-  </data>
-  <data name="&gt;&gt;group5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;group5.Parent" xml:space="preserve">
-    <value>colsTab</value>
-  </data>
-  <data name="&gt;&gt;group5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="colSpacing_.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 17</value>
+    <value>12, 18</value>
   </data>
   <data name="colSpacing_.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
+    <value>56, 14</value>
   </data>
   <data name="colSpacing_.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -793,7 +1021,7 @@
     <value>colSpacing_</value>
   </data>
   <data name="&gt;&gt;colSpacing_.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;colSpacing_.Parent" xml:space="preserve">
     <value>group10</value>
@@ -801,14 +1029,74 @@
   <data name="&gt;&gt;colSpacing_.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;tablelinesolid.Name" xml:space="preserve">
+    <value>tablelinesolid</value>
+  </data>
+  <data name="&gt;&gt;tablelinesolid.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablelinesolid.Parent" xml:space="preserve">
+    <value>tableFrameGroup</value>
+  </data>
+  <data name="&gt;&gt;tablelinesolid.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tablelinedashed.Name" xml:space="preserve">
+    <value>tablelinedashed</value>
+  </data>
+  <data name="&gt;&gt;tablelinedashed.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablelinedashed.Parent" xml:space="preserve">
+    <value>tableFrameGroup</value>
+  </data>
+  <data name="&gt;&gt;tablelinedashed.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;tablelinenone.Name" xml:space="preserve">
+    <value>tablelinenone</value>
+  </data>
+  <data name="&gt;&gt;tablelinenone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tablelinenone.Parent" xml:space="preserve">
+    <value>tableFrameGroup</value>
+  </data>
+  <data name="&gt;&gt;tablelinenone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableFrameGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableFrameGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 45</value>
+  </data>
+  <data name="tableFrameGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="tableFrameGroup.Text" xml:space="preserve">
+    <value>Frame</value>
+  </data>
+  <data name="&gt;&gt;tableFrameGroup.Name" xml:space="preserve">
+    <value>tableFrameGroup</value>
+  </data>
+  <data name="&gt;&gt;tableFrameGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableFrameGroup.Parent" xml:space="preserve">
+    <value>tableTab</value>
+  </data>
+  <data name="&gt;&gt;tableFrameGroup.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="tablelinesolid.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="tablelinesolid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
+    <value>72, 15</value>
   </data>
   <data name="tablelinesolid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="tablelinesolid.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -820,10 +1108,10 @@
     <value>tablelinesolid</value>
   </data>
   <data name="&gt;&gt;tablelinesolid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablelinesolid.Parent" xml:space="preserve">
-    <value>group6</value>
+    <value>tableFrameGroup</value>
   </data>
   <data name="&gt;&gt;tablelinesolid.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -832,10 +1120,10 @@
     <value>System</value>
   </data>
   <data name="tablelinedashed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
+    <value>144, 15</value>
   </data>
   <data name="tablelinedashed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 21</value>
+    <value>80, 23</value>
   </data>
   <data name="tablelinedashed.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -847,10 +1135,10 @@
     <value>tablelinedashed</value>
   </data>
   <data name="&gt;&gt;tablelinedashed.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablelinedashed.Parent" xml:space="preserve">
-    <value>group6</value>
+    <value>tableFrameGroup</value>
   </data>
   <data name="&gt;&gt;tablelinedashed.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -859,10 +1147,10 @@
     <value>System</value>
   </data>
   <data name="tablelinenone.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
+    <value>8, 15</value>
   </data>
   <data name="tablelinenone.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="tablelinenone.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -874,43 +1162,19 @@
     <value>tablelinenone</value>
   </data>
   <data name="&gt;&gt;tablelinenone.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablelinenone.Parent" xml:space="preserve">
-    <value>group6</value>
+    <value>tableFrameGroup</value>
   </data>
   <data name="&gt;&gt;tablelinenone.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="group6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="group6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 42</value>
-  </data>
-  <data name="group6.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="group6.Text" xml:space="preserve">
-    <value>Frame</value>
-  </data>
-  <data name="&gt;&gt;group6.Name" xml:space="preserve">
-    <value>group6</value>
-  </data>
-  <data name="&gt;&gt;group6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;group6.Parent" xml:space="preserve">
-    <value>tableTab</value>
-  </data>
-  <data name="&gt;&gt;group6.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="tablespacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 17</value>
+    <value>12, 18</value>
   </data>
   <data name="tablespacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 20</value>
+    <value>128, 21</value>
   </data>
   <data name="tablespacing.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -922,7 +1186,7 @@
     <value>tablespacing</value>
   </data>
   <data name="&gt;&gt;tablespacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tablespacing.Parent" xml:space="preserve">
     <value>group7</value>
@@ -934,10 +1198,10 @@
     <value>System</value>
   </data>
   <data name="equalCols.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 14</value>
+    <value>12, 15</value>
   </data>
   <data name="equalCols.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 21</value>
+    <value>100, 23</value>
   </data>
   <data name="equalCols.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -949,7 +1213,7 @@
     <value>equalCols</value>
   </data>
   <data name="&gt;&gt;equalCols.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;equalCols.Parent" xml:space="preserve">
     <value>group11</value>
@@ -961,10 +1225,10 @@
     <value>System</value>
   </data>
   <data name="equalRows.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 17</value>
+    <value>8, 18</value>
   </data>
   <data name="equalRows.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 21</value>
+    <value>107, 23</value>
   </data>
   <data name="equalRows.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -976,7 +1240,7 @@
     <value>equalRows</value>
   </data>
   <data name="&gt;&gt;equalRows.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;equalRows.Parent" xml:space="preserve">
     <value>group9</value>
@@ -985,10 +1249,10 @@
     <value>0</value>
   </data>
   <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>349, 351</value>
+    <value>419, 378</value>
   </data>
   <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 28</value>
+    <value>74, 30</value>
   </data>
   <data name="cancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1000,7 +1264,7 @@
     <value>cancelButton</value>
   </data>
   <data name="&gt;&gt;cancelButton.Type" xml:space="preserve">
-    <value>Glass.GlassButton, Genetibase.MathX.NuGenEQML, Version=0.0.23.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Glass.GlassButton, Genetibase.MathX.NuGenEQML, Version=1.1.0.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;cancelButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1009,10 +1273,10 @@
     <value>2</value>
   </data>
   <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>281, 351</value>
+    <value>337, 378</value>
   </data>
   <data name="okButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 28</value>
+    <value>75, 30</value>
   </data>
   <data name="okButton.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -1024,7 +1288,7 @@
     <value>okButton</value>
   </data>
   <data name="&gt;&gt;okButton.Type" xml:space="preserve">
-    <value>Glass.GlassButton, Genetibase.MathX.NuGenEQML, Version=0.0.23.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Glass.GlassButton, Genetibase.MathX.NuGenEQML, Version=1.1.0.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;okButton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1032,23 +1296,11 @@
   <data name="&gt;&gt;okButton.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="group7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 0</value>
-  </data>
-  <data name="group7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 42</value>
-  </data>
-  <data name="group7.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="group7.Text" xml:space="preserve">
-    <value>Frame Spacing (hor. vert.)</value>
-  </data>
   <data name="&gt;&gt;group7.Name" xml:space="preserve">
     <value>group7</value>
   </data>
   <data name="&gt;&gt;group7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;group7.Parent" xml:space="preserve">
     <value>tableTab</value>
@@ -1060,7 +1312,7 @@
     <value>4, 22</value>
   </data>
   <data name="tableTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 85</value>
+    <value>485, 94</value>
   </data>
   <data name="tableTab.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1072,7 +1324,7 @@
     <value>tableTab</value>
   </data>
   <data name="&gt;&gt;tableTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tableTab.Parent" xml:space="preserve">
     <value>tabcontrol</value>
@@ -1080,23 +1332,11 @@
   <data name="&gt;&gt;tableTab.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="group8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>207, 0</value>
-  </data>
-  <data name="group8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 42</value>
-  </data>
-  <data name="group8.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="group8.Text" xml:space="preserve">
-    <value>Row Spacing</value>
-  </data>
   <data name="&gt;&gt;group8.Name" xml:space="preserve">
     <value>group8</value>
   </data>
   <data name="&gt;&gt;group8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;group8.Parent" xml:space="preserve">
     <value>rowstab</value>
@@ -1104,23 +1344,11 @@
   <data name="&gt;&gt;group8.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="group9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 0</value>
-  </data>
-  <data name="group9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 42</value>
-  </data>
-  <data name="group9.TabIndex" type="System.Int32, mscorlib">
-    <value>38</value>
-  </data>
-  <data name="group9.Text" xml:space="preserve">
-    <value>Height</value>
-  </data>
   <data name="&gt;&gt;group9.Name" xml:space="preserve">
     <value>group9</value>
   </data>
   <data name="&gt;&gt;group9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;group9.Parent" xml:space="preserve">
     <value>rowstab</value>
@@ -1132,7 +1360,7 @@
     <value>4, 22</value>
   </data>
   <data name="rowstab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 85</value>
+    <value>485, 94</value>
   </data>
   <data name="rowstab.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1144,7 +1372,7 @@
     <value>rowstab</value>
   </data>
   <data name="&gt;&gt;rowstab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowstab.Parent" xml:space="preserve">
     <value>tabcontrol</value>
@@ -1152,23 +1380,11 @@
   <data name="&gt;&gt;rowstab.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="group10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 0</value>
-  </data>
-  <data name="group10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 42</value>
-  </data>
-  <data name="group10.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="group10.Text" xml:space="preserve">
-    <value>Column Spacing</value>
-  </data>
   <data name="&gt;&gt;group10.Name" xml:space="preserve">
     <value>group10</value>
   </data>
   <data name="&gt;&gt;group10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;group10.Parent" xml:space="preserve">
     <value>colsTab</value>
@@ -1176,23 +1392,11 @@
   <data name="&gt;&gt;group10.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="group11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 45</value>
-  </data>
-  <data name="group11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 38</value>
-  </data>
-  <data name="group11.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="group11.Text" xml:space="preserve">
-    <value>Width</value>
-  </data>
   <data name="&gt;&gt;group11.Name" xml:space="preserve">
     <value>group11</value>
   </data>
   <data name="&gt;&gt;group11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;group11.Parent" xml:space="preserve">
     <value>colsTab</value>
@@ -1204,7 +1408,7 @@
     <value>4, 22</value>
   </data>
   <data name="colsTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 85</value>
+    <value>485, 94</value>
   </data>
   <data name="colsTab.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1216,7 +1420,7 @@
     <value>colsTab</value>
   </data>
   <data name="&gt;&gt;colsTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;colsTab.Parent" xml:space="preserve">
     <value>tabcontrol</value>
@@ -1224,173 +1428,98 @@
   <data name="&gt;&gt;colsTab.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="rowalignaxis_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="rowalignaxis_.Location" type="System.Drawing.Point, System.Drawing">
-    <value>260, 14</value>
-  </data>
-  <data name="rowalignaxis_.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 21</value>
-  </data>
-  <data name="rowalignaxis_.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="rowalignaxis_.Text" xml:space="preserve">
-    <value>axis</value>
-  </data>
   <data name="&gt;&gt;rowalignaxis_.Name" xml:space="preserve">
     <value>rowalignaxis_</value>
   </data>
   <data name="&gt;&gt;rowalignaxis_.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignaxis_.Parent" xml:space="preserve">
-    <value>group12</value>
+    <value>cellRowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignaxis_.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="rowalignbaseline_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="rowalignbaseline_.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 14</value>
-  </data>
-  <data name="rowalignbaseline_.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 21</value>
-  </data>
-  <data name="rowalignbaseline_.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="rowalignbaseline_.Text" xml:space="preserve">
-    <value>baseline</value>
   </data>
   <data name="&gt;&gt;rowalignbaseline_.Name" xml:space="preserve">
     <value>rowalignbaseline_</value>
   </data>
   <data name="&gt;&gt;rowalignbaseline_.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignbaseline_.Parent" xml:space="preserve">
-    <value>group12</value>
+    <value>cellRowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignbaseline_.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="rowaligncenter_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="rowaligncenter_.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
-  </data>
-  <data name="rowaligncenter_.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
-  </data>
-  <data name="rowaligncenter_.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="rowaligncenter_.Text" xml:space="preserve">
-    <value>center</value>
   </data>
   <data name="&gt;&gt;rowaligncenter_.Name" xml:space="preserve">
     <value>rowaligncenter_</value>
   </data>
   <data name="&gt;&gt;rowaligncenter_.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowaligncenter_.Parent" xml:space="preserve">
-    <value>group12</value>
+    <value>cellRowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowaligncenter_.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="rowalignbottom_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="rowalignbottom_.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
-  </data>
-  <data name="rowalignbottom_.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 21</value>
-  </data>
-  <data name="rowalignbottom_.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="rowalignbottom_.Text" xml:space="preserve">
-    <value>bottom</value>
   </data>
   <data name="&gt;&gt;rowalignbottom_.Name" xml:space="preserve">
     <value>rowalignbottom_</value>
   </data>
   <data name="&gt;&gt;rowalignbottom_.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignbottom_.Parent" xml:space="preserve">
-    <value>group12</value>
+    <value>cellRowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignbottom_.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="rowaligntop_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>System</value>
-  </data>
-  <data name="rowaligntop_.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
-  </data>
-  <data name="rowaligntop_.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
-  </data>
-  <data name="rowaligntop_.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="rowaligntop_.Text" xml:space="preserve">
-    <value>top</value>
   </data>
   <data name="&gt;&gt;rowaligntop_.Name" xml:space="preserve">
     <value>rowaligntop_</value>
   </data>
   <data name="&gt;&gt;rowaligntop_.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowaligntop_.Parent" xml:space="preserve">
-    <value>group12</value>
+    <value>cellRowAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowaligntop_.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="group12.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="cellRowAlignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="group12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 42</value>
+  <data name="cellRowAlignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 45</value>
   </data>
-  <data name="group12.TabIndex" type="System.Int32, mscorlib">
+  <data name="cellRowAlignmentGroup.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
   </data>
-  <data name="group12.Text" xml:space="preserve">
+  <data name="cellRowAlignmentGroup.Text" xml:space="preserve">
     <value>Row Alignment</value>
   </data>
-  <data name="&gt;&gt;group12.Name" xml:space="preserve">
-    <value>group12</value>
+  <data name="&gt;&gt;cellRowAlignmentGroup.Name" xml:space="preserve">
+    <value>cellRowAlignmentGroup</value>
   </data>
-  <data name="&gt;&gt;group12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cellRowAlignmentGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;group12.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cellRowAlignmentGroup.Parent" xml:space="preserve">
     <value>cellsTab</value>
   </data>
-  <data name="&gt;&gt;group12.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cellRowAlignmentGroup.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="raligncenter.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
   <data name="raligncenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 14</value>
+    <value>72, 15</value>
   </data>
   <data name="raligncenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 21</value>
+    <value>64, 23</value>
   </data>
   <data name="raligncenter.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -1402,10 +1531,10 @@
     <value>raligncenter</value>
   </data>
   <data name="&gt;&gt;raligncenter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;raligncenter.Parent" xml:space="preserve">
-    <value>group13</value>
+    <value>cellColumnAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;raligncenter.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1414,10 +1543,10 @@
     <value>System</value>
   </data>
   <data name="rowalignright.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 14</value>
+    <value>144, 15</value>
   </data>
   <data name="rowalignright.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="rowalignright.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -1429,10 +1558,10 @@
     <value>rowalignright</value>
   </data>
   <data name="&gt;&gt;rowalignright.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignright.Parent" xml:space="preserve">
-    <value>group13</value>
+    <value>cellColumnAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignright.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1441,10 +1570,10 @@
     <value>System</value>
   </data>
   <data name="rowalignleft.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 14</value>
+    <value>8, 15</value>
   </data>
   <data name="rowalignleft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 21</value>
+    <value>56, 23</value>
   </data>
   <data name="rowalignleft.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1456,43 +1585,43 @@
     <value>rowalignleft</value>
   </data>
   <data name="&gt;&gt;rowalignleft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;rowalignleft.Parent" xml:space="preserve">
-    <value>group13</value>
+    <value>cellColumnAlignmentGroup</value>
   </data>
   <data name="&gt;&gt;rowalignleft.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="group13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 45</value>
+  <data name="cellColumnAlignmentGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 48</value>
   </data>
-  <data name="group13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 38</value>
+  <data name="cellColumnAlignmentGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 41</value>
   </data>
-  <data name="group13.TabIndex" type="System.Int32, mscorlib">
+  <data name="cellColumnAlignmentGroup.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
   </data>
-  <data name="group13.Text" xml:space="preserve">
+  <data name="cellColumnAlignmentGroup.Text" xml:space="preserve">
     <value>Column Alignment</value>
   </data>
-  <data name="&gt;&gt;group13.Name" xml:space="preserve">
-    <value>group13</value>
+  <data name="&gt;&gt;cellColumnAlignmentGroup.Name" xml:space="preserve">
+    <value>cellColumnAlignmentGroup</value>
   </data>
-  <data name="&gt;&gt;group13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;cellColumnAlignmentGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;group13.Parent" xml:space="preserve">
+  <data name="&gt;&gt;cellColumnAlignmentGroup.Parent" xml:space="preserve">
     <value>cellsTab</value>
   </data>
-  <data name="&gt;&gt;group13.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;cellColumnAlignmentGroup.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="cellsTab.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
   <data name="cellsTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>403, 85</value>
+    <value>485, 94</value>
   </data>
   <data name="cellsTab.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1504,7 +1633,7 @@
     <value>cellsTab</value>
   </data>
   <data name="&gt;&gt;cellsTab.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;cellsTab.Parent" xml:space="preserve">
     <value>tabcontrol</value>
@@ -1516,7 +1645,7 @@
     <value>0, 0</value>
   </data>
   <data name="tabcontrol.Size" type="System.Drawing.Size, System.Drawing">
-    <value>411, 111</value>
+    <value>493, 120</value>
   </data>
   <data name="tabcontrol.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -1525,7 +1654,7 @@
     <value>tabcontrol</value>
   </data>
   <data name="&gt;&gt;tabcontrol.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabcontrol.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1533,11 +1662,266 @@
   <data name="&gt;&gt;tabcontrol.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="group7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 0</value>
+  </data>
+  <data name="group7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 45</value>
+  </data>
+  <data name="group7.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="group7.Text" xml:space="preserve">
+    <value>Frame Spacing (hor. vert.)</value>
+  </data>
+  <data name="&gt;&gt;group7.Name" xml:space="preserve">
+    <value>group7</value>
+  </data>
+  <data name="&gt;&gt;group7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;group7.Parent" xml:space="preserve">
+    <value>tableTab</value>
+  </data>
+  <data name="&gt;&gt;group7.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="group8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>248, 0</value>
+  </data>
+  <data name="group8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 45</value>
+  </data>
+  <data name="group8.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="group8.Text" xml:space="preserve">
+    <value>Row Spacing</value>
+  </data>
+  <data name="&gt;&gt;group8.Name" xml:space="preserve">
+    <value>group8</value>
+  </data>
+  <data name="&gt;&gt;group8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;group8.Parent" xml:space="preserve">
+    <value>rowstab</value>
+  </data>
+  <data name="&gt;&gt;group8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="group9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>360, 0</value>
+  </data>
+  <data name="group9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 45</value>
+  </data>
+  <data name="group9.TabIndex" type="System.Int32, mscorlib">
+    <value>38</value>
+  </data>
+  <data name="group9.Text" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="&gt;&gt;group9.Name" xml:space="preserve">
+    <value>group9</value>
+  </data>
+  <data name="&gt;&gt;group9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;group9.Parent" xml:space="preserve">
+    <value>rowstab</value>
+  </data>
+  <data name="&gt;&gt;group9.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="group10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 0</value>
+  </data>
+  <data name="group10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 45</value>
+  </data>
+  <data name="group10.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="group10.Text" xml:space="preserve">
+    <value>Column Spacing</value>
+  </data>
+  <data name="&gt;&gt;group10.Name" xml:space="preserve">
+    <value>group10</value>
+  </data>
+  <data name="&gt;&gt;group10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;group10.Parent" xml:space="preserve">
+    <value>colsTab</value>
+  </data>
+  <data name="&gt;&gt;group10.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="group11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>236, 48</value>
+  </data>
+  <data name="group11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 41</value>
+  </data>
+  <data name="group11.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="group11.Text" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="&gt;&gt;group11.Name" xml:space="preserve">
+    <value>group11</value>
+  </data>
+  <data name="&gt;&gt;group11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;group11.Parent" xml:space="preserve">
+    <value>colsTab</value>
+  </data>
+  <data name="&gt;&gt;group11.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rowalignaxis_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="rowalignaxis_.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 15</value>
+  </data>
+  <data name="rowalignaxis_.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 23</value>
+  </data>
+  <data name="rowalignaxis_.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="rowalignaxis_.Text" xml:space="preserve">
+    <value>axis</value>
+  </data>
+  <data name="&gt;&gt;rowalignaxis_.Name" xml:space="preserve">
+    <value>rowalignaxis_</value>
+  </data>
+  <data name="&gt;&gt;rowalignaxis_.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowalignaxis_.Parent" xml:space="preserve">
+    <value>cellRowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowalignaxis_.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rowalignbaseline_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="rowalignbaseline_.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 15</value>
+  </data>
+  <data name="rowalignbaseline_.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 23</value>
+  </data>
+  <data name="rowalignbaseline_.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="rowalignbaseline_.Text" xml:space="preserve">
+    <value>baseline</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline_.Name" xml:space="preserve">
+    <value>rowalignbaseline_</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline_.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline_.Parent" xml:space="preserve">
+    <value>cellRowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowalignbaseline_.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rowaligncenter_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="rowaligncenter_.Location" type="System.Drawing.Point, System.Drawing">
+    <value>72, 15</value>
+  </data>
+  <data name="rowaligncenter_.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 23</value>
+  </data>
+  <data name="rowaligncenter_.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="rowaligncenter_.Text" xml:space="preserve">
+    <value>center</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter_.Name" xml:space="preserve">
+    <value>rowaligncenter_</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter_.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter_.Parent" xml:space="preserve">
+    <value>cellRowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowaligncenter_.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="rowalignbottom_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="rowalignbottom_.Location" type="System.Drawing.Point, System.Drawing">
+    <value>144, 15</value>
+  </data>
+  <data name="rowalignbottom_.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 23</value>
+  </data>
+  <data name="rowalignbottom_.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="rowalignbottom_.Text" xml:space="preserve">
+    <value>bottom</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom_.Name" xml:space="preserve">
+    <value>rowalignbottom_</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom_.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom_.Parent" xml:space="preserve">
+    <value>cellRowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowalignbottom_.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="rowaligntop_.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="rowaligntop_.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 15</value>
+  </data>
+  <data name="rowaligntop_.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 23</value>
+  </data>
+  <data name="rowaligntop_.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="rowaligntop_.Text" xml:space="preserve">
+    <value>top</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop_.Name" xml:space="preserve">
+    <value>rowaligntop_</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop_.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop_.Parent" xml:space="preserve">
+    <value>cellRowAlignmentGroup</value>
+  </data>
+  <data name="&gt;&gt;rowaligntop_.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="selAllbutton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 124</value>
+    <value>14, 134</value>
   </data>
   <data name="selAllbutton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 14</value>
+    <value>17, 15</value>
   </data>
   <data name="selAllbutton.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
@@ -1546,7 +1930,7 @@
     <value>selAllbutton</value>
   </data>
   <data name="&gt;&gt;selAllbutton.Type" xml:space="preserve">
-    <value>Glass.GlassButton, Genetibase.MathX.NuGenEQML, Version=0.0.23.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>Glass.GlassButton, Genetibase.MathX.NuGenEQML, Version=1.1.0.2, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;selAllbutton.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1554,11 +1938,11 @@
   <data name="&gt;&gt;selAllbutton.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleBaseSize" type="System.Drawing.Size, System.Drawing">
-    <value>5, 13</value>
+    <value>6, 14</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>420, 388</value>
@@ -1573,6 +1957,6 @@
     <value>MatrixPropertiesDialog</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
