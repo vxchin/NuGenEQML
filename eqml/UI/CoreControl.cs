@@ -441,8 +441,9 @@ namespace UI
 
         protected override void OnResize(EventArgs e)
         {
-            base.OnResize(e);
+            ResizeScrollbars();
             DoResize(base.Width, base.Height, true, true);
+            base.OnResize(e);
         }
 
         public void pub_InsertChar(char c)
@@ -1361,7 +1362,7 @@ namespace UI
         {
             try
             {
-                if (!isInitialized_)
+                if (!isInitialized_ || !horScroller_.Visible)
                 {
                     return;
                 }
@@ -1381,7 +1382,7 @@ namespace UI
         {
             try
             {
-                if (!isInitialized_)
+                if (!isInitialized_ || !vertScroller_.Visible)
                 {
                     return;
                 }
