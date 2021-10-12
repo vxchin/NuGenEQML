@@ -1,8 +1,4 @@
 using System;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Sample3
@@ -16,36 +12,30 @@ namespace Sample3
             Application.DoEvents();
         }
 
-        private void save_mathml (object sender, EventArgs e)
+        private void save_mathml(object sender, EventArgs e)
         {
             SaveFileDialog dialog = new SaveFileDialog();
 
-            dialog.InitialDirectory = "c:\\" ;
-            dialog.Filter = "Mathml files (*.mathml)|*.mathml|All files (*.*)|*.*" ;
-            dialog.FilterIndex = 1 ;
-            dialog.RestoreDirectory = true ;
-            
+            dialog.Filter = "MathML files (*.mathml)|*.mathml|XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                mathMLControl1.pub_Save (dialog.FileName); 
+                mathMLControl1.pub_Save(dialog.FileName);
             }
         }
 
-        private void save_mathml_pure (object sender, EventArgs e)
+        private void save_mathml_pure(object sender, EventArgs e)
         {
             SaveFileDialog dialog = new SaveFileDialog();
 
-            dialog.InitialDirectory = "c:\\" ;
-            dialog.Filter = "Mathml files (*.mathml)|*.mathml|All files (*.*)|*.*" ;
-            dialog.FilterIndex = 1 ;
-            dialog.RestoreDirectory = true ;
-            
+            dialog.Filter = "MathML files (*.mathml)|*.mathml|XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                mathMLControl1.pub_SavePure (dialog.FileName); 
+                mathMLControl1.pub_SavePure(dialog.FileName);
             }
         }
-        
+
         private void Form2_Load(object sender, EventArgs e)
         {
             mathMLControl1.pub_LoadXML("<math xmlns=\"http://www.w3.org/1998/Math/MathML\"><mi>Y</mi><mo>&equals;</mo><msqrt><mrow><mn>1</mn><mo>&plus;</mo><msup><mi>X</mi><mrow><mn>2</mn></mrow></msup></mrow></msqrt><mo>&plus;</mo></math>");
@@ -263,15 +253,12 @@ namespace Sample3
         {
             OpenFileDialog dialog = new OpenFileDialog();
 
-            dialog.InitialDirectory = "c:\\" ;
-            dialog.Filter = "Mathml files (*.mathml)|*.mathml|All files (*.*)|*.*" ;
-            dialog.FilterIndex = 1 ;
-            dialog.RestoreDirectory = true ;
-            
+            dialog.Filter = "MathML files (*.mathml)|*.mathml|XML files (*.xml)|*.xml|All files (*.*)|*.*";
+
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                mathMLControl1 .LoadFromFile(dialog.FileName);
+                mathMLControl1.LoadFromFile(dialog.FileName);
             }
-        } 
+        }
     }
 }
