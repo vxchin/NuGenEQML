@@ -1,3 +1,3 @@
 # NuGenEQML
 
-A Managed C# WinForm MathML Assembly.
+A Managed C# WinForms MathML Assembly.
